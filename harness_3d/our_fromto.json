@@ -1,0 +1,7942 @@
+[
+  {
+    "FROM": "IP_AllCATPart#S10",
+    "TO": "IP_AllCATPart#S162",
+    "FROM_code": "CON01",
+    "TO_code": "CON07",
+    "Length": 1173.7,
+    "Path": [
+      "SEG01",
+      "SEG02",
+      "SEG03",
+      "SEG44",
+      "SEG65",
+      "SEG66",
+      "SEG67",
+      "SEG56",
+      "SEG11",
+      "SEG10",
+      "SEG09",
+      "SEG08",
+      "SEG12"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S10",
+    "TO": "IP_AllCATPart#S153",
+    "FROM_code": "CON01",
+    "TO_code": "CON08",
+    "Length": 1081.9,
+    "Path": [
+      "SEG01",
+      "SEG02",
+      "SEG03",
+      "SEG44",
+      "SEG65",
+      "SEG66",
+      "SEG67",
+      "SEG56",
+      "SEG51",
+      "SEG14",
+      "SEG15"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S10",
+    "TO": "IP_AllCATPart#S187",
+    "FROM_code": "CON01",
+    "TO_code": "CON09",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S10",
+    "TO": "IP_AllCATPart#S182",
+    "FROM_code": "CON01",
+    "TO_code": "CON10",
+    "Length": 997.8,
+    "Path": [
+      "SEG01",
+      "SEG02",
+      "SEG03",
+      "SEG44",
+      "SEG65",
+      "SEG66",
+      "SEG67",
+      "SEG20",
+      "SEG19",
+      "SEG18",
+      "SEG21"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S10",
+    "TO": "IP_AllCATPart#S166",
+    "FROM_code": "CON01",
+    "TO_code": "CON11",
+    "Length": 644.1,
+    "Path": [
+      "SEG01",
+      "SEG02",
+      "SEG03",
+      "SEG44",
+      "SEG64"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S10",
+    "TO": "IP_AllCATPart#S173",
+    "FROM_code": "CON01",
+    "TO_code": "CON12",
+    "Length": 1038.6,
+    "Path": [
+      "SEG01",
+      "SEG02",
+      "SEG03",
+      "SEG44",
+      "SEG65",
+      "SEG66",
+      "SEG67",
+      "SEG56",
+      "SEG53",
+      "SEG54"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S10",
+    "TO": "IP_AllCATPart#S159",
+    "FROM_code": "CON01",
+    "TO_code": "CON13",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S10",
+    "TO": "IP_AllCATPart#S12",
+    "FROM_code": "CON01",
+    "TO_code": "CON14",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S10",
+    "TO": "IP_AllCATPart#S163",
+    "FROM_code": "CON01",
+    "TO_code": "CON15",
+    "Length": 365.8,
+    "Path": [
+      "SEG04",
+      "SEG05"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S10",
+    "TO": "IP_AllCATPart#S178",
+    "FROM_code": "CON01",
+    "TO_code": "CON16",
+    "Length": 409.2,
+    "Path": [
+      "SEG01",
+      "SEG02",
+      "SEG03",
+      "SEG43"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S10",
+    "TO": "IP_AllCATPart#S179",
+    "FROM_code": "CON01",
+    "TO_code": "CON17",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S10",
+    "TO": "IP_AllCATPart#S172",
+    "FROM_code": "CON01",
+    "TO_code": "CON18",
+    "Length": 1206.6,
+    "Path": [
+      "SEG01",
+      "SEG02",
+      "SEG03",
+      "SEG44",
+      "SEG65",
+      "SEG66",
+      "SEG67",
+      "SEG56",
+      "SEG51",
+      "SEG14",
+      "SEG17",
+      "SEG70",
+      "SEG71"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S10",
+    "TO": "IP_AllCATPart#S175",
+    "FROM_code": "CON01",
+    "TO_code": "CON19",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S10",
+    "TO": "IP_AllCATPart#S185",
+    "FROM_code": "CON01",
+    "TO_code": "CON20",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S10",
+    "TO": "IP_AllCATPart#S170",
+    "FROM_code": "CON01",
+    "TO_code": "CON21",
+    "Length": 957.8,
+    "Path": [
+      "SEG01",
+      "SEG02",
+      "SEG03",
+      "SEG44",
+      "SEG65",
+      "SEG66",
+      "SEG67",
+      "SEG56",
+      "SEG55"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S10",
+    "TO": "IP_AllCATPart#S184",
+    "FROM_code": "CON01",
+    "TO_code": "CON22",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S10",
+    "TO": "IP_AllCATPart#S158",
+    "FROM_code": "CON01",
+    "TO_code": "CON23",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S10",
+    "TO": "IP_AllCATPart#S171",
+    "FROM_code": "CON01",
+    "TO_code": "CON24",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S10",
+    "TO": "IP_AllCATPart#S174",
+    "FROM_code": "CON01",
+    "TO_code": "CON25",
+    "Length": 1104.7,
+    "Path": [
+      "SEG01",
+      "SEG02",
+      "SEG03",
+      "SEG44",
+      "SEG65",
+      "SEG66",
+      "SEG67",
+      "SEG20",
+      "SEG19",
+      "SEG18",
+      "SEG23",
+      "SEG24",
+      "SEG49"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S10",
+    "TO": "IP_AllCATPart#S177",
+    "FROM_code": "CON01",
+    "TO_code": "CON26",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S10",
+    "TO": "IP_AllCATPart#S186",
+    "FROM_code": "CON01",
+    "TO_code": "CON27",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S10",
+    "TO": "IP_AllCATPart#S167",
+    "FROM_code": "CON01",
+    "TO_code": "CON28",
+    "Length": 399.2,
+    "Path": [
+      "SEG01",
+      "SEG02",
+      "SEG03",
+      "SEG45"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S10",
+    "TO": "IP_AllCATPart#S98",
+    "FROM_code": "CON01",
+    "TO_code": "CON29",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S10",
+    "TO": "IP_AllCATPart#S169",
+    "FROM_code": "CON01",
+    "TO_code": "CON30",
+    "Length": 1020.4,
+    "Path": [
+      "SEG01",
+      "SEG02",
+      "SEG03",
+      "SEG44",
+      "SEG65",
+      "SEG66",
+      "SEG67",
+      "SEG20",
+      "SEG19",
+      "SEG18",
+      "SEG22"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S10",
+    "TO": "IP_AllCATPart#S181",
+    "FROM_code": "CON01",
+    "TO_code": "CON31",
+    "Length": 380.5,
+    "Path": [
+      "SEG01",
+      "SEG02",
+      "SEG03",
+      "SEG46"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S10",
+    "TO": "IP_AllCATPart#S180",
+    "FROM_code": "CON01",
+    "TO_code": "CON32",
+    "Length": 165.6,
+    "Path": [
+      "SEG06",
+      "SEG07"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S10",
+    "TO": "IP_AllCATPart#S155",
+    "FROM_code": "CON01",
+    "TO_code": "CON33",
+    "Length": 1104.7,
+    "Path": [
+      "SEG01",
+      "SEG02",
+      "SEG03",
+      "SEG44",
+      "SEG65",
+      "SEG66",
+      "SEG67",
+      "SEG20",
+      "SEG19",
+      "SEG18",
+      "SEG23",
+      "SEG24",
+      "SEG50"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S10",
+    "TO": "IP_AllCATPart#S157",
+    "FROM_code": "CON01",
+    "TO_code": "CON34",
+    "Length": 1142.9,
+    "Path": [
+      "SEG01",
+      "SEG02",
+      "SEG03",
+      "SEG44",
+      "SEG65",
+      "SEG66",
+      "SEG67",
+      "SEG56",
+      "SEG51",
+      "SEG14",
+      "SEG17",
+      "SEG72"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S10",
+    "TO": "IP_AllCATPart#S161",
+    "FROM_code": "CON01",
+    "TO_code": "CON35",
+    "Length": 1168.3,
+    "Path": [
+      "SEG01",
+      "SEG02",
+      "SEG03",
+      "SEG44",
+      "SEG65",
+      "SEG66",
+      "SEG67",
+      "SEG56",
+      "SEG11",
+      "SEG10",
+      "SEG09",
+      "SEG08",
+      "SEG13"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S10",
+    "TO": "IP_AllCATPart#S160",
+    "FROM_code": "CON01",
+    "TO_code": "CON36",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S10",
+    "TO": "IP_AllCATPart#S164",
+    "FROM_code": "CON01",
+    "TO_code": "CON37",
+    "Length": 887.8,
+    "Path": [
+      "SEG01",
+      "SEG02",
+      "SEG03",
+      "SEG44",
+      "SEG65",
+      "SEG66",
+      "SEG67",
+      "SEG56",
+      "SEG57"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S10",
+    "TO": "IP_AllCATPart#S154",
+    "FROM_code": "CON01",
+    "TO_code": "CON38",
+    "Length": 1119.8,
+    "Path": [
+      "SEG01",
+      "SEG02",
+      "SEG03",
+      "SEG44",
+      "SEG65",
+      "SEG66",
+      "SEG67",
+      "SEG56",
+      "SEG51",
+      "SEG14",
+      "SEG17",
+      "SEG73"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S10",
+    "TO": "IP_AllCATPart#S14",
+    "FROM_code": "CON01",
+    "TO_code": "CON39",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S10",
+    "TO": "IP_AllCATPart#S9",
+    "FROM_code": "CON01",
+    "TO_code": "CON40",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S10",
+    "TO": "IP_AllCATPart#S168",
+    "FROM_code": "CON01",
+    "TO_code": "CON41",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S10",
+    "TO": "IP_AllCATPart#S183",
+    "FROM_code": "CON01",
+    "TO_code": "CON42",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S162",
+    "TO": "IP_AllCATPart#S153",
+    "FROM_code": "CON07",
+    "TO_code": "CON08",
+    "Length": 620.0,
+    "Path": [
+      "SEG12",
+      "SEG08",
+      "SEG09",
+      "SEG10",
+      "SEG11",
+      "SEG51",
+      "SEG14",
+      "SEG15"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S162",
+    "TO": "IP_AllCATPart#S187",
+    "FROM_code": "CON07",
+    "TO_code": "CON09",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S162",
+    "TO": "IP_AllCATPart#S182",
+    "FROM_code": "CON07",
+    "TO_code": "CON10",
+    "Length": 735.9,
+    "Path": [
+      "SEG12",
+      "SEG08",
+      "SEG09",
+      "SEG10",
+      "SEG11",
+      "SEG56",
+      "SEG20",
+      "SEG19",
+      "SEG18",
+      "SEG21"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S162",
+    "TO": "IP_AllCATPart#S166",
+    "FROM_code": "CON07",
+    "TO_code": "CON11",
+    "Length": 999.2,
+    "Path": [
+      "SEG12",
+      "SEG08",
+      "SEG09",
+      "SEG10",
+      "SEG11",
+      "SEG56",
+      "SEG67",
+      "SEG66",
+      "SEG65",
+      "SEG64"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S162",
+    "TO": "IP_AllCATPart#S173",
+    "FROM_code": "CON07",
+    "TO_code": "CON12",
+    "Length": 576.7,
+    "Path": [
+      "SEG12",
+      "SEG08",
+      "SEG09",
+      "SEG10",
+      "SEG11",
+      "SEG53",
+      "SEG54"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S162",
+    "TO": "IP_AllCATPart#S159",
+    "FROM_code": "CON07",
+    "TO_code": "CON13",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S162",
+    "TO": "IP_AllCATPart#S12",
+    "FROM_code": "CON07",
+    "TO_code": "CON14",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S162",
+    "TO": "IP_AllCATPart#S163",
+    "FROM_code": "CON07",
+    "TO_code": "CON15",
+    "Length": 1539.5,
+    "Path": [
+      "SEG12",
+      "SEG08",
+      "SEG09",
+      "SEG10",
+      "SEG11",
+      "SEG56",
+      "SEG67",
+      "SEG66",
+      "SEG65",
+      "SEG44",
+      "SEG03",
+      "SEG02",
+      "SEG01",
+      "SEG04",
+      "SEG05"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S162",
+    "TO": "IP_AllCATPart#S178",
+    "FROM_code": "CON07",
+    "TO_code": "CON16",
+    "Length": 1024.3,
+    "Path": [
+      "SEG12",
+      "SEG08",
+      "SEG09",
+      "SEG10",
+      "SEG11",
+      "SEG56",
+      "SEG67",
+      "SEG66",
+      "SEG65",
+      "SEG44",
+      "SEG43"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S162",
+    "TO": "IP_AllCATPart#S179",
+    "FROM_code": "CON07",
+    "TO_code": "CON17",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S162",
+    "TO": "IP_AllCATPart#S172",
+    "FROM_code": "CON07",
+    "TO_code": "CON18",
+    "Length": 744.7,
+    "Path": [
+      "SEG12",
+      "SEG08",
+      "SEG09",
+      "SEG10",
+      "SEG11",
+      "SEG51",
+      "SEG14",
+      "SEG17",
+      "SEG70",
+      "SEG71"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S162",
+    "TO": "IP_AllCATPart#S175",
+    "FROM_code": "CON07",
+    "TO_code": "CON19",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S162",
+    "TO": "IP_AllCATPart#S185",
+    "FROM_code": "CON07",
+    "TO_code": "CON20",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S162",
+    "TO": "IP_AllCATPart#S170",
+    "FROM_code": "CON07",
+    "TO_code": "CON21",
+    "Length": 495.9,
+    "Path": [
+      "SEG12",
+      "SEG08",
+      "SEG09",
+      "SEG10",
+      "SEG11",
+      "SEG55"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S162",
+    "TO": "IP_AllCATPart#S184",
+    "FROM_code": "CON07",
+    "TO_code": "CON22",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S162",
+    "TO": "IP_AllCATPart#S158",
+    "FROM_code": "CON07",
+    "TO_code": "CON23",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S162",
+    "TO": "IP_AllCATPart#S171",
+    "FROM_code": "CON07",
+    "TO_code": "CON24",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S162",
+    "TO": "IP_AllCATPart#S174",
+    "FROM_code": "CON07",
+    "TO_code": "CON25",
+    "Length": 842.8,
+    "Path": [
+      "SEG12",
+      "SEG08",
+      "SEG09",
+      "SEG10",
+      "SEG11",
+      "SEG56",
+      "SEG20",
+      "SEG19",
+      "SEG18",
+      "SEG23",
+      "SEG24",
+      "SEG49"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S162",
+    "TO": "IP_AllCATPart#S177",
+    "FROM_code": "CON07",
+    "TO_code": "CON26",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S162",
+    "TO": "IP_AllCATPart#S186",
+    "FROM_code": "CON07",
+    "TO_code": "CON27",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S162",
+    "TO": "IP_AllCATPart#S167",
+    "FROM_code": "CON07",
+    "TO_code": "CON28",
+    "Length": 1014.3,
+    "Path": [
+      "SEG12",
+      "SEG08",
+      "SEG09",
+      "SEG10",
+      "SEG11",
+      "SEG56",
+      "SEG67",
+      "SEG66",
+      "SEG65",
+      "SEG44",
+      "SEG45"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S162",
+    "TO": "IP_AllCATPart#S98",
+    "FROM_code": "CON07",
+    "TO_code": "CON29",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S162",
+    "TO": "IP_AllCATPart#S169",
+    "FROM_code": "CON07",
+    "TO_code": "CON30",
+    "Length": 758.5,
+    "Path": [
+      "SEG12",
+      "SEG08",
+      "SEG09",
+      "SEG10",
+      "SEG11",
+      "SEG56",
+      "SEG20",
+      "SEG19",
+      "SEG18",
+      "SEG22"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S162",
+    "TO": "IP_AllCATPart#S181",
+    "FROM_code": "CON07",
+    "TO_code": "CON31",
+    "Length": 995.6,
+    "Path": [
+      "SEG12",
+      "SEG08",
+      "SEG09",
+      "SEG10",
+      "SEG11",
+      "SEG56",
+      "SEG67",
+      "SEG66",
+      "SEG65",
+      "SEG44",
+      "SEG46"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S162",
+    "TO": "IP_AllCATPart#S180",
+    "FROM_code": "CON07",
+    "TO_code": "CON32",
+    "Length": 1339.3,
+    "Path": [
+      "SEG12",
+      "SEG08",
+      "SEG09",
+      "SEG10",
+      "SEG11",
+      "SEG56",
+      "SEG67",
+      "SEG66",
+      "SEG65",
+      "SEG44",
+      "SEG03",
+      "SEG02",
+      "SEG01",
+      "SEG06",
+      "SEG07"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S162",
+    "TO": "IP_AllCATPart#S155",
+    "FROM_code": "CON07",
+    "TO_code": "CON33",
+    "Length": 842.8,
+    "Path": [
+      "SEG12",
+      "SEG08",
+      "SEG09",
+      "SEG10",
+      "SEG11",
+      "SEG56",
+      "SEG20",
+      "SEG19",
+      "SEG18",
+      "SEG23",
+      "SEG24",
+      "SEG50"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S162",
+    "TO": "IP_AllCATPart#S157",
+    "FROM_code": "CON07",
+    "TO_code": "CON34",
+    "Length": 681.0,
+    "Path": [
+      "SEG12",
+      "SEG08",
+      "SEG09",
+      "SEG10",
+      "SEG11",
+      "SEG51",
+      "SEG14",
+      "SEG17",
+      "SEG72"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S162",
+    "TO": "IP_AllCATPart#S161",
+    "FROM_code": "CON07",
+    "TO_code": "CON35",
+    "Length": 175.4,
+    "Path": [
+      "SEG12",
+      "SEG13"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S162",
+    "TO": "IP_AllCATPart#S160",
+    "FROM_code": "CON07",
+    "TO_code": "CON36",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S162",
+    "TO": "IP_AllCATPart#S164",
+    "FROM_code": "CON07",
+    "TO_code": "CON37",
+    "Length": 425.9,
+    "Path": [
+      "SEG12",
+      "SEG08",
+      "SEG09",
+      "SEG10",
+      "SEG11",
+      "SEG57"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S162",
+    "TO": "IP_AllCATPart#S154",
+    "FROM_code": "CON07",
+    "TO_code": "CON38",
+    "Length": 657.9,
+    "Path": [
+      "SEG12",
+      "SEG08",
+      "SEG09",
+      "SEG10",
+      "SEG11",
+      "SEG51",
+      "SEG14",
+      "SEG17",
+      "SEG73"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S162",
+    "TO": "IP_AllCATPart#S14",
+    "FROM_code": "CON07",
+    "TO_code": "CON39",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S162",
+    "TO": "IP_AllCATPart#S9",
+    "FROM_code": "CON07",
+    "TO_code": "CON40",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S162",
+    "TO": "IP_AllCATPart#S168",
+    "FROM_code": "CON07",
+    "TO_code": "CON41",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S162",
+    "TO": "IP_AllCATPart#S183",
+    "FROM_code": "CON07",
+    "TO_code": "CON42",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S153",
+    "TO": "IP_AllCATPart#S187",
+    "FROM_code": "CON08",
+    "TO_code": "CON09",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S153",
+    "TO": "IP_AllCATPart#S182",
+    "FROM_code": "CON08",
+    "TO_code": "CON10",
+    "Length": 644.1,
+    "Path": [
+      "SEG15",
+      "SEG14",
+      "SEG51",
+      "SEG56",
+      "SEG20",
+      "SEG19",
+      "SEG18",
+      "SEG21"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S153",
+    "TO": "IP_AllCATPart#S166",
+    "FROM_code": "CON08",
+    "TO_code": "CON11",
+    "Length": 907.4,
+    "Path": [
+      "SEG15",
+      "SEG14",
+      "SEG51",
+      "SEG56",
+      "SEG67",
+      "SEG66",
+      "SEG65",
+      "SEG64"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S153",
+    "TO": "IP_AllCATPart#S173",
+    "FROM_code": "CON08",
+    "TO_code": "CON12",
+    "Length": 484.9,
+    "Path": [
+      "SEG15",
+      "SEG14",
+      "SEG51",
+      "SEG53",
+      "SEG54"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S153",
+    "TO": "IP_AllCATPart#S159",
+    "FROM_code": "CON08",
+    "TO_code": "CON13",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S153",
+    "TO": "IP_AllCATPart#S12",
+    "FROM_code": "CON08",
+    "TO_code": "CON14",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S153",
+    "TO": "IP_AllCATPart#S163",
+    "FROM_code": "CON08",
+    "TO_code": "CON15",
+    "Length": 1447.7,
+    "Path": [
+      "SEG15",
+      "SEG14",
+      "SEG51",
+      "SEG56",
+      "SEG67",
+      "SEG66",
+      "SEG65",
+      "SEG44",
+      "SEG03",
+      "SEG02",
+      "SEG01",
+      "SEG04",
+      "SEG05"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S153",
+    "TO": "IP_AllCATPart#S178",
+    "FROM_code": "CON08",
+    "TO_code": "CON16",
+    "Length": 932.5,
+    "Path": [
+      "SEG15",
+      "SEG14",
+      "SEG51",
+      "SEG56",
+      "SEG67",
+      "SEG66",
+      "SEG65",
+      "SEG44",
+      "SEG43"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S153",
+    "TO": "IP_AllCATPart#S179",
+    "FROM_code": "CON08",
+    "TO_code": "CON17",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S153",
+    "TO": "IP_AllCATPart#S172",
+    "FROM_code": "CON08",
+    "TO_code": "CON18",
+    "Length": 265.1,
+    "Path": [
+      "SEG15",
+      "SEG17",
+      "SEG70",
+      "SEG71"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S153",
+    "TO": "IP_AllCATPart#S175",
+    "FROM_code": "CON08",
+    "TO_code": "CON19",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S153",
+    "TO": "IP_AllCATPart#S185",
+    "FROM_code": "CON08",
+    "TO_code": "CON20",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S153",
+    "TO": "IP_AllCATPart#S170",
+    "FROM_code": "CON08",
+    "TO_code": "CON21",
+    "Length": 404.1,
+    "Path": [
+      "SEG15",
+      "SEG14",
+      "SEG51",
+      "SEG55"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S153",
+    "TO": "IP_AllCATPart#S184",
+    "FROM_code": "CON08",
+    "TO_code": "CON22",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S153",
+    "TO": "IP_AllCATPart#S158",
+    "FROM_code": "CON08",
+    "TO_code": "CON23",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S153",
+    "TO": "IP_AllCATPart#S171",
+    "FROM_code": "CON08",
+    "TO_code": "CON24",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S153",
+    "TO": "IP_AllCATPart#S174",
+    "FROM_code": "CON08",
+    "TO_code": "CON25",
+    "Length": 751.0,
+    "Path": [
+      "SEG15",
+      "SEG14",
+      "SEG51",
+      "SEG56",
+      "SEG20",
+      "SEG19",
+      "SEG18",
+      "SEG23",
+      "SEG24",
+      "SEG49"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S153",
+    "TO": "IP_AllCATPart#S177",
+    "FROM_code": "CON08",
+    "TO_code": "CON26",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S153",
+    "TO": "IP_AllCATPart#S186",
+    "FROM_code": "CON08",
+    "TO_code": "CON27",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S153",
+    "TO": "IP_AllCATPart#S167",
+    "FROM_code": "CON08",
+    "TO_code": "CON28",
+    "Length": 922.5,
+    "Path": [
+      "SEG15",
+      "SEG14",
+      "SEG51",
+      "SEG56",
+      "SEG67",
+      "SEG66",
+      "SEG65",
+      "SEG44",
+      "SEG45"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S153",
+    "TO": "IP_AllCATPart#S98",
+    "FROM_code": "CON08",
+    "TO_code": "CON29",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S153",
+    "TO": "IP_AllCATPart#S169",
+    "FROM_code": "CON08",
+    "TO_code": "CON30",
+    "Length": 666.7,
+    "Path": [
+      "SEG15",
+      "SEG14",
+      "SEG51",
+      "SEG56",
+      "SEG20",
+      "SEG19",
+      "SEG18",
+      "SEG22"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S153",
+    "TO": "IP_AllCATPart#S181",
+    "FROM_code": "CON08",
+    "TO_code": "CON31",
+    "Length": 903.8,
+    "Path": [
+      "SEG15",
+      "SEG14",
+      "SEG51",
+      "SEG56",
+      "SEG67",
+      "SEG66",
+      "SEG65",
+      "SEG44",
+      "SEG46"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S153",
+    "TO": "IP_AllCATPart#S180",
+    "FROM_code": "CON08",
+    "TO_code": "CON32",
+    "Length": 1247.5,
+    "Path": [
+      "SEG15",
+      "SEG14",
+      "SEG51",
+      "SEG56",
+      "SEG67",
+      "SEG66",
+      "SEG65",
+      "SEG44",
+      "SEG03",
+      "SEG02",
+      "SEG01",
+      "SEG06",
+      "SEG07"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S153",
+    "TO": "IP_AllCATPart#S155",
+    "FROM_code": "CON08",
+    "TO_code": "CON33",
+    "Length": 751.0,
+    "Path": [
+      "SEG15",
+      "SEG14",
+      "SEG51",
+      "SEG56",
+      "SEG20",
+      "SEG19",
+      "SEG18",
+      "SEG23",
+      "SEG24",
+      "SEG50"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S153",
+    "TO": "IP_AllCATPart#S157",
+    "FROM_code": "CON08",
+    "TO_code": "CON34",
+    "Length": 201.4,
+    "Path": [
+      "SEG15",
+      "SEG17",
+      "SEG72"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S153",
+    "TO": "IP_AllCATPart#S161",
+    "FROM_code": "CON08",
+    "TO_code": "CON35",
+    "Length": 614.6,
+    "Path": [
+      "SEG15",
+      "SEG14",
+      "SEG51",
+      "SEG11",
+      "SEG10",
+      "SEG09",
+      "SEG08",
+      "SEG13"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S153",
+    "TO": "IP_AllCATPart#S160",
+    "FROM_code": "CON08",
+    "TO_code": "CON36",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S153",
+    "TO": "IP_AllCATPart#S164",
+    "FROM_code": "CON08",
+    "TO_code": "CON37",
+    "Length": 334.1,
+    "Path": [
+      "SEG15",
+      "SEG14",
+      "SEG51",
+      "SEG57"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S153",
+    "TO": "IP_AllCATPart#S154",
+    "FROM_code": "CON08",
+    "TO_code": "CON38",
+    "Length": 178.3,
+    "Path": [
+      "SEG15",
+      "SEG17",
+      "SEG73"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S153",
+    "TO": "IP_AllCATPart#S14",
+    "FROM_code": "CON08",
+    "TO_code": "CON39",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S153",
+    "TO": "IP_AllCATPart#S9",
+    "FROM_code": "CON08",
+    "TO_code": "CON40",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S153",
+    "TO": "IP_AllCATPart#S168",
+    "FROM_code": "CON08",
+    "TO_code": "CON41",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S153",
+    "TO": "IP_AllCATPart#S183",
+    "FROM_code": "CON08",
+    "TO_code": "CON42",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S187",
+    "TO": "IP_AllCATPart#S182",
+    "FROM_code": "CON09",
+    "TO_code": "CON10",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S187",
+    "TO": "IP_AllCATPart#S166",
+    "FROM_code": "CON09",
+    "TO_code": "CON11",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S187",
+    "TO": "IP_AllCATPart#S173",
+    "FROM_code": "CON09",
+    "TO_code": "CON12",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S187",
+    "TO": "IP_AllCATPart#S159",
+    "FROM_code": "CON09",
+    "TO_code": "CON13",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S187",
+    "TO": "IP_AllCATPart#S12",
+    "FROM_code": "CON09",
+    "TO_code": "CON14",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S187",
+    "TO": "IP_AllCATPart#S163",
+    "FROM_code": "CON09",
+    "TO_code": "CON15",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S187",
+    "TO": "IP_AllCATPart#S178",
+    "FROM_code": "CON09",
+    "TO_code": "CON16",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S187",
+    "TO": "IP_AllCATPart#S179",
+    "FROM_code": "CON09",
+    "TO_code": "CON17",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S187",
+    "TO": "IP_AllCATPart#S172",
+    "FROM_code": "CON09",
+    "TO_code": "CON18",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S187",
+    "TO": "IP_AllCATPart#S175",
+    "FROM_code": "CON09",
+    "TO_code": "CON19",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S187",
+    "TO": "IP_AllCATPart#S185",
+    "FROM_code": "CON09",
+    "TO_code": "CON20",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S187",
+    "TO": "IP_AllCATPart#S170",
+    "FROM_code": "CON09",
+    "TO_code": "CON21",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S187",
+    "TO": "IP_AllCATPart#S184",
+    "FROM_code": "CON09",
+    "TO_code": "CON22",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S187",
+    "TO": "IP_AllCATPart#S158",
+    "FROM_code": "CON09",
+    "TO_code": "CON23",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S187",
+    "TO": "IP_AllCATPart#S171",
+    "FROM_code": "CON09",
+    "TO_code": "CON24",
+    "Length": 458.1,
+    "Path": [
+      "SEG59",
+      "SEG58",
+      "SEG61",
+      "SEG62",
+      "SEG63"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S187",
+    "TO": "IP_AllCATPart#S174",
+    "FROM_code": "CON09",
+    "TO_code": "CON25",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S187",
+    "TO": "IP_AllCATPart#S177",
+    "FROM_code": "CON09",
+    "TO_code": "CON26",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S187",
+    "TO": "IP_AllCATPart#S186",
+    "FROM_code": "CON09",
+    "TO_code": "CON27",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S187",
+    "TO": "IP_AllCATPart#S167",
+    "FROM_code": "CON09",
+    "TO_code": "CON28",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S187",
+    "TO": "IP_AllCATPart#S98",
+    "FROM_code": "CON09",
+    "TO_code": "CON29",
+    "Length": 350.5,
+    "Path": [
+      "SEG59",
+      "SEG58",
+      "SEG60"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S187",
+    "TO": "IP_AllCATPart#S169",
+    "FROM_code": "CON09",
+    "TO_code": "CON30",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S187",
+    "TO": "IP_AllCATPart#S181",
+    "FROM_code": "CON09",
+    "TO_code": "CON31",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S187",
+    "TO": "IP_AllCATPart#S180",
+    "FROM_code": "CON09",
+    "TO_code": "CON32",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S187",
+    "TO": "IP_AllCATPart#S155",
+    "FROM_code": "CON09",
+    "TO_code": "CON33",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S187",
+    "TO": "IP_AllCATPart#S157",
+    "FROM_code": "CON09",
+    "TO_code": "CON34",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S187",
+    "TO": "IP_AllCATPart#S161",
+    "FROM_code": "CON09",
+    "TO_code": "CON35",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S187",
+    "TO": "IP_AllCATPart#S160",
+    "FROM_code": "CON09",
+    "TO_code": "CON36",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S187",
+    "TO": "IP_AllCATPart#S164",
+    "FROM_code": "CON09",
+    "TO_code": "CON37",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S187",
+    "TO": "IP_AllCATPart#S154",
+    "FROM_code": "CON09",
+    "TO_code": "CON38",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S187",
+    "TO": "IP_AllCATPart#S14",
+    "FROM_code": "CON09",
+    "TO_code": "CON39",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S187",
+    "TO": "IP_AllCATPart#S9",
+    "FROM_code": "CON09",
+    "TO_code": "CON40",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S187",
+    "TO": "IP_AllCATPart#S168",
+    "FROM_code": "CON09",
+    "TO_code": "CON41",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S187",
+    "TO": "IP_AllCATPart#S183",
+    "FROM_code": "CON09",
+    "TO_code": "CON42",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S182",
+    "TO": "IP_AllCATPart#S166",
+    "FROM_code": "CON10",
+    "TO_code": "CON11",
+    "Length": 823.3,
+    "Path": [
+      "SEG21",
+      "SEG18",
+      "SEG19",
+      "SEG20",
+      "SEG67",
+      "SEG66",
+      "SEG65",
+      "SEG64"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S182",
+    "TO": "IP_AllCATPart#S173",
+    "FROM_code": "CON10",
+    "TO_code": "CON12",
+    "Length": 600.8,
+    "Path": [
+      "SEG21",
+      "SEG18",
+      "SEG19",
+      "SEG20",
+      "SEG56",
+      "SEG53",
+      "SEG54"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S182",
+    "TO": "IP_AllCATPart#S159",
+    "FROM_code": "CON10",
+    "TO_code": "CON13",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S182",
+    "TO": "IP_AllCATPart#S12",
+    "FROM_code": "CON10",
+    "TO_code": "CON14",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S182",
+    "TO": "IP_AllCATPart#S163",
+    "FROM_code": "CON10",
+    "TO_code": "CON15",
+    "Length": 1363.6,
+    "Path": [
+      "SEG21",
+      "SEG18",
+      "SEG19",
+      "SEG20",
+      "SEG67",
+      "SEG66",
+      "SEG65",
+      "SEG44",
+      "SEG03",
+      "SEG02",
+      "SEG01",
+      "SEG04",
+      "SEG05"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S182",
+    "TO": "IP_AllCATPart#S178",
+    "FROM_code": "CON10",
+    "TO_code": "CON16",
+    "Length": 848.4,
+    "Path": [
+      "SEG21",
+      "SEG18",
+      "SEG19",
+      "SEG20",
+      "SEG67",
+      "SEG66",
+      "SEG65",
+      "SEG44",
+      "SEG43"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S182",
+    "TO": "IP_AllCATPart#S179",
+    "FROM_code": "CON10",
+    "TO_code": "CON17",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S182",
+    "TO": "IP_AllCATPart#S172",
+    "FROM_code": "CON10",
+    "TO_code": "CON18",
+    "Length": 768.8,
+    "Path": [
+      "SEG21",
+      "SEG18",
+      "SEG19",
+      "SEG20",
+      "SEG56",
+      "SEG51",
+      "SEG14",
+      "SEG17",
+      "SEG70",
+      "SEG71"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S182",
+    "TO": "IP_AllCATPart#S175",
+    "FROM_code": "CON10",
+    "TO_code": "CON19",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S182",
+    "TO": "IP_AllCATPart#S185",
+    "FROM_code": "CON10",
+    "TO_code": "CON20",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S182",
+    "TO": "IP_AllCATPart#S170",
+    "FROM_code": "CON10",
+    "TO_code": "CON21",
+    "Length": 520.0,
+    "Path": [
+      "SEG21",
+      "SEG18",
+      "SEG19",
+      "SEG20",
+      "SEG56",
+      "SEG55"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S182",
+    "TO": "IP_AllCATPart#S184",
+    "FROM_code": "CON10",
+    "TO_code": "CON22",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S182",
+    "TO": "IP_AllCATPart#S158",
+    "FROM_code": "CON10",
+    "TO_code": "CON23",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S182",
+    "TO": "IP_AllCATPart#S171",
+    "FROM_code": "CON10",
+    "TO_code": "CON24",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S182",
+    "TO": "IP_AllCATPart#S174",
+    "FROM_code": "CON10",
+    "TO_code": "CON25",
+    "Length": 271.9,
+    "Path": [
+      "SEG21",
+      "SEG23",
+      "SEG24",
+      "SEG49"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S182",
+    "TO": "IP_AllCATPart#S177",
+    "FROM_code": "CON10",
+    "TO_code": "CON26",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S182",
+    "TO": "IP_AllCATPart#S186",
+    "FROM_code": "CON10",
+    "TO_code": "CON27",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S182",
+    "TO": "IP_AllCATPart#S167",
+    "FROM_code": "CON10",
+    "TO_code": "CON28",
+    "Length": 838.4,
+    "Path": [
+      "SEG21",
+      "SEG18",
+      "SEG19",
+      "SEG20",
+      "SEG67",
+      "SEG66",
+      "SEG65",
+      "SEG44",
+      "SEG45"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S182",
+    "TO": "IP_AllCATPart#S98",
+    "FROM_code": "CON10",
+    "TO_code": "CON29",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S182",
+    "TO": "IP_AllCATPart#S169",
+    "FROM_code": "CON10",
+    "TO_code": "CON30",
+    "Length": 187.6,
+    "Path": [
+      "SEG21",
+      "SEG22"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S182",
+    "TO": "IP_AllCATPart#S181",
+    "FROM_code": "CON10",
+    "TO_code": "CON31",
+    "Length": 819.7,
+    "Path": [
+      "SEG21",
+      "SEG18",
+      "SEG19",
+      "SEG20",
+      "SEG67",
+      "SEG66",
+      "SEG65",
+      "SEG44",
+      "SEG46"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S182",
+    "TO": "IP_AllCATPart#S180",
+    "FROM_code": "CON10",
+    "TO_code": "CON32",
+    "Length": 1163.4,
+    "Path": [
+      "SEG21",
+      "SEG18",
+      "SEG19",
+      "SEG20",
+      "SEG67",
+      "SEG66",
+      "SEG65",
+      "SEG44",
+      "SEG03",
+      "SEG02",
+      "SEG01",
+      "SEG06",
+      "SEG07"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S182",
+    "TO": "IP_AllCATPart#S155",
+    "FROM_code": "CON10",
+    "TO_code": "CON33",
+    "Length": 271.9,
+    "Path": [
+      "SEG21",
+      "SEG23",
+      "SEG24",
+      "SEG50"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S182",
+    "TO": "IP_AllCATPart#S157",
+    "FROM_code": "CON10",
+    "TO_code": "CON34",
+    "Length": 705.1,
+    "Path": [
+      "SEG21",
+      "SEG18",
+      "SEG19",
+      "SEG20",
+      "SEG56",
+      "SEG51",
+      "SEG14",
+      "SEG17",
+      "SEG72"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S182",
+    "TO": "IP_AllCATPart#S161",
+    "FROM_code": "CON10",
+    "TO_code": "CON35",
+    "Length": 730.5,
+    "Path": [
+      "SEG21",
+      "SEG18",
+      "SEG19",
+      "SEG20",
+      "SEG56",
+      "SEG11",
+      "SEG10",
+      "SEG09",
+      "SEG08",
+      "SEG13"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S182",
+    "TO": "IP_AllCATPart#S160",
+    "FROM_code": "CON10",
+    "TO_code": "CON36",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S182",
+    "TO": "IP_AllCATPart#S164",
+    "FROM_code": "CON10",
+    "TO_code": "CON37",
+    "Length": 450.0,
+    "Path": [
+      "SEG21",
+      "SEG18",
+      "SEG19",
+      "SEG20",
+      "SEG56",
+      "SEG57"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S182",
+    "TO": "IP_AllCATPart#S154",
+    "FROM_code": "CON10",
+    "TO_code": "CON38",
+    "Length": 682.0,
+    "Path": [
+      "SEG21",
+      "SEG18",
+      "SEG19",
+      "SEG20",
+      "SEG56",
+      "SEG51",
+      "SEG14",
+      "SEG17",
+      "SEG73"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S182",
+    "TO": "IP_AllCATPart#S14",
+    "FROM_code": "CON10",
+    "TO_code": "CON39",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S182",
+    "TO": "IP_AllCATPart#S9",
+    "FROM_code": "CON10",
+    "TO_code": "CON40",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S182",
+    "TO": "IP_AllCATPart#S168",
+    "FROM_code": "CON10",
+    "TO_code": "CON41",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S182",
+    "TO": "IP_AllCATPart#S183",
+    "FROM_code": "CON10",
+    "TO_code": "CON42",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S166",
+    "TO": "IP_AllCATPart#S173",
+    "FROM_code": "CON11",
+    "TO_code": "CON12",
+    "Length": 864.1,
+    "Path": [
+      "SEG64",
+      "SEG65",
+      "SEG66",
+      "SEG67",
+      "SEG56",
+      "SEG53",
+      "SEG54"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S166",
+    "TO": "IP_AllCATPart#S159",
+    "FROM_code": "CON11",
+    "TO_code": "CON13",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S166",
+    "TO": "IP_AllCATPart#S12",
+    "FROM_code": "CON11",
+    "TO_code": "CON14",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S166",
+    "TO": "IP_AllCATPart#S163",
+    "FROM_code": "CON11",
+    "TO_code": "CON15",
+    "Length": 1009.9,
+    "Path": [
+      "SEG64",
+      "SEG44",
+      "SEG03",
+      "SEG02",
+      "SEG01",
+      "SEG04",
+      "SEG05"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S166",
+    "TO": "IP_AllCATPart#S178",
+    "FROM_code": "CON11",
+    "TO_code": "CON16",
+    "Length": 494.7,
+    "Path": [
+      "SEG64",
+      "SEG44",
+      "SEG43"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S166",
+    "TO": "IP_AllCATPart#S179",
+    "FROM_code": "CON11",
+    "TO_code": "CON17",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S166",
+    "TO": "IP_AllCATPart#S172",
+    "FROM_code": "CON11",
+    "TO_code": "CON18",
+    "Length": 1032.1,
+    "Path": [
+      "SEG64",
+      "SEG65",
+      "SEG66",
+      "SEG67",
+      "SEG56",
+      "SEG51",
+      "SEG14",
+      "SEG17",
+      "SEG70",
+      "SEG71"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S166",
+    "TO": "IP_AllCATPart#S175",
+    "FROM_code": "CON11",
+    "TO_code": "CON19",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S166",
+    "TO": "IP_AllCATPart#S185",
+    "FROM_code": "CON11",
+    "TO_code": "CON20",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S166",
+    "TO": "IP_AllCATPart#S170",
+    "FROM_code": "CON11",
+    "TO_code": "CON21",
+    "Length": 783.3,
+    "Path": [
+      "SEG64",
+      "SEG65",
+      "SEG66",
+      "SEG67",
+      "SEG56",
+      "SEG55"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S166",
+    "TO": "IP_AllCATPart#S184",
+    "FROM_code": "CON11",
+    "TO_code": "CON22",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S166",
+    "TO": "IP_AllCATPart#S158",
+    "FROM_code": "CON11",
+    "TO_code": "CON23",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S166",
+    "TO": "IP_AllCATPart#S171",
+    "FROM_code": "CON11",
+    "TO_code": "CON24",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S166",
+    "TO": "IP_AllCATPart#S174",
+    "FROM_code": "CON11",
+    "TO_code": "CON25",
+    "Length": 930.2,
+    "Path": [
+      "SEG64",
+      "SEG65",
+      "SEG66",
+      "SEG67",
+      "SEG20",
+      "SEG19",
+      "SEG18",
+      "SEG23",
+      "SEG24",
+      "SEG49"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S166",
+    "TO": "IP_AllCATPart#S177",
+    "FROM_code": "CON11",
+    "TO_code": "CON26",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S166",
+    "TO": "IP_AllCATPart#S186",
+    "FROM_code": "CON11",
+    "TO_code": "CON27",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S166",
+    "TO": "IP_AllCATPart#S167",
+    "FROM_code": "CON11",
+    "TO_code": "CON28",
+    "Length": 484.7,
+    "Path": [
+      "SEG64",
+      "SEG44",
+      "SEG45"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S166",
+    "TO": "IP_AllCATPart#S98",
+    "FROM_code": "CON11",
+    "TO_code": "CON29",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S166",
+    "TO": "IP_AllCATPart#S169",
+    "FROM_code": "CON11",
+    "TO_code": "CON30",
+    "Length": 845.9,
+    "Path": [
+      "SEG64",
+      "SEG65",
+      "SEG66",
+      "SEG67",
+      "SEG20",
+      "SEG19",
+      "SEG18",
+      "SEG22"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S166",
+    "TO": "IP_AllCATPart#S181",
+    "FROM_code": "CON11",
+    "TO_code": "CON31",
+    "Length": 466.0,
+    "Path": [
+      "SEG64",
+      "SEG44",
+      "SEG46"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S166",
+    "TO": "IP_AllCATPart#S180",
+    "FROM_code": "CON11",
+    "TO_code": "CON32",
+    "Length": 809.7,
+    "Path": [
+      "SEG64",
+      "SEG44",
+      "SEG03",
+      "SEG02",
+      "SEG01",
+      "SEG06",
+      "SEG07"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S166",
+    "TO": "IP_AllCATPart#S155",
+    "FROM_code": "CON11",
+    "TO_code": "CON33",
+    "Length": 930.2,
+    "Path": [
+      "SEG64",
+      "SEG65",
+      "SEG66",
+      "SEG67",
+      "SEG20",
+      "SEG19",
+      "SEG18",
+      "SEG23",
+      "SEG24",
+      "SEG50"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S166",
+    "TO": "IP_AllCATPart#S157",
+    "FROM_code": "CON11",
+    "TO_code": "CON34",
+    "Length": 968.4,
+    "Path": [
+      "SEG64",
+      "SEG65",
+      "SEG66",
+      "SEG67",
+      "SEG56",
+      "SEG51",
+      "SEG14",
+      "SEG17",
+      "SEG72"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S166",
+    "TO": "IP_AllCATPart#S161",
+    "FROM_code": "CON11",
+    "TO_code": "CON35",
+    "Length": 993.8,
+    "Path": [
+      "SEG64",
+      "SEG65",
+      "SEG66",
+      "SEG67",
+      "SEG56",
+      "SEG11",
+      "SEG10",
+      "SEG09",
+      "SEG08",
+      "SEG13"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S166",
+    "TO": "IP_AllCATPart#S160",
+    "FROM_code": "CON11",
+    "TO_code": "CON36",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S166",
+    "TO": "IP_AllCATPart#S164",
+    "FROM_code": "CON11",
+    "TO_code": "CON37",
+    "Length": 713.3,
+    "Path": [
+      "SEG64",
+      "SEG65",
+      "SEG66",
+      "SEG67",
+      "SEG56",
+      "SEG57"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S166",
+    "TO": "IP_AllCATPart#S154",
+    "FROM_code": "CON11",
+    "TO_code": "CON38",
+    "Length": 945.3,
+    "Path": [
+      "SEG64",
+      "SEG65",
+      "SEG66",
+      "SEG67",
+      "SEG56",
+      "SEG51",
+      "SEG14",
+      "SEG17",
+      "SEG73"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S166",
+    "TO": "IP_AllCATPart#S14",
+    "FROM_code": "CON11",
+    "TO_code": "CON39",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S166",
+    "TO": "IP_AllCATPart#S9",
+    "FROM_code": "CON11",
+    "TO_code": "CON40",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S166",
+    "TO": "IP_AllCATPart#S168",
+    "FROM_code": "CON11",
+    "TO_code": "CON41",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S166",
+    "TO": "IP_AllCATPart#S183",
+    "FROM_code": "CON11",
+    "TO_code": "CON42",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S173",
+    "TO": "IP_AllCATPart#S159",
+    "FROM_code": "CON12",
+    "TO_code": "CON13",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S173",
+    "TO": "IP_AllCATPart#S12",
+    "FROM_code": "CON12",
+    "TO_code": "CON14",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S173",
+    "TO": "IP_AllCATPart#S163",
+    "FROM_code": "CON12",
+    "TO_code": "CON15",
+    "Length": 1404.4,
+    "Path": [
+      "SEG54",
+      "SEG53",
+      "SEG56",
+      "SEG67",
+      "SEG66",
+      "SEG65",
+      "SEG44",
+      "SEG03",
+      "SEG02",
+      "SEG01",
+      "SEG04",
+      "SEG05"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S173",
+    "TO": "IP_AllCATPart#S178",
+    "FROM_code": "CON12",
+    "TO_code": "CON16",
+    "Length": 889.2,
+    "Path": [
+      "SEG54",
+      "SEG53",
+      "SEG56",
+      "SEG67",
+      "SEG66",
+      "SEG65",
+      "SEG44",
+      "SEG43"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S173",
+    "TO": "IP_AllCATPart#S179",
+    "FROM_code": "CON12",
+    "TO_code": "CON17",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S173",
+    "TO": "IP_AllCATPart#S172",
+    "FROM_code": "CON12",
+    "TO_code": "CON18",
+    "Length": 609.6,
+    "Path": [
+      "SEG54",
+      "SEG53",
+      "SEG51",
+      "SEG14",
+      "SEG17",
+      "SEG70",
+      "SEG71"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S173",
+    "TO": "IP_AllCATPart#S175",
+    "FROM_code": "CON12",
+    "TO_code": "CON19",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S173",
+    "TO": "IP_AllCATPart#S185",
+    "FROM_code": "CON12",
+    "TO_code": "CON20",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S173",
+    "TO": "IP_AllCATPart#S170",
+    "FROM_code": "CON12",
+    "TO_code": "CON21",
+    "Length": 360.8,
+    "Path": [
+      "SEG54",
+      "SEG53",
+      "SEG55"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S173",
+    "TO": "IP_AllCATPart#S184",
+    "FROM_code": "CON12",
+    "TO_code": "CON22",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S173",
+    "TO": "IP_AllCATPart#S158",
+    "FROM_code": "CON12",
+    "TO_code": "CON23",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S173",
+    "TO": "IP_AllCATPart#S171",
+    "FROM_code": "CON12",
+    "TO_code": "CON24",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S173",
+    "TO": "IP_AllCATPart#S174",
+    "FROM_code": "CON12",
+    "TO_code": "CON25",
+    "Length": 707.7,
+    "Path": [
+      "SEG54",
+      "SEG53",
+      "SEG56",
+      "SEG20",
+      "SEG19",
+      "SEG18",
+      "SEG23",
+      "SEG24",
+      "SEG49"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S173",
+    "TO": "IP_AllCATPart#S177",
+    "FROM_code": "CON12",
+    "TO_code": "CON26",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S173",
+    "TO": "IP_AllCATPart#S186",
+    "FROM_code": "CON12",
+    "TO_code": "CON27",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S173",
+    "TO": "IP_AllCATPart#S167",
+    "FROM_code": "CON12",
+    "TO_code": "CON28",
+    "Length": 879.2,
+    "Path": [
+      "SEG54",
+      "SEG53",
+      "SEG56",
+      "SEG67",
+      "SEG66",
+      "SEG65",
+      "SEG44",
+      "SEG45"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S173",
+    "TO": "IP_AllCATPart#S98",
+    "FROM_code": "CON12",
+    "TO_code": "CON29",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S173",
+    "TO": "IP_AllCATPart#S169",
+    "FROM_code": "CON12",
+    "TO_code": "CON30",
+    "Length": 623.4,
+    "Path": [
+      "SEG54",
+      "SEG53",
+      "SEG56",
+      "SEG20",
+      "SEG19",
+      "SEG18",
+      "SEG22"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S173",
+    "TO": "IP_AllCATPart#S181",
+    "FROM_code": "CON12",
+    "TO_code": "CON31",
+    "Length": 860.5,
+    "Path": [
+      "SEG54",
+      "SEG53",
+      "SEG56",
+      "SEG67",
+      "SEG66",
+      "SEG65",
+      "SEG44",
+      "SEG46"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S173",
+    "TO": "IP_AllCATPart#S180",
+    "FROM_code": "CON12",
+    "TO_code": "CON32",
+    "Length": 1204.2,
+    "Path": [
+      "SEG54",
+      "SEG53",
+      "SEG56",
+      "SEG67",
+      "SEG66",
+      "SEG65",
+      "SEG44",
+      "SEG03",
+      "SEG02",
+      "SEG01",
+      "SEG06",
+      "SEG07"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S173",
+    "TO": "IP_AllCATPart#S155",
+    "FROM_code": "CON12",
+    "TO_code": "CON33",
+    "Length": 707.7,
+    "Path": [
+      "SEG54",
+      "SEG53",
+      "SEG56",
+      "SEG20",
+      "SEG19",
+      "SEG18",
+      "SEG23",
+      "SEG24",
+      "SEG50"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S173",
+    "TO": "IP_AllCATPart#S157",
+    "FROM_code": "CON12",
+    "TO_code": "CON34",
+    "Length": 545.9,
+    "Path": [
+      "SEG54",
+      "SEG53",
+      "SEG51",
+      "SEG14",
+      "SEG17",
+      "SEG72"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S173",
+    "TO": "IP_AllCATPart#S161",
+    "FROM_code": "CON12",
+    "TO_code": "CON35",
+    "Length": 571.3,
+    "Path": [
+      "SEG54",
+      "SEG53",
+      "SEG11",
+      "SEG10",
+      "SEG09",
+      "SEG08",
+      "SEG13"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S173",
+    "TO": "IP_AllCATPart#S160",
+    "FROM_code": "CON12",
+    "TO_code": "CON36",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S173",
+    "TO": "IP_AllCATPart#S164",
+    "FROM_code": "CON12",
+    "TO_code": "CON37",
+    "Length": 290.8,
+    "Path": [
+      "SEG54",
+      "SEG53",
+      "SEG57"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S173",
+    "TO": "IP_AllCATPart#S154",
+    "FROM_code": "CON12",
+    "TO_code": "CON38",
+    "Length": 522.8,
+    "Path": [
+      "SEG54",
+      "SEG53",
+      "SEG51",
+      "SEG14",
+      "SEG17",
+      "SEG73"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S173",
+    "TO": "IP_AllCATPart#S14",
+    "FROM_code": "CON12",
+    "TO_code": "CON39",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S173",
+    "TO": "IP_AllCATPart#S9",
+    "FROM_code": "CON12",
+    "TO_code": "CON40",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S173",
+    "TO": "IP_AllCATPart#S168",
+    "FROM_code": "CON12",
+    "TO_code": "CON41",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S173",
+    "TO": "IP_AllCATPart#S183",
+    "FROM_code": "CON12",
+    "TO_code": "CON42",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S159",
+    "TO": "IP_AllCATPart#S12",
+    "FROM_code": "CON13",
+    "TO_code": "CON14",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S159",
+    "TO": "IP_AllCATPart#S163",
+    "FROM_code": "CON13",
+    "TO_code": "CON15",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S159",
+    "TO": "IP_AllCATPart#S178",
+    "FROM_code": "CON13",
+    "TO_code": "CON16",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S159",
+    "TO": "IP_AllCATPart#S179",
+    "FROM_code": "CON13",
+    "TO_code": "CON17",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S159",
+    "TO": "IP_AllCATPart#S172",
+    "FROM_code": "CON13",
+    "TO_code": "CON18",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S159",
+    "TO": "IP_AllCATPart#S175",
+    "FROM_code": "CON13",
+    "TO_code": "CON19",
+    "Length": 341.2,
+    "Path": [
+      "SEG25",
+      "SEG26",
+      "SEG68"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S159",
+    "TO": "IP_AllCATPart#S185",
+    "FROM_code": "CON13",
+    "TO_code": "CON20",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S159",
+    "TO": "IP_AllCATPart#S170",
+    "FROM_code": "CON13",
+    "TO_code": "CON21",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S159",
+    "TO": "IP_AllCATPart#S184",
+    "FROM_code": "CON13",
+    "TO_code": "CON22",
+    "Length": 283.6,
+    "Path": [
+      "SEG25",
+      "SEG28",
+      "SEG47"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S159",
+    "TO": "IP_AllCATPart#S158",
+    "FROM_code": "CON13",
+    "TO_code": "CON23",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S159",
+    "TO": "IP_AllCATPart#S171",
+    "FROM_code": "CON13",
+    "TO_code": "CON24",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S159",
+    "TO": "IP_AllCATPart#S174",
+    "FROM_code": "CON13",
+    "TO_code": "CON25",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S159",
+    "TO": "IP_AllCATPart#S177",
+    "FROM_code": "CON13",
+    "TO_code": "CON26",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S159",
+    "TO": "IP_AllCATPart#S186",
+    "FROM_code": "CON13",
+    "TO_code": "CON27",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S159",
+    "TO": "IP_AllCATPart#S167",
+    "FROM_code": "CON13",
+    "TO_code": "CON28",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S159",
+    "TO": "IP_AllCATPart#S98",
+    "FROM_code": "CON13",
+    "TO_code": "CON29",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S159",
+    "TO": "IP_AllCATPart#S169",
+    "FROM_code": "CON13",
+    "TO_code": "CON30",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S159",
+    "TO": "IP_AllCATPart#S181",
+    "FROM_code": "CON13",
+    "TO_code": "CON31",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S159",
+    "TO": "IP_AllCATPart#S180",
+    "FROM_code": "CON13",
+    "TO_code": "CON32",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S159",
+    "TO": "IP_AllCATPart#S155",
+    "FROM_code": "CON13",
+    "TO_code": "CON33",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S159",
+    "TO": "IP_AllCATPart#S157",
+    "FROM_code": "CON13",
+    "TO_code": "CON34",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S159",
+    "TO": "IP_AllCATPart#S161",
+    "FROM_code": "CON13",
+    "TO_code": "CON35",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S159",
+    "TO": "IP_AllCATPart#S160",
+    "FROM_code": "CON13",
+    "TO_code": "CON36",
+    "Length": 266.4,
+    "Path": [
+      "SEG25",
+      "SEG28",
+      "SEG48"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S159",
+    "TO": "IP_AllCATPart#S164",
+    "FROM_code": "CON13",
+    "TO_code": "CON37",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S159",
+    "TO": "IP_AllCATPart#S154",
+    "FROM_code": "CON13",
+    "TO_code": "CON38",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S159",
+    "TO": "IP_AllCATPart#S14",
+    "FROM_code": "CON13",
+    "TO_code": "CON39",
+    "Length": 256.9,
+    "Path": [
+      "SEG25",
+      "SEG26",
+      "SEG69"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S159",
+    "TO": "IP_AllCATPart#S9",
+    "FROM_code": "CON13",
+    "TO_code": "CON40",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S159",
+    "TO": "IP_AllCATPart#S168",
+    "FROM_code": "CON13",
+    "TO_code": "CON41",
+    "Length": 204.7,
+    "Path": [
+      "SEG25",
+      "SEG29"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S159",
+    "TO": "IP_AllCATPart#S183",
+    "FROM_code": "CON13",
+    "TO_code": "CON42",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S12",
+    "TO": "IP_AllCATPart#S163",
+    "FROM_code": "CON14",
+    "TO_code": "CON15",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S12",
+    "TO": "IP_AllCATPart#S178",
+    "FROM_code": "CON14",
+    "TO_code": "CON16",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S12",
+    "TO": "IP_AllCATPart#S179",
+    "FROM_code": "CON14",
+    "TO_code": "CON17",
+    "Length": 619.1,
+    "Path": [
+      "SEG36",
+      "SEG31",
+      "SEG32",
+      "SEG33",
+      "SEG34",
+      "SEG35"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S12",
+    "TO": "IP_AllCATPart#S172",
+    "FROM_code": "CON14",
+    "TO_code": "CON18",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S12",
+    "TO": "IP_AllCATPart#S175",
+    "FROM_code": "CON14",
+    "TO_code": "CON19",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S12",
+    "TO": "IP_AllCATPart#S185",
+    "FROM_code": "CON14",
+    "TO_code": "CON20",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S12",
+    "TO": "IP_AllCATPart#S170",
+    "FROM_code": "CON14",
+    "TO_code": "CON21",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S12",
+    "TO": "IP_AllCATPart#S184",
+    "FROM_code": "CON14",
+    "TO_code": "CON22",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S12",
+    "TO": "IP_AllCATPart#S158",
+    "FROM_code": "CON14",
+    "TO_code": "CON23",
+    "Length": 204.2,
+    "Path": [
+      "SEG36",
+      "SEG37"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S12",
+    "TO": "IP_AllCATPart#S171",
+    "FROM_code": "CON14",
+    "TO_code": "CON24",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S12",
+    "TO": "IP_AllCATPart#S174",
+    "FROM_code": "CON14",
+    "TO_code": "CON25",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S12",
+    "TO": "IP_AllCATPart#S177",
+    "FROM_code": "CON14",
+    "TO_code": "CON26",
+    "Length": 534.3,
+    "Path": [
+      "SEG36",
+      "SEG38",
+      "SEG39",
+      "SEG40",
+      "SEG41"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S12",
+    "TO": "IP_AllCATPart#S186",
+    "FROM_code": "CON14",
+    "TO_code": "CON27",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S12",
+    "TO": "IP_AllCATPart#S167",
+    "FROM_code": "CON14",
+    "TO_code": "CON28",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S12",
+    "TO": "IP_AllCATPart#S98",
+    "FROM_code": "CON14",
+    "TO_code": "CON29",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S12",
+    "TO": "IP_AllCATPart#S169",
+    "FROM_code": "CON14",
+    "TO_code": "CON30",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S12",
+    "TO": "IP_AllCATPart#S181",
+    "FROM_code": "CON14",
+    "TO_code": "CON31",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S12",
+    "TO": "IP_AllCATPart#S180",
+    "FROM_code": "CON14",
+    "TO_code": "CON32",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S12",
+    "TO": "IP_AllCATPart#S155",
+    "FROM_code": "CON14",
+    "TO_code": "CON33",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S12",
+    "TO": "IP_AllCATPart#S157",
+    "FROM_code": "CON14",
+    "TO_code": "CON34",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S12",
+    "TO": "IP_AllCATPart#S161",
+    "FROM_code": "CON14",
+    "TO_code": "CON35",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S12",
+    "TO": "IP_AllCATPart#S160",
+    "FROM_code": "CON14",
+    "TO_code": "CON36",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S12",
+    "TO": "IP_AllCATPart#S164",
+    "FROM_code": "CON14",
+    "TO_code": "CON37",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S12",
+    "TO": "IP_AllCATPart#S154",
+    "FROM_code": "CON14",
+    "TO_code": "CON38",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S12",
+    "TO": "IP_AllCATPart#S14",
+    "FROM_code": "CON14",
+    "TO_code": "CON39",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S12",
+    "TO": "IP_AllCATPart#S9",
+    "FROM_code": "CON14",
+    "TO_code": "CON40",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S12",
+    "TO": "IP_AllCATPart#S168",
+    "FROM_code": "CON14",
+    "TO_code": "CON41",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S12",
+    "TO": "IP_AllCATPart#S183",
+    "FROM_code": "CON14",
+    "TO_code": "CON42",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S163",
+    "TO": "IP_AllCATPart#S178",
+    "FROM_code": "CON15",
+    "TO_code": "CON16",
+    "Length": 775.0,
+    "Path": [
+      "SEG05",
+      "SEG04",
+      "SEG01",
+      "SEG02",
+      "SEG03",
+      "SEG43"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S163",
+    "TO": "IP_AllCATPart#S179",
+    "FROM_code": "CON15",
+    "TO_code": "CON17",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S163",
+    "TO": "IP_AllCATPart#S172",
+    "FROM_code": "CON15",
+    "TO_code": "CON18",
+    "Length": 1572.4,
+    "Path": [
+      "SEG05",
+      "SEG04",
+      "SEG01",
+      "SEG02",
+      "SEG03",
+      "SEG44",
+      "SEG65",
+      "SEG66",
+      "SEG67",
+      "SEG56",
+      "SEG51",
+      "SEG14",
+      "SEG17",
+      "SEG70",
+      "SEG71"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S163",
+    "TO": "IP_AllCATPart#S175",
+    "FROM_code": "CON15",
+    "TO_code": "CON19",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S163",
+    "TO": "IP_AllCATPart#S185",
+    "FROM_code": "CON15",
+    "TO_code": "CON20",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S163",
+    "TO": "IP_AllCATPart#S170",
+    "FROM_code": "CON15",
+    "TO_code": "CON21",
+    "Length": 1323.6,
+    "Path": [
+      "SEG05",
+      "SEG04",
+      "SEG01",
+      "SEG02",
+      "SEG03",
+      "SEG44",
+      "SEG65",
+      "SEG66",
+      "SEG67",
+      "SEG56",
+      "SEG55"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S163",
+    "TO": "IP_AllCATPart#S184",
+    "FROM_code": "CON15",
+    "TO_code": "CON22",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S163",
+    "TO": "IP_AllCATPart#S158",
+    "FROM_code": "CON15",
+    "TO_code": "CON23",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S163",
+    "TO": "IP_AllCATPart#S171",
+    "FROM_code": "CON15",
+    "TO_code": "CON24",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S163",
+    "TO": "IP_AllCATPart#S174",
+    "FROM_code": "CON15",
+    "TO_code": "CON25",
+    "Length": 1470.5,
+    "Path": [
+      "SEG05",
+      "SEG04",
+      "SEG01",
+      "SEG02",
+      "SEG03",
+      "SEG44",
+      "SEG65",
+      "SEG66",
+      "SEG67",
+      "SEG20",
+      "SEG19",
+      "SEG18",
+      "SEG23",
+      "SEG24",
+      "SEG49"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S163",
+    "TO": "IP_AllCATPart#S177",
+    "FROM_code": "CON15",
+    "TO_code": "CON26",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S163",
+    "TO": "IP_AllCATPart#S186",
+    "FROM_code": "CON15",
+    "TO_code": "CON27",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S163",
+    "TO": "IP_AllCATPart#S167",
+    "FROM_code": "CON15",
+    "TO_code": "CON28",
+    "Length": 765.0,
+    "Path": [
+      "SEG05",
+      "SEG04",
+      "SEG01",
+      "SEG02",
+      "SEG03",
+      "SEG45"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S163",
+    "TO": "IP_AllCATPart#S98",
+    "FROM_code": "CON15",
+    "TO_code": "CON29",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S163",
+    "TO": "IP_AllCATPart#S169",
+    "FROM_code": "CON15",
+    "TO_code": "CON30",
+    "Length": 1386.2,
+    "Path": [
+      "SEG05",
+      "SEG04",
+      "SEG01",
+      "SEG02",
+      "SEG03",
+      "SEG44",
+      "SEG65",
+      "SEG66",
+      "SEG67",
+      "SEG20",
+      "SEG19",
+      "SEG18",
+      "SEG22"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S163",
+    "TO": "IP_AllCATPart#S181",
+    "FROM_code": "CON15",
+    "TO_code": "CON31",
+    "Length": 746.3,
+    "Path": [
+      "SEG05",
+      "SEG04",
+      "SEG01",
+      "SEG02",
+      "SEG03",
+      "SEG46"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S163",
+    "TO": "IP_AllCATPart#S180",
+    "FROM_code": "CON15",
+    "TO_code": "CON32",
+    "Length": 531.4,
+    "Path": [
+      "SEG05",
+      "SEG04",
+      "SEG06",
+      "SEG07"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S163",
+    "TO": "IP_AllCATPart#S155",
+    "FROM_code": "CON15",
+    "TO_code": "CON33",
+    "Length": 1470.5,
+    "Path": [
+      "SEG05",
+      "SEG04",
+      "SEG01",
+      "SEG02",
+      "SEG03",
+      "SEG44",
+      "SEG65",
+      "SEG66",
+      "SEG67",
+      "SEG20",
+      "SEG19",
+      "SEG18",
+      "SEG23",
+      "SEG24",
+      "SEG50"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S163",
+    "TO": "IP_AllCATPart#S157",
+    "FROM_code": "CON15",
+    "TO_code": "CON34",
+    "Length": 1508.7,
+    "Path": [
+      "SEG05",
+      "SEG04",
+      "SEG01",
+      "SEG02",
+      "SEG03",
+      "SEG44",
+      "SEG65",
+      "SEG66",
+      "SEG67",
+      "SEG56",
+      "SEG51",
+      "SEG14",
+      "SEG17",
+      "SEG72"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S163",
+    "TO": "IP_AllCATPart#S161",
+    "FROM_code": "CON15",
+    "TO_code": "CON35",
+    "Length": 1534.1,
+    "Path": [
+      "SEG05",
+      "SEG04",
+      "SEG01",
+      "SEG02",
+      "SEG03",
+      "SEG44",
+      "SEG65",
+      "SEG66",
+      "SEG67",
+      "SEG56",
+      "SEG11",
+      "SEG10",
+      "SEG09",
+      "SEG08",
+      "SEG13"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S163",
+    "TO": "IP_AllCATPart#S160",
+    "FROM_code": "CON15",
+    "TO_code": "CON36",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S163",
+    "TO": "IP_AllCATPart#S164",
+    "FROM_code": "CON15",
+    "TO_code": "CON37",
+    "Length": 1253.6,
+    "Path": [
+      "SEG05",
+      "SEG04",
+      "SEG01",
+      "SEG02",
+      "SEG03",
+      "SEG44",
+      "SEG65",
+      "SEG66",
+      "SEG67",
+      "SEG56",
+      "SEG57"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S163",
+    "TO": "IP_AllCATPart#S154",
+    "FROM_code": "CON15",
+    "TO_code": "CON38",
+    "Length": 1485.6,
+    "Path": [
+      "SEG05",
+      "SEG04",
+      "SEG01",
+      "SEG02",
+      "SEG03",
+      "SEG44",
+      "SEG65",
+      "SEG66",
+      "SEG67",
+      "SEG56",
+      "SEG51",
+      "SEG14",
+      "SEG17",
+      "SEG73"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S163",
+    "TO": "IP_AllCATPart#S14",
+    "FROM_code": "CON15",
+    "TO_code": "CON39",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S163",
+    "TO": "IP_AllCATPart#S9",
+    "FROM_code": "CON15",
+    "TO_code": "CON40",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S163",
+    "TO": "IP_AllCATPart#S168",
+    "FROM_code": "CON15",
+    "TO_code": "CON41",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S163",
+    "TO": "IP_AllCATPart#S183",
+    "FROM_code": "CON15",
+    "TO_code": "CON42",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S178",
+    "TO": "IP_AllCATPart#S179",
+    "FROM_code": "CON16",
+    "TO_code": "CON17",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S178",
+    "TO": "IP_AllCATPart#S172",
+    "FROM_code": "CON16",
+    "TO_code": "CON18",
+    "Length": 1057.2,
+    "Path": [
+      "SEG43",
+      "SEG44",
+      "SEG65",
+      "SEG66",
+      "SEG67",
+      "SEG56",
+      "SEG51",
+      "SEG14",
+      "SEG17",
+      "SEG70",
+      "SEG71"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S178",
+    "TO": "IP_AllCATPart#S175",
+    "FROM_code": "CON16",
+    "TO_code": "CON19",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S178",
+    "TO": "IP_AllCATPart#S185",
+    "FROM_code": "CON16",
+    "TO_code": "CON20",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S178",
+    "TO": "IP_AllCATPart#S170",
+    "FROM_code": "CON16",
+    "TO_code": "CON21",
+    "Length": 808.4,
+    "Path": [
+      "SEG43",
+      "SEG44",
+      "SEG65",
+      "SEG66",
+      "SEG67",
+      "SEG56",
+      "SEG55"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S178",
+    "TO": "IP_AllCATPart#S184",
+    "FROM_code": "CON16",
+    "TO_code": "CON22",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S178",
+    "TO": "IP_AllCATPart#S158",
+    "FROM_code": "CON16",
+    "TO_code": "CON23",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S178",
+    "TO": "IP_AllCATPart#S171",
+    "FROM_code": "CON16",
+    "TO_code": "CON24",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S178",
+    "TO": "IP_AllCATPart#S174",
+    "FROM_code": "CON16",
+    "TO_code": "CON25",
+    "Length": 955.3,
+    "Path": [
+      "SEG43",
+      "SEG44",
+      "SEG65",
+      "SEG66",
+      "SEG67",
+      "SEG20",
+      "SEG19",
+      "SEG18",
+      "SEG23",
+      "SEG24",
+      "SEG49"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S178",
+    "TO": "IP_AllCATPart#S177",
+    "FROM_code": "CON16",
+    "TO_code": "CON26",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S178",
+    "TO": "IP_AllCATPart#S186",
+    "FROM_code": "CON16",
+    "TO_code": "CON27",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S178",
+    "TO": "IP_AllCATPart#S167",
+    "FROM_code": "CON16",
+    "TO_code": "CON28",
+    "Length": 249.8,
+    "Path": [
+      "SEG43",
+      "SEG45"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S178",
+    "TO": "IP_AllCATPart#S98",
+    "FROM_code": "CON16",
+    "TO_code": "CON29",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S178",
+    "TO": "IP_AllCATPart#S169",
+    "FROM_code": "CON16",
+    "TO_code": "CON30",
+    "Length": 871.0,
+    "Path": [
+      "SEG43",
+      "SEG44",
+      "SEG65",
+      "SEG66",
+      "SEG67",
+      "SEG20",
+      "SEG19",
+      "SEG18",
+      "SEG22"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S178",
+    "TO": "IP_AllCATPart#S181",
+    "FROM_code": "CON16",
+    "TO_code": "CON31",
+    "Length": 231.1,
+    "Path": [
+      "SEG43",
+      "SEG46"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S178",
+    "TO": "IP_AllCATPart#S180",
+    "FROM_code": "CON16",
+    "TO_code": "CON32",
+    "Length": 574.8,
+    "Path": [
+      "SEG43",
+      "SEG03",
+      "SEG02",
+      "SEG01",
+      "SEG06",
+      "SEG07"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S178",
+    "TO": "IP_AllCATPart#S155",
+    "FROM_code": "CON16",
+    "TO_code": "CON33",
+    "Length": 955.3,
+    "Path": [
+      "SEG43",
+      "SEG44",
+      "SEG65",
+      "SEG66",
+      "SEG67",
+      "SEG20",
+      "SEG19",
+      "SEG18",
+      "SEG23",
+      "SEG24",
+      "SEG50"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S178",
+    "TO": "IP_AllCATPart#S157",
+    "FROM_code": "CON16",
+    "TO_code": "CON34",
+    "Length": 993.5,
+    "Path": [
+      "SEG43",
+      "SEG44",
+      "SEG65",
+      "SEG66",
+      "SEG67",
+      "SEG56",
+      "SEG51",
+      "SEG14",
+      "SEG17",
+      "SEG72"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S178",
+    "TO": "IP_AllCATPart#S161",
+    "FROM_code": "CON16",
+    "TO_code": "CON35",
+    "Length": 1018.9,
+    "Path": [
+      "SEG43",
+      "SEG44",
+      "SEG65",
+      "SEG66",
+      "SEG67",
+      "SEG56",
+      "SEG11",
+      "SEG10",
+      "SEG09",
+      "SEG08",
+      "SEG13"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S178",
+    "TO": "IP_AllCATPart#S160",
+    "FROM_code": "CON16",
+    "TO_code": "CON36",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S178",
+    "TO": "IP_AllCATPart#S164",
+    "FROM_code": "CON16",
+    "TO_code": "CON37",
+    "Length": 738.4,
+    "Path": [
+      "SEG43",
+      "SEG44",
+      "SEG65",
+      "SEG66",
+      "SEG67",
+      "SEG56",
+      "SEG57"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S178",
+    "TO": "IP_AllCATPart#S154",
+    "FROM_code": "CON16",
+    "TO_code": "CON38",
+    "Length": 970.4,
+    "Path": [
+      "SEG43",
+      "SEG44",
+      "SEG65",
+      "SEG66",
+      "SEG67",
+      "SEG56",
+      "SEG51",
+      "SEG14",
+      "SEG17",
+      "SEG73"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S178",
+    "TO": "IP_AllCATPart#S14",
+    "FROM_code": "CON16",
+    "TO_code": "CON39",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S178",
+    "TO": "IP_AllCATPart#S9",
+    "FROM_code": "CON16",
+    "TO_code": "CON40",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S178",
+    "TO": "IP_AllCATPart#S168",
+    "FROM_code": "CON16",
+    "TO_code": "CON41",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S178",
+    "TO": "IP_AllCATPart#S183",
+    "FROM_code": "CON16",
+    "TO_code": "CON42",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S179",
+    "TO": "IP_AllCATPart#S172",
+    "FROM_code": "CON17",
+    "TO_code": "CON18",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S179",
+    "TO": "IP_AllCATPart#S175",
+    "FROM_code": "CON17",
+    "TO_code": "CON19",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S179",
+    "TO": "IP_AllCATPart#S185",
+    "FROM_code": "CON17",
+    "TO_code": "CON20",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S179",
+    "TO": "IP_AllCATPart#S170",
+    "FROM_code": "CON17",
+    "TO_code": "CON21",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S179",
+    "TO": "IP_AllCATPart#S184",
+    "FROM_code": "CON17",
+    "TO_code": "CON22",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S179",
+    "TO": "IP_AllCATPart#S158",
+    "FROM_code": "CON17",
+    "TO_code": "CON23",
+    "Length": 689.3,
+    "Path": [
+      "SEG35",
+      "SEG34",
+      "SEG33",
+      "SEG32",
+      "SEG31",
+      "SEG37"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S179",
+    "TO": "IP_AllCATPart#S171",
+    "FROM_code": "CON17",
+    "TO_code": "CON24",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S179",
+    "TO": "IP_AllCATPart#S174",
+    "FROM_code": "CON17",
+    "TO_code": "CON25",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S179",
+    "TO": "IP_AllCATPart#S177",
+    "FROM_code": "CON17",
+    "TO_code": "CON26",
+    "Length": 1019.4,
+    "Path": [
+      "SEG35",
+      "SEG34",
+      "SEG33",
+      "SEG32",
+      "SEG31",
+      "SEG38",
+      "SEG39",
+      "SEG40",
+      "SEG41"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S179",
+    "TO": "IP_AllCATPart#S186",
+    "FROM_code": "CON17",
+    "TO_code": "CON27",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S179",
+    "TO": "IP_AllCATPart#S167",
+    "FROM_code": "CON17",
+    "TO_code": "CON28",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S179",
+    "TO": "IP_AllCATPart#S98",
+    "FROM_code": "CON17",
+    "TO_code": "CON29",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S179",
+    "TO": "IP_AllCATPart#S169",
+    "FROM_code": "CON17",
+    "TO_code": "CON30",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S179",
+    "TO": "IP_AllCATPart#S181",
+    "FROM_code": "CON17",
+    "TO_code": "CON31",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S179",
+    "TO": "IP_AllCATPart#S180",
+    "FROM_code": "CON17",
+    "TO_code": "CON32",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S179",
+    "TO": "IP_AllCATPart#S155",
+    "FROM_code": "CON17",
+    "TO_code": "CON33",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S179",
+    "TO": "IP_AllCATPart#S157",
+    "FROM_code": "CON17",
+    "TO_code": "CON34",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S179",
+    "TO": "IP_AllCATPart#S161",
+    "FROM_code": "CON17",
+    "TO_code": "CON35",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S179",
+    "TO": "IP_AllCATPart#S160",
+    "FROM_code": "CON17",
+    "TO_code": "CON36",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S179",
+    "TO": "IP_AllCATPart#S164",
+    "FROM_code": "CON17",
+    "TO_code": "CON37",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S179",
+    "TO": "IP_AllCATPart#S154",
+    "FROM_code": "CON17",
+    "TO_code": "CON38",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S179",
+    "TO": "IP_AllCATPart#S14",
+    "FROM_code": "CON17",
+    "TO_code": "CON39",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S179",
+    "TO": "IP_AllCATPart#S9",
+    "FROM_code": "CON17",
+    "TO_code": "CON40",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S179",
+    "TO": "IP_AllCATPart#S168",
+    "FROM_code": "CON17",
+    "TO_code": "CON41",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S179",
+    "TO": "IP_AllCATPart#S183",
+    "FROM_code": "CON17",
+    "TO_code": "CON42",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S172",
+    "TO": "IP_AllCATPart#S175",
+    "FROM_code": "CON18",
+    "TO_code": "CON19",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S172",
+    "TO": "IP_AllCATPart#S185",
+    "FROM_code": "CON18",
+    "TO_code": "CON20",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S172",
+    "TO": "IP_AllCATPart#S170",
+    "FROM_code": "CON18",
+    "TO_code": "CON21",
+    "Length": 528.8,
+    "Path": [
+      "SEG71",
+      "SEG70",
+      "SEG17",
+      "SEG14",
+      "SEG51",
+      "SEG55"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S172",
+    "TO": "IP_AllCATPart#S184",
+    "FROM_code": "CON18",
+    "TO_code": "CON22",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S172",
+    "TO": "IP_AllCATPart#S158",
+    "FROM_code": "CON18",
+    "TO_code": "CON23",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S172",
+    "TO": "IP_AllCATPart#S171",
+    "FROM_code": "CON18",
+    "TO_code": "CON24",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S172",
+    "TO": "IP_AllCATPart#S174",
+    "FROM_code": "CON18",
+    "TO_code": "CON25",
+    "Length": 875.7,
+    "Path": [
+      "SEG71",
+      "SEG70",
+      "SEG17",
+      "SEG14",
+      "SEG51",
+      "SEG56",
+      "SEG20",
+      "SEG19",
+      "SEG18",
+      "SEG23",
+      "SEG24",
+      "SEG49"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S172",
+    "TO": "IP_AllCATPart#S177",
+    "FROM_code": "CON18",
+    "TO_code": "CON26",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S172",
+    "TO": "IP_AllCATPart#S186",
+    "FROM_code": "CON18",
+    "TO_code": "CON27",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S172",
+    "TO": "IP_AllCATPart#S167",
+    "FROM_code": "CON18",
+    "TO_code": "CON28",
+    "Length": 1047.2,
+    "Path": [
+      "SEG71",
+      "SEG70",
+      "SEG17",
+      "SEG14",
+      "SEG51",
+      "SEG56",
+      "SEG67",
+      "SEG66",
+      "SEG65",
+      "SEG44",
+      "SEG45"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S172",
+    "TO": "IP_AllCATPart#S98",
+    "FROM_code": "CON18",
+    "TO_code": "CON29",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S172",
+    "TO": "IP_AllCATPart#S169",
+    "FROM_code": "CON18",
+    "TO_code": "CON30",
+    "Length": 791.4,
+    "Path": [
+      "SEG71",
+      "SEG70",
+      "SEG17",
+      "SEG14",
+      "SEG51",
+      "SEG56",
+      "SEG20",
+      "SEG19",
+      "SEG18",
+      "SEG22"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S172",
+    "TO": "IP_AllCATPart#S181",
+    "FROM_code": "CON18",
+    "TO_code": "CON31",
+    "Length": 1028.5,
+    "Path": [
+      "SEG71",
+      "SEG70",
+      "SEG17",
+      "SEG14",
+      "SEG51",
+      "SEG56",
+      "SEG67",
+      "SEG66",
+      "SEG65",
+      "SEG44",
+      "SEG46"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S172",
+    "TO": "IP_AllCATPart#S180",
+    "FROM_code": "CON18",
+    "TO_code": "CON32",
+    "Length": 1372.2,
+    "Path": [
+      "SEG71",
+      "SEG70",
+      "SEG17",
+      "SEG14",
+      "SEG51",
+      "SEG56",
+      "SEG67",
+      "SEG66",
+      "SEG65",
+      "SEG44",
+      "SEG03",
+      "SEG02",
+      "SEG01",
+      "SEG06",
+      "SEG07"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S172",
+    "TO": "IP_AllCATPart#S155",
+    "FROM_code": "CON18",
+    "TO_code": "CON33",
+    "Length": 875.7,
+    "Path": [
+      "SEG71",
+      "SEG70",
+      "SEG17",
+      "SEG14",
+      "SEG51",
+      "SEG56",
+      "SEG20",
+      "SEG19",
+      "SEG18",
+      "SEG23",
+      "SEG24",
+      "SEG50"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S172",
+    "TO": "IP_AllCATPart#S157",
+    "FROM_code": "CON18",
+    "TO_code": "CON34",
+    "Length": 239.9,
+    "Path": [
+      "SEG71",
+      "SEG70",
+      "SEG72"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S172",
+    "TO": "IP_AllCATPart#S161",
+    "FROM_code": "CON18",
+    "TO_code": "CON35",
+    "Length": 739.3,
+    "Path": [
+      "SEG71",
+      "SEG70",
+      "SEG17",
+      "SEG14",
+      "SEG51",
+      "SEG11",
+      "SEG10",
+      "SEG09",
+      "SEG08",
+      "SEG13"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S172",
+    "TO": "IP_AllCATPart#S160",
+    "FROM_code": "CON18",
+    "TO_code": "CON36",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S172",
+    "TO": "IP_AllCATPart#S164",
+    "FROM_code": "CON18",
+    "TO_code": "CON37",
+    "Length": 458.8,
+    "Path": [
+      "SEG71",
+      "SEG70",
+      "SEG17",
+      "SEG14",
+      "SEG51",
+      "SEG57"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S172",
+    "TO": "IP_AllCATPart#S154",
+    "FROM_code": "CON18",
+    "TO_code": "CON38",
+    "Length": 216.8,
+    "Path": [
+      "SEG71",
+      "SEG70",
+      "SEG73"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S172",
+    "TO": "IP_AllCATPart#S14",
+    "FROM_code": "CON18",
+    "TO_code": "CON39",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S172",
+    "TO": "IP_AllCATPart#S9",
+    "FROM_code": "CON18",
+    "TO_code": "CON40",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S172",
+    "TO": "IP_AllCATPart#S168",
+    "FROM_code": "CON18",
+    "TO_code": "CON41",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S172",
+    "TO": "IP_AllCATPart#S183",
+    "FROM_code": "CON18",
+    "TO_code": "CON42",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S175",
+    "TO": "IP_AllCATPart#S185",
+    "FROM_code": "CON19",
+    "TO_code": "CON20",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S175",
+    "TO": "IP_AllCATPart#S170",
+    "FROM_code": "CON19",
+    "TO_code": "CON21",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S175",
+    "TO": "IP_AllCATPart#S184",
+    "FROM_code": "CON19",
+    "TO_code": "CON22",
+    "Length": 335.4,
+    "Path": [
+      "SEG68",
+      "SEG26",
+      "SEG28",
+      "SEG47"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S175",
+    "TO": "IP_AllCATPart#S158",
+    "FROM_code": "CON19",
+    "TO_code": "CON23",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S175",
+    "TO": "IP_AllCATPart#S171",
+    "FROM_code": "CON19",
+    "TO_code": "CON24",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S175",
+    "TO": "IP_AllCATPart#S174",
+    "FROM_code": "CON19",
+    "TO_code": "CON25",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S175",
+    "TO": "IP_AllCATPart#S177",
+    "FROM_code": "CON19",
+    "TO_code": "CON26",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S175",
+    "TO": "IP_AllCATPart#S186",
+    "FROM_code": "CON19",
+    "TO_code": "CON27",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S175",
+    "TO": "IP_AllCATPart#S167",
+    "FROM_code": "CON19",
+    "TO_code": "CON28",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S175",
+    "TO": "IP_AllCATPart#S98",
+    "FROM_code": "CON19",
+    "TO_code": "CON29",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S175",
+    "TO": "IP_AllCATPart#S169",
+    "FROM_code": "CON19",
+    "TO_code": "CON30",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S175",
+    "TO": "IP_AllCATPart#S181",
+    "FROM_code": "CON19",
+    "TO_code": "CON31",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S175",
+    "TO": "IP_AllCATPart#S180",
+    "FROM_code": "CON19",
+    "TO_code": "CON32",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S175",
+    "TO": "IP_AllCATPart#S155",
+    "FROM_code": "CON19",
+    "TO_code": "CON33",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S175",
+    "TO": "IP_AllCATPart#S157",
+    "FROM_code": "CON19",
+    "TO_code": "CON34",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S175",
+    "TO": "IP_AllCATPart#S161",
+    "FROM_code": "CON19",
+    "TO_code": "CON35",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S175",
+    "TO": "IP_AllCATPart#S160",
+    "FROM_code": "CON19",
+    "TO_code": "CON36",
+    "Length": 318.2,
+    "Path": [
+      "SEG68",
+      "SEG26",
+      "SEG28",
+      "SEG48"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S175",
+    "TO": "IP_AllCATPart#S164",
+    "FROM_code": "CON19",
+    "TO_code": "CON37",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S175",
+    "TO": "IP_AllCATPart#S154",
+    "FROM_code": "CON19",
+    "TO_code": "CON38",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S175",
+    "TO": "IP_AllCATPart#S14",
+    "FROM_code": "CON19",
+    "TO_code": "CON39",
+    "Length": 213.1,
+    "Path": [
+      "SEG68",
+      "SEG69"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S175",
+    "TO": "IP_AllCATPart#S9",
+    "FROM_code": "CON19",
+    "TO_code": "CON40",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S175",
+    "TO": "IP_AllCATPart#S168",
+    "FROM_code": "CON19",
+    "TO_code": "CON41",
+    "Length": 256.5,
+    "Path": [
+      "SEG68",
+      "SEG26",
+      "SEG29"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S175",
+    "TO": "IP_AllCATPart#S183",
+    "FROM_code": "CON19",
+    "TO_code": "CON42",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S185",
+    "TO": "IP_AllCATPart#S170",
+    "FROM_code": "CON20",
+    "TO_code": "CON21",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S185",
+    "TO": "IP_AllCATPart#S184",
+    "FROM_code": "CON20",
+    "TO_code": "CON22",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S185",
+    "TO": "IP_AllCATPart#S158",
+    "FROM_code": "CON20",
+    "TO_code": "CON23",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S185",
+    "TO": "IP_AllCATPart#S171",
+    "FROM_code": "CON20",
+    "TO_code": "CON24",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S185",
+    "TO": "IP_AllCATPart#S174",
+    "FROM_code": "CON20",
+    "TO_code": "CON25",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S185",
+    "TO": "IP_AllCATPart#S177",
+    "FROM_code": "CON20",
+    "TO_code": "CON26",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S185",
+    "TO": "IP_AllCATPart#S186",
+    "FROM_code": "CON20",
+    "TO_code": "CON27",
+    "Length": 265.9,
+    "Path": [
+      "SEG74",
+      "SEG75",
+      "SEG76"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S185",
+    "TO": "IP_AllCATPart#S167",
+    "FROM_code": "CON20",
+    "TO_code": "CON28",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S185",
+    "TO": "IP_AllCATPart#S98",
+    "FROM_code": "CON20",
+    "TO_code": "CON29",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S185",
+    "TO": "IP_AllCATPart#S169",
+    "FROM_code": "CON20",
+    "TO_code": "CON30",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S185",
+    "TO": "IP_AllCATPart#S181",
+    "FROM_code": "CON20",
+    "TO_code": "CON31",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S185",
+    "TO": "IP_AllCATPart#S180",
+    "FROM_code": "CON20",
+    "TO_code": "CON32",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S185",
+    "TO": "IP_AllCATPart#S155",
+    "FROM_code": "CON20",
+    "TO_code": "CON33",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S185",
+    "TO": "IP_AllCATPart#S157",
+    "FROM_code": "CON20",
+    "TO_code": "CON34",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S185",
+    "TO": "IP_AllCATPart#S161",
+    "FROM_code": "CON20",
+    "TO_code": "CON35",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S185",
+    "TO": "IP_AllCATPart#S160",
+    "FROM_code": "CON20",
+    "TO_code": "CON36",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S185",
+    "TO": "IP_AllCATPart#S164",
+    "FROM_code": "CON20",
+    "TO_code": "CON37",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S185",
+    "TO": "IP_AllCATPart#S154",
+    "FROM_code": "CON20",
+    "TO_code": "CON38",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S185",
+    "TO": "IP_AllCATPart#S14",
+    "FROM_code": "CON20",
+    "TO_code": "CON39",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S185",
+    "TO": "IP_AllCATPart#S9",
+    "FROM_code": "CON20",
+    "TO_code": "CON40",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S185",
+    "TO": "IP_AllCATPart#S168",
+    "FROM_code": "CON20",
+    "TO_code": "CON41",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S185",
+    "TO": "IP_AllCATPart#S183",
+    "FROM_code": "CON20",
+    "TO_code": "CON42",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S170",
+    "TO": "IP_AllCATPart#S184",
+    "FROM_code": "CON21",
+    "TO_code": "CON22",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S170",
+    "TO": "IP_AllCATPart#S158",
+    "FROM_code": "CON21",
+    "TO_code": "CON23",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S170",
+    "TO": "IP_AllCATPart#S171",
+    "FROM_code": "CON21",
+    "TO_code": "CON24",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S170",
+    "TO": "IP_AllCATPart#S174",
+    "FROM_code": "CON21",
+    "TO_code": "CON25",
+    "Length": 626.9,
+    "Path": [
+      "SEG55",
+      "SEG56",
+      "SEG20",
+      "SEG19",
+      "SEG18",
+      "SEG23",
+      "SEG24",
+      "SEG49"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S170",
+    "TO": "IP_AllCATPart#S177",
+    "FROM_code": "CON21",
+    "TO_code": "CON26",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S170",
+    "TO": "IP_AllCATPart#S186",
+    "FROM_code": "CON21",
+    "TO_code": "CON27",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S170",
+    "TO": "IP_AllCATPart#S167",
+    "FROM_code": "CON21",
+    "TO_code": "CON28",
+    "Length": 798.4,
+    "Path": [
+      "SEG55",
+      "SEG56",
+      "SEG67",
+      "SEG66",
+      "SEG65",
+      "SEG44",
+      "SEG45"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S170",
+    "TO": "IP_AllCATPart#S98",
+    "FROM_code": "CON21",
+    "TO_code": "CON29",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S170",
+    "TO": "IP_AllCATPart#S169",
+    "FROM_code": "CON21",
+    "TO_code": "CON30",
+    "Length": 542.6,
+    "Path": [
+      "SEG55",
+      "SEG56",
+      "SEG20",
+      "SEG19",
+      "SEG18",
+      "SEG22"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S170",
+    "TO": "IP_AllCATPart#S181",
+    "FROM_code": "CON21",
+    "TO_code": "CON31",
+    "Length": 779.7,
+    "Path": [
+      "SEG55",
+      "SEG56",
+      "SEG67",
+      "SEG66",
+      "SEG65",
+      "SEG44",
+      "SEG46"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S170",
+    "TO": "IP_AllCATPart#S180",
+    "FROM_code": "CON21",
+    "TO_code": "CON32",
+    "Length": 1123.4,
+    "Path": [
+      "SEG55",
+      "SEG56",
+      "SEG67",
+      "SEG66",
+      "SEG65",
+      "SEG44",
+      "SEG03",
+      "SEG02",
+      "SEG01",
+      "SEG06",
+      "SEG07"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S170",
+    "TO": "IP_AllCATPart#S155",
+    "FROM_code": "CON21",
+    "TO_code": "CON33",
+    "Length": 626.9,
+    "Path": [
+      "SEG55",
+      "SEG56",
+      "SEG20",
+      "SEG19",
+      "SEG18",
+      "SEG23",
+      "SEG24",
+      "SEG50"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S170",
+    "TO": "IP_AllCATPart#S157",
+    "FROM_code": "CON21",
+    "TO_code": "CON34",
+    "Length": 465.1,
+    "Path": [
+      "SEG55",
+      "SEG51",
+      "SEG14",
+      "SEG17",
+      "SEG72"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S170",
+    "TO": "IP_AllCATPart#S161",
+    "FROM_code": "CON21",
+    "TO_code": "CON35",
+    "Length": 490.5,
+    "Path": [
+      "SEG55",
+      "SEG11",
+      "SEG10",
+      "SEG09",
+      "SEG08",
+      "SEG13"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S170",
+    "TO": "IP_AllCATPart#S160",
+    "FROM_code": "CON21",
+    "TO_code": "CON36",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S170",
+    "TO": "IP_AllCATPart#S164",
+    "FROM_code": "CON21",
+    "TO_code": "CON37",
+    "Length": 210.0,
+    "Path": [
+      "SEG55",
+      "SEG57"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S170",
+    "TO": "IP_AllCATPart#S154",
+    "FROM_code": "CON21",
+    "TO_code": "CON38",
+    "Length": 442.0,
+    "Path": [
+      "SEG55",
+      "SEG51",
+      "SEG14",
+      "SEG17",
+      "SEG73"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S170",
+    "TO": "IP_AllCATPart#S14",
+    "FROM_code": "CON21",
+    "TO_code": "CON39",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S170",
+    "TO": "IP_AllCATPart#S9",
+    "FROM_code": "CON21",
+    "TO_code": "CON40",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S170",
+    "TO": "IP_AllCATPart#S168",
+    "FROM_code": "CON21",
+    "TO_code": "CON41",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S170",
+    "TO": "IP_AllCATPart#S183",
+    "FROM_code": "CON21",
+    "TO_code": "CON42",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S184",
+    "TO": "IP_AllCATPart#S158",
+    "FROM_code": "CON22",
+    "TO_code": "CON23",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S184",
+    "TO": "IP_AllCATPart#S171",
+    "FROM_code": "CON22",
+    "TO_code": "CON24",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S184",
+    "TO": "IP_AllCATPart#S174",
+    "FROM_code": "CON22",
+    "TO_code": "CON25",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S184",
+    "TO": "IP_AllCATPart#S177",
+    "FROM_code": "CON22",
+    "TO_code": "CON26",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S184",
+    "TO": "IP_AllCATPart#S186",
+    "FROM_code": "CON22",
+    "TO_code": "CON27",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S184",
+    "TO": "IP_AllCATPart#S167",
+    "FROM_code": "CON22",
+    "TO_code": "CON28",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S184",
+    "TO": "IP_AllCATPart#S98",
+    "FROM_code": "CON22",
+    "TO_code": "CON29",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S184",
+    "TO": "IP_AllCATPart#S169",
+    "FROM_code": "CON22",
+    "TO_code": "CON30",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S184",
+    "TO": "IP_AllCATPart#S181",
+    "FROM_code": "CON22",
+    "TO_code": "CON31",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S184",
+    "TO": "IP_AllCATPart#S180",
+    "FROM_code": "CON22",
+    "TO_code": "CON32",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S184",
+    "TO": "IP_AllCATPart#S155",
+    "FROM_code": "CON22",
+    "TO_code": "CON33",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S184",
+    "TO": "IP_AllCATPart#S157",
+    "FROM_code": "CON22",
+    "TO_code": "CON34",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S184",
+    "TO": "IP_AllCATPart#S161",
+    "FROM_code": "CON22",
+    "TO_code": "CON35",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S184",
+    "TO": "IP_AllCATPart#S160",
+    "FROM_code": "CON22",
+    "TO_code": "CON36",
+    "Length": 180.6,
+    "Path": [
+      "SEG47",
+      "SEG48"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S184",
+    "TO": "IP_AllCATPart#S164",
+    "FROM_code": "CON22",
+    "TO_code": "CON37",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S184",
+    "TO": "IP_AllCATPart#S154",
+    "FROM_code": "CON22",
+    "TO_code": "CON38",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S184",
+    "TO": "IP_AllCATPart#S14",
+    "FROM_code": "CON22",
+    "TO_code": "CON39",
+    "Length": 251.1,
+    "Path": [
+      "SEG47",
+      "SEG28",
+      "SEG26",
+      "SEG69"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S184",
+    "TO": "IP_AllCATPart#S9",
+    "FROM_code": "CON22",
+    "TO_code": "CON40",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S184",
+    "TO": "IP_AllCATPart#S168",
+    "FROM_code": "CON22",
+    "TO_code": "CON41",
+    "Length": 198.9,
+    "Path": [
+      "SEG47",
+      "SEG28",
+      "SEG29"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S184",
+    "TO": "IP_AllCATPart#S183",
+    "FROM_code": "CON22",
+    "TO_code": "CON42",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S158",
+    "TO": "IP_AllCATPart#S171",
+    "FROM_code": "CON23",
+    "TO_code": "CON24",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S158",
+    "TO": "IP_AllCATPart#S174",
+    "FROM_code": "CON23",
+    "TO_code": "CON25",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S158",
+    "TO": "IP_AllCATPart#S177",
+    "FROM_code": "CON23",
+    "TO_code": "CON26",
+    "Length": 604.5,
+    "Path": [
+      "SEG37",
+      "SEG38",
+      "SEG39",
+      "SEG40",
+      "SEG41"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S158",
+    "TO": "IP_AllCATPart#S186",
+    "FROM_code": "CON23",
+    "TO_code": "CON27",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S158",
+    "TO": "IP_AllCATPart#S167",
+    "FROM_code": "CON23",
+    "TO_code": "CON28",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S158",
+    "TO": "IP_AllCATPart#S98",
+    "FROM_code": "CON23",
+    "TO_code": "CON29",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S158",
+    "TO": "IP_AllCATPart#S169",
+    "FROM_code": "CON23",
+    "TO_code": "CON30",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S158",
+    "TO": "IP_AllCATPart#S181",
+    "FROM_code": "CON23",
+    "TO_code": "CON31",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S158",
+    "TO": "IP_AllCATPart#S180",
+    "FROM_code": "CON23",
+    "TO_code": "CON32",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S158",
+    "TO": "IP_AllCATPart#S155",
+    "FROM_code": "CON23",
+    "TO_code": "CON33",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S158",
+    "TO": "IP_AllCATPart#S157",
+    "FROM_code": "CON23",
+    "TO_code": "CON34",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S158",
+    "TO": "IP_AllCATPart#S161",
+    "FROM_code": "CON23",
+    "TO_code": "CON35",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S158",
+    "TO": "IP_AllCATPart#S160",
+    "FROM_code": "CON23",
+    "TO_code": "CON36",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S158",
+    "TO": "IP_AllCATPart#S164",
+    "FROM_code": "CON23",
+    "TO_code": "CON37",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S158",
+    "TO": "IP_AllCATPart#S154",
+    "FROM_code": "CON23",
+    "TO_code": "CON38",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S158",
+    "TO": "IP_AllCATPart#S14",
+    "FROM_code": "CON23",
+    "TO_code": "CON39",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S158",
+    "TO": "IP_AllCATPart#S9",
+    "FROM_code": "CON23",
+    "TO_code": "CON40",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S158",
+    "TO": "IP_AllCATPart#S168",
+    "FROM_code": "CON23",
+    "TO_code": "CON41",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S158",
+    "TO": "IP_AllCATPart#S183",
+    "FROM_code": "CON23",
+    "TO_code": "CON42",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S171",
+    "TO": "IP_AllCATPart#S174",
+    "FROM_code": "CON24",
+    "TO_code": "CON25",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S171",
+    "TO": "IP_AllCATPart#S177",
+    "FROM_code": "CON24",
+    "TO_code": "CON26",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S171",
+    "TO": "IP_AllCATPart#S186",
+    "FROM_code": "CON24",
+    "TO_code": "CON27",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S171",
+    "TO": "IP_AllCATPart#S167",
+    "FROM_code": "CON24",
+    "TO_code": "CON28",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S171",
+    "TO": "IP_AllCATPart#S98",
+    "FROM_code": "CON24",
+    "TO_code": "CON29",
+    "Length": 327.6,
+    "Path": [
+      "SEG63",
+      "SEG62",
+      "SEG61",
+      "SEG60"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S171",
+    "TO": "IP_AllCATPart#S169",
+    "FROM_code": "CON24",
+    "TO_code": "CON30",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S171",
+    "TO": "IP_AllCATPart#S181",
+    "FROM_code": "CON24",
+    "TO_code": "CON31",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S171",
+    "TO": "IP_AllCATPart#S180",
+    "FROM_code": "CON24",
+    "TO_code": "CON32",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S171",
+    "TO": "IP_AllCATPart#S155",
+    "FROM_code": "CON24",
+    "TO_code": "CON33",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S171",
+    "TO": "IP_AllCATPart#S157",
+    "FROM_code": "CON24",
+    "TO_code": "CON34",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S171",
+    "TO": "IP_AllCATPart#S161",
+    "FROM_code": "CON24",
+    "TO_code": "CON35",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S171",
+    "TO": "IP_AllCATPart#S160",
+    "FROM_code": "CON24",
+    "TO_code": "CON36",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S171",
+    "TO": "IP_AllCATPart#S164",
+    "FROM_code": "CON24",
+    "TO_code": "CON37",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S171",
+    "TO": "IP_AllCATPart#S154",
+    "FROM_code": "CON24",
+    "TO_code": "CON38",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S171",
+    "TO": "IP_AllCATPart#S14",
+    "FROM_code": "CON24",
+    "TO_code": "CON39",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S171",
+    "TO": "IP_AllCATPart#S9",
+    "FROM_code": "CON24",
+    "TO_code": "CON40",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S171",
+    "TO": "IP_AllCATPart#S168",
+    "FROM_code": "CON24",
+    "TO_code": "CON41",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S171",
+    "TO": "IP_AllCATPart#S183",
+    "FROM_code": "CON24",
+    "TO_code": "CON42",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S174",
+    "TO": "IP_AllCATPart#S177",
+    "FROM_code": "CON25",
+    "TO_code": "CON26",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S174",
+    "TO": "IP_AllCATPart#S186",
+    "FROM_code": "CON25",
+    "TO_code": "CON27",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S174",
+    "TO": "IP_AllCATPart#S167",
+    "FROM_code": "CON25",
+    "TO_code": "CON28",
+    "Length": 945.3,
+    "Path": [
+      "SEG49",
+      "SEG24",
+      "SEG23",
+      "SEG18",
+      "SEG19",
+      "SEG20",
+      "SEG67",
+      "SEG66",
+      "SEG65",
+      "SEG44",
+      "SEG45"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S174",
+    "TO": "IP_AllCATPart#S98",
+    "FROM_code": "CON25",
+    "TO_code": "CON29",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S174",
+    "TO": "IP_AllCATPart#S169",
+    "FROM_code": "CON25",
+    "TO_code": "CON30",
+    "Length": 294.5,
+    "Path": [
+      "SEG49",
+      "SEG24",
+      "SEG23",
+      "SEG22"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S174",
+    "TO": "IP_AllCATPart#S181",
+    "FROM_code": "CON25",
+    "TO_code": "CON31",
+    "Length": 926.6,
+    "Path": [
+      "SEG49",
+      "SEG24",
+      "SEG23",
+      "SEG18",
+      "SEG19",
+      "SEG20",
+      "SEG67",
+      "SEG66",
+      "SEG65",
+      "SEG44",
+      "SEG46"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S174",
+    "TO": "IP_AllCATPart#S180",
+    "FROM_code": "CON25",
+    "TO_code": "CON32",
+    "Length": 1270.3,
+    "Path": [
+      "SEG49",
+      "SEG24",
+      "SEG23",
+      "SEG18",
+      "SEG19",
+      "SEG20",
+      "SEG67",
+      "SEG66",
+      "SEG65",
+      "SEG44",
+      "SEG03",
+      "SEG02",
+      "SEG01",
+      "SEG06",
+      "SEG07"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S174",
+    "TO": "IP_AllCATPart#S155",
+    "FROM_code": "CON25",
+    "TO_code": "CON33",
+    "Length": 188.6,
+    "Path": [
+      "SEG49",
+      "SEG50"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S174",
+    "TO": "IP_AllCATPart#S157",
+    "FROM_code": "CON25",
+    "TO_code": "CON34",
+    "Length": 812.0,
+    "Path": [
+      "SEG49",
+      "SEG24",
+      "SEG23",
+      "SEG18",
+      "SEG19",
+      "SEG20",
+      "SEG56",
+      "SEG51",
+      "SEG14",
+      "SEG17",
+      "SEG72"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S174",
+    "TO": "IP_AllCATPart#S161",
+    "FROM_code": "CON25",
+    "TO_code": "CON35",
+    "Length": 837.4,
+    "Path": [
+      "SEG49",
+      "SEG24",
+      "SEG23",
+      "SEG18",
+      "SEG19",
+      "SEG20",
+      "SEG56",
+      "SEG11",
+      "SEG10",
+      "SEG09",
+      "SEG08",
+      "SEG13"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S174",
+    "TO": "IP_AllCATPart#S160",
+    "FROM_code": "CON25",
+    "TO_code": "CON36",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S174",
+    "TO": "IP_AllCATPart#S164",
+    "FROM_code": "CON25",
+    "TO_code": "CON37",
+    "Length": 556.9,
+    "Path": [
+      "SEG49",
+      "SEG24",
+      "SEG23",
+      "SEG18",
+      "SEG19",
+      "SEG20",
+      "SEG56",
+      "SEG57"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S174",
+    "TO": "IP_AllCATPart#S154",
+    "FROM_code": "CON25",
+    "TO_code": "CON38",
+    "Length": 788.9,
+    "Path": [
+      "SEG49",
+      "SEG24",
+      "SEG23",
+      "SEG18",
+      "SEG19",
+      "SEG20",
+      "SEG56",
+      "SEG51",
+      "SEG14",
+      "SEG17",
+      "SEG73"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S174",
+    "TO": "IP_AllCATPart#S14",
+    "FROM_code": "CON25",
+    "TO_code": "CON39",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S174",
+    "TO": "IP_AllCATPart#S9",
+    "FROM_code": "CON25",
+    "TO_code": "CON40",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S174",
+    "TO": "IP_AllCATPart#S168",
+    "FROM_code": "CON25",
+    "TO_code": "CON41",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S174",
+    "TO": "IP_AllCATPart#S183",
+    "FROM_code": "CON25",
+    "TO_code": "CON42",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S177",
+    "TO": "IP_AllCATPart#S186",
+    "FROM_code": "CON26",
+    "TO_code": "CON27",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S177",
+    "TO": "IP_AllCATPart#S167",
+    "FROM_code": "CON26",
+    "TO_code": "CON28",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S177",
+    "TO": "IP_AllCATPart#S98",
+    "FROM_code": "CON26",
+    "TO_code": "CON29",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S177",
+    "TO": "IP_AllCATPart#S169",
+    "FROM_code": "CON26",
+    "TO_code": "CON30",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S177",
+    "TO": "IP_AllCATPart#S181",
+    "FROM_code": "CON26",
+    "TO_code": "CON31",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S177",
+    "TO": "IP_AllCATPart#S180",
+    "FROM_code": "CON26",
+    "TO_code": "CON32",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S177",
+    "TO": "IP_AllCATPart#S155",
+    "FROM_code": "CON26",
+    "TO_code": "CON33",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S177",
+    "TO": "IP_AllCATPart#S157",
+    "FROM_code": "CON26",
+    "TO_code": "CON34",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S177",
+    "TO": "IP_AllCATPart#S161",
+    "FROM_code": "CON26",
+    "TO_code": "CON35",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S177",
+    "TO": "IP_AllCATPart#S160",
+    "FROM_code": "CON26",
+    "TO_code": "CON36",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S177",
+    "TO": "IP_AllCATPart#S164",
+    "FROM_code": "CON26",
+    "TO_code": "CON37",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S177",
+    "TO": "IP_AllCATPart#S154",
+    "FROM_code": "CON26",
+    "TO_code": "CON38",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S177",
+    "TO": "IP_AllCATPart#S14",
+    "FROM_code": "CON26",
+    "TO_code": "CON39",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S177",
+    "TO": "IP_AllCATPart#S9",
+    "FROM_code": "CON26",
+    "TO_code": "CON40",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S177",
+    "TO": "IP_AllCATPart#S168",
+    "FROM_code": "CON26",
+    "TO_code": "CON41",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S177",
+    "TO": "IP_AllCATPart#S183",
+    "FROM_code": "CON26",
+    "TO_code": "CON42",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S186",
+    "TO": "IP_AllCATPart#S167",
+    "FROM_code": "CON27",
+    "TO_code": "CON28",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S186",
+    "TO": "IP_AllCATPart#S98",
+    "FROM_code": "CON27",
+    "TO_code": "CON29",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S186",
+    "TO": "IP_AllCATPart#S169",
+    "FROM_code": "CON27",
+    "TO_code": "CON30",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S186",
+    "TO": "IP_AllCATPart#S181",
+    "FROM_code": "CON27",
+    "TO_code": "CON31",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S186",
+    "TO": "IP_AllCATPart#S180",
+    "FROM_code": "CON27",
+    "TO_code": "CON32",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S186",
+    "TO": "IP_AllCATPart#S155",
+    "FROM_code": "CON27",
+    "TO_code": "CON33",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S186",
+    "TO": "IP_AllCATPart#S157",
+    "FROM_code": "CON27",
+    "TO_code": "CON34",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S186",
+    "TO": "IP_AllCATPart#S161",
+    "FROM_code": "CON27",
+    "TO_code": "CON35",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S186",
+    "TO": "IP_AllCATPart#S160",
+    "FROM_code": "CON27",
+    "TO_code": "CON36",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S186",
+    "TO": "IP_AllCATPart#S164",
+    "FROM_code": "CON27",
+    "TO_code": "CON37",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S186",
+    "TO": "IP_AllCATPart#S154",
+    "FROM_code": "CON27",
+    "TO_code": "CON38",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S186",
+    "TO": "IP_AllCATPart#S14",
+    "FROM_code": "CON27",
+    "TO_code": "CON39",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S186",
+    "TO": "IP_AllCATPart#S9",
+    "FROM_code": "CON27",
+    "TO_code": "CON40",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S186",
+    "TO": "IP_AllCATPart#S168",
+    "FROM_code": "CON27",
+    "TO_code": "CON41",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S186",
+    "TO": "IP_AllCATPart#S183",
+    "FROM_code": "CON27",
+    "TO_code": "CON42",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S167",
+    "TO": "IP_AllCATPart#S98",
+    "FROM_code": "CON28",
+    "TO_code": "CON29",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S167",
+    "TO": "IP_AllCATPart#S169",
+    "FROM_code": "CON28",
+    "TO_code": "CON30",
+    "Length": 861.0,
+    "Path": [
+      "SEG45",
+      "SEG44",
+      "SEG65",
+      "SEG66",
+      "SEG67",
+      "SEG20",
+      "SEG19",
+      "SEG18",
+      "SEG22"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S167",
+    "TO": "IP_AllCATPart#S181",
+    "FROM_code": "CON28",
+    "TO_code": "CON31",
+    "Length": 221.1,
+    "Path": [
+      "SEG45",
+      "SEG46"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S167",
+    "TO": "IP_AllCATPart#S180",
+    "FROM_code": "CON28",
+    "TO_code": "CON32",
+    "Length": 564.8,
+    "Path": [
+      "SEG45",
+      "SEG03",
+      "SEG02",
+      "SEG01",
+      "SEG06",
+      "SEG07"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S167",
+    "TO": "IP_AllCATPart#S155",
+    "FROM_code": "CON28",
+    "TO_code": "CON33",
+    "Length": 945.3,
+    "Path": [
+      "SEG45",
+      "SEG44",
+      "SEG65",
+      "SEG66",
+      "SEG67",
+      "SEG20",
+      "SEG19",
+      "SEG18",
+      "SEG23",
+      "SEG24",
+      "SEG50"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S167",
+    "TO": "IP_AllCATPart#S157",
+    "FROM_code": "CON28",
+    "TO_code": "CON34",
+    "Length": 983.5,
+    "Path": [
+      "SEG45",
+      "SEG44",
+      "SEG65",
+      "SEG66",
+      "SEG67",
+      "SEG56",
+      "SEG51",
+      "SEG14",
+      "SEG17",
+      "SEG72"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S167",
+    "TO": "IP_AllCATPart#S161",
+    "FROM_code": "CON28",
+    "TO_code": "CON35",
+    "Length": 1008.9,
+    "Path": [
+      "SEG45",
+      "SEG44",
+      "SEG65",
+      "SEG66",
+      "SEG67",
+      "SEG56",
+      "SEG11",
+      "SEG10",
+      "SEG09",
+      "SEG08",
+      "SEG13"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S167",
+    "TO": "IP_AllCATPart#S160",
+    "FROM_code": "CON28",
+    "TO_code": "CON36",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S167",
+    "TO": "IP_AllCATPart#S164",
+    "FROM_code": "CON28",
+    "TO_code": "CON37",
+    "Length": 728.4,
+    "Path": [
+      "SEG45",
+      "SEG44",
+      "SEG65",
+      "SEG66",
+      "SEG67",
+      "SEG56",
+      "SEG57"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S167",
+    "TO": "IP_AllCATPart#S154",
+    "FROM_code": "CON28",
+    "TO_code": "CON38",
+    "Length": 960.4,
+    "Path": [
+      "SEG45",
+      "SEG44",
+      "SEG65",
+      "SEG66",
+      "SEG67",
+      "SEG56",
+      "SEG51",
+      "SEG14",
+      "SEG17",
+      "SEG73"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S167",
+    "TO": "IP_AllCATPart#S14",
+    "FROM_code": "CON28",
+    "TO_code": "CON39",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S167",
+    "TO": "IP_AllCATPart#S9",
+    "FROM_code": "CON28",
+    "TO_code": "CON40",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S167",
+    "TO": "IP_AllCATPart#S168",
+    "FROM_code": "CON28",
+    "TO_code": "CON41",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S167",
+    "TO": "IP_AllCATPart#S183",
+    "FROM_code": "CON28",
+    "TO_code": "CON42",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S98",
+    "TO": "IP_AllCATPart#S169",
+    "FROM_code": "CON29",
+    "TO_code": "CON30",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S98",
+    "TO": "IP_AllCATPart#S181",
+    "FROM_code": "CON29",
+    "TO_code": "CON31",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S98",
+    "TO": "IP_AllCATPart#S180",
+    "FROM_code": "CON29",
+    "TO_code": "CON32",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S98",
+    "TO": "IP_AllCATPart#S155",
+    "FROM_code": "CON29",
+    "TO_code": "CON33",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S98",
+    "TO": "IP_AllCATPart#S157",
+    "FROM_code": "CON29",
+    "TO_code": "CON34",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S98",
+    "TO": "IP_AllCATPart#S161",
+    "FROM_code": "CON29",
+    "TO_code": "CON35",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S98",
+    "TO": "IP_AllCATPart#S160",
+    "FROM_code": "CON29",
+    "TO_code": "CON36",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S98",
+    "TO": "IP_AllCATPart#S164",
+    "FROM_code": "CON29",
+    "TO_code": "CON37",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S98",
+    "TO": "IP_AllCATPart#S154",
+    "FROM_code": "CON29",
+    "TO_code": "CON38",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S98",
+    "TO": "IP_AllCATPart#S14",
+    "FROM_code": "CON29",
+    "TO_code": "CON39",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S98",
+    "TO": "IP_AllCATPart#S9",
+    "FROM_code": "CON29",
+    "TO_code": "CON40",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S98",
+    "TO": "IP_AllCATPart#S168",
+    "FROM_code": "CON29",
+    "TO_code": "CON41",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S98",
+    "TO": "IP_AllCATPart#S183",
+    "FROM_code": "CON29",
+    "TO_code": "CON42",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S169",
+    "TO": "IP_AllCATPart#S181",
+    "FROM_code": "CON30",
+    "TO_code": "CON31",
+    "Length": 842.3,
+    "Path": [
+      "SEG22",
+      "SEG18",
+      "SEG19",
+      "SEG20",
+      "SEG67",
+      "SEG66",
+      "SEG65",
+      "SEG44",
+      "SEG46"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S169",
+    "TO": "IP_AllCATPart#S180",
+    "FROM_code": "CON30",
+    "TO_code": "CON32",
+    "Length": 1186.0,
+    "Path": [
+      "SEG22",
+      "SEG18",
+      "SEG19",
+      "SEG20",
+      "SEG67",
+      "SEG66",
+      "SEG65",
+      "SEG44",
+      "SEG03",
+      "SEG02",
+      "SEG01",
+      "SEG06",
+      "SEG07"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S169",
+    "TO": "IP_AllCATPart#S155",
+    "FROM_code": "CON30",
+    "TO_code": "CON33",
+    "Length": 294.5,
+    "Path": [
+      "SEG22",
+      "SEG23",
+      "SEG24",
+      "SEG50"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S169",
+    "TO": "IP_AllCATPart#S157",
+    "FROM_code": "CON30",
+    "TO_code": "CON34",
+    "Length": 727.7,
+    "Path": [
+      "SEG22",
+      "SEG18",
+      "SEG19",
+      "SEG20",
+      "SEG56",
+      "SEG51",
+      "SEG14",
+      "SEG17",
+      "SEG72"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S169",
+    "TO": "IP_AllCATPart#S161",
+    "FROM_code": "CON30",
+    "TO_code": "CON35",
+    "Length": 753.1,
+    "Path": [
+      "SEG22",
+      "SEG18",
+      "SEG19",
+      "SEG20",
+      "SEG56",
+      "SEG11",
+      "SEG10",
+      "SEG09",
+      "SEG08",
+      "SEG13"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S169",
+    "TO": "IP_AllCATPart#S160",
+    "FROM_code": "CON30",
+    "TO_code": "CON36",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S169",
+    "TO": "IP_AllCATPart#S164",
+    "FROM_code": "CON30",
+    "TO_code": "CON37",
+    "Length": 472.6,
+    "Path": [
+      "SEG22",
+      "SEG18",
+      "SEG19",
+      "SEG20",
+      "SEG56",
+      "SEG57"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S169",
+    "TO": "IP_AllCATPart#S154",
+    "FROM_code": "CON30",
+    "TO_code": "CON38",
+    "Length": 704.6,
+    "Path": [
+      "SEG22",
+      "SEG18",
+      "SEG19",
+      "SEG20",
+      "SEG56",
+      "SEG51",
+      "SEG14",
+      "SEG17",
+      "SEG73"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S169",
+    "TO": "IP_AllCATPart#S14",
+    "FROM_code": "CON30",
+    "TO_code": "CON39",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S169",
+    "TO": "IP_AllCATPart#S9",
+    "FROM_code": "CON30",
+    "TO_code": "CON40",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S169",
+    "TO": "IP_AllCATPart#S168",
+    "FROM_code": "CON30",
+    "TO_code": "CON41",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S169",
+    "TO": "IP_AllCATPart#S183",
+    "FROM_code": "CON30",
+    "TO_code": "CON42",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S181",
+    "TO": "IP_AllCATPart#S180",
+    "FROM_code": "CON31",
+    "TO_code": "CON32",
+    "Length": 546.1,
+    "Path": [
+      "SEG46",
+      "SEG03",
+      "SEG02",
+      "SEG01",
+      "SEG06",
+      "SEG07"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S181",
+    "TO": "IP_AllCATPart#S155",
+    "FROM_code": "CON31",
+    "TO_code": "CON33",
+    "Length": 926.6,
+    "Path": [
+      "SEG46",
+      "SEG44",
+      "SEG65",
+      "SEG66",
+      "SEG67",
+      "SEG20",
+      "SEG19",
+      "SEG18",
+      "SEG23",
+      "SEG24",
+      "SEG50"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S181",
+    "TO": "IP_AllCATPart#S157",
+    "FROM_code": "CON31",
+    "TO_code": "CON34",
+    "Length": 964.8,
+    "Path": [
+      "SEG46",
+      "SEG44",
+      "SEG65",
+      "SEG66",
+      "SEG67",
+      "SEG56",
+      "SEG51",
+      "SEG14",
+      "SEG17",
+      "SEG72"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S181",
+    "TO": "IP_AllCATPart#S161",
+    "FROM_code": "CON31",
+    "TO_code": "CON35",
+    "Length": 990.2,
+    "Path": [
+      "SEG46",
+      "SEG44",
+      "SEG65",
+      "SEG66",
+      "SEG67",
+      "SEG56",
+      "SEG11",
+      "SEG10",
+      "SEG09",
+      "SEG08",
+      "SEG13"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S181",
+    "TO": "IP_AllCATPart#S160",
+    "FROM_code": "CON31",
+    "TO_code": "CON36",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S181",
+    "TO": "IP_AllCATPart#S164",
+    "FROM_code": "CON31",
+    "TO_code": "CON37",
+    "Length": 709.7,
+    "Path": [
+      "SEG46",
+      "SEG44",
+      "SEG65",
+      "SEG66",
+      "SEG67",
+      "SEG56",
+      "SEG57"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S181",
+    "TO": "IP_AllCATPart#S154",
+    "FROM_code": "CON31",
+    "TO_code": "CON38",
+    "Length": 941.7,
+    "Path": [
+      "SEG46",
+      "SEG44",
+      "SEG65",
+      "SEG66",
+      "SEG67",
+      "SEG56",
+      "SEG51",
+      "SEG14",
+      "SEG17",
+      "SEG73"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S181",
+    "TO": "IP_AllCATPart#S14",
+    "FROM_code": "CON31",
+    "TO_code": "CON39",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S181",
+    "TO": "IP_AllCATPart#S9",
+    "FROM_code": "CON31",
+    "TO_code": "CON40",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S181",
+    "TO": "IP_AllCATPart#S168",
+    "FROM_code": "CON31",
+    "TO_code": "CON41",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S181",
+    "TO": "IP_AllCATPart#S183",
+    "FROM_code": "CON31",
+    "TO_code": "CON42",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S180",
+    "TO": "IP_AllCATPart#S155",
+    "FROM_code": "CON32",
+    "TO_code": "CON33",
+    "Length": 1270.3,
+    "Path": [
+      "SEG07",
+      "SEG06",
+      "SEG01",
+      "SEG02",
+      "SEG03",
+      "SEG44",
+      "SEG65",
+      "SEG66",
+      "SEG67",
+      "SEG20",
+      "SEG19",
+      "SEG18",
+      "SEG23",
+      "SEG24",
+      "SEG50"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S180",
+    "TO": "IP_AllCATPart#S157",
+    "FROM_code": "CON32",
+    "TO_code": "CON34",
+    "Length": 1308.5,
+    "Path": [
+      "SEG07",
+      "SEG06",
+      "SEG01",
+      "SEG02",
+      "SEG03",
+      "SEG44",
+      "SEG65",
+      "SEG66",
+      "SEG67",
+      "SEG56",
+      "SEG51",
+      "SEG14",
+      "SEG17",
+      "SEG72"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S180",
+    "TO": "IP_AllCATPart#S161",
+    "FROM_code": "CON32",
+    "TO_code": "CON35",
+    "Length": 1333.9,
+    "Path": [
+      "SEG07",
+      "SEG06",
+      "SEG01",
+      "SEG02",
+      "SEG03",
+      "SEG44",
+      "SEG65",
+      "SEG66",
+      "SEG67",
+      "SEG56",
+      "SEG11",
+      "SEG10",
+      "SEG09",
+      "SEG08",
+      "SEG13"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S180",
+    "TO": "IP_AllCATPart#S160",
+    "FROM_code": "CON32",
+    "TO_code": "CON36",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S180",
+    "TO": "IP_AllCATPart#S164",
+    "FROM_code": "CON32",
+    "TO_code": "CON37",
+    "Length": 1053.4,
+    "Path": [
+      "SEG07",
+      "SEG06",
+      "SEG01",
+      "SEG02",
+      "SEG03",
+      "SEG44",
+      "SEG65",
+      "SEG66",
+      "SEG67",
+      "SEG56",
+      "SEG57"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S180",
+    "TO": "IP_AllCATPart#S154",
+    "FROM_code": "CON32",
+    "TO_code": "CON38",
+    "Length": 1285.4,
+    "Path": [
+      "SEG07",
+      "SEG06",
+      "SEG01",
+      "SEG02",
+      "SEG03",
+      "SEG44",
+      "SEG65",
+      "SEG66",
+      "SEG67",
+      "SEG56",
+      "SEG51",
+      "SEG14",
+      "SEG17",
+      "SEG73"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S180",
+    "TO": "IP_AllCATPart#S14",
+    "FROM_code": "CON32",
+    "TO_code": "CON39",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S180",
+    "TO": "IP_AllCATPart#S9",
+    "FROM_code": "CON32",
+    "TO_code": "CON40",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S180",
+    "TO": "IP_AllCATPart#S168",
+    "FROM_code": "CON32",
+    "TO_code": "CON41",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S180",
+    "TO": "IP_AllCATPart#S183",
+    "FROM_code": "CON32",
+    "TO_code": "CON42",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S155",
+    "TO": "IP_AllCATPart#S157",
+    "FROM_code": "CON33",
+    "TO_code": "CON34",
+    "Length": 812.0,
+    "Path": [
+      "SEG50",
+      "SEG24",
+      "SEG23",
+      "SEG18",
+      "SEG19",
+      "SEG20",
+      "SEG56",
+      "SEG51",
+      "SEG14",
+      "SEG17",
+      "SEG72"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S155",
+    "TO": "IP_AllCATPart#S161",
+    "FROM_code": "CON33",
+    "TO_code": "CON35",
+    "Length": 837.4,
+    "Path": [
+      "SEG50",
+      "SEG24",
+      "SEG23",
+      "SEG18",
+      "SEG19",
+      "SEG20",
+      "SEG56",
+      "SEG11",
+      "SEG10",
+      "SEG09",
+      "SEG08",
+      "SEG13"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S155",
+    "TO": "IP_AllCATPart#S160",
+    "FROM_code": "CON33",
+    "TO_code": "CON36",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S155",
+    "TO": "IP_AllCATPart#S164",
+    "FROM_code": "CON33",
+    "TO_code": "CON37",
+    "Length": 556.9,
+    "Path": [
+      "SEG50",
+      "SEG24",
+      "SEG23",
+      "SEG18",
+      "SEG19",
+      "SEG20",
+      "SEG56",
+      "SEG57"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S155",
+    "TO": "IP_AllCATPart#S154",
+    "FROM_code": "CON33",
+    "TO_code": "CON38",
+    "Length": 788.9,
+    "Path": [
+      "SEG50",
+      "SEG24",
+      "SEG23",
+      "SEG18",
+      "SEG19",
+      "SEG20",
+      "SEG56",
+      "SEG51",
+      "SEG14",
+      "SEG17",
+      "SEG73"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S155",
+    "TO": "IP_AllCATPart#S14",
+    "FROM_code": "CON33",
+    "TO_code": "CON39",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S155",
+    "TO": "IP_AllCATPart#S9",
+    "FROM_code": "CON33",
+    "TO_code": "CON40",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S155",
+    "TO": "IP_AllCATPart#S168",
+    "FROM_code": "CON33",
+    "TO_code": "CON41",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S155",
+    "TO": "IP_AllCATPart#S183",
+    "FROM_code": "CON33",
+    "TO_code": "CON42",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S157",
+    "TO": "IP_AllCATPart#S161",
+    "FROM_code": "CON34",
+    "TO_code": "CON35",
+    "Length": 675.6,
+    "Path": [
+      "SEG72",
+      "SEG17",
+      "SEG14",
+      "SEG51",
+      "SEG11",
+      "SEG10",
+      "SEG09",
+      "SEG08",
+      "SEG13"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S157",
+    "TO": "IP_AllCATPart#S160",
+    "FROM_code": "CON34",
+    "TO_code": "CON36",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S157",
+    "TO": "IP_AllCATPart#S164",
+    "FROM_code": "CON34",
+    "TO_code": "CON37",
+    "Length": 395.1,
+    "Path": [
+      "SEG72",
+      "SEG17",
+      "SEG14",
+      "SEG51",
+      "SEG57"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S157",
+    "TO": "IP_AllCATPart#S154",
+    "FROM_code": "CON34",
+    "TO_code": "CON38",
+    "Length": 153.1,
+    "Path": [
+      "SEG72",
+      "SEG73"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S157",
+    "TO": "IP_AllCATPart#S14",
+    "FROM_code": "CON34",
+    "TO_code": "CON39",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S157",
+    "TO": "IP_AllCATPart#S9",
+    "FROM_code": "CON34",
+    "TO_code": "CON40",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S157",
+    "TO": "IP_AllCATPart#S168",
+    "FROM_code": "CON34",
+    "TO_code": "CON41",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S157",
+    "TO": "IP_AllCATPart#S183",
+    "FROM_code": "CON34",
+    "TO_code": "CON42",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S161",
+    "TO": "IP_AllCATPart#S160",
+    "FROM_code": "CON35",
+    "TO_code": "CON36",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S161",
+    "TO": "IP_AllCATPart#S164",
+    "FROM_code": "CON35",
+    "TO_code": "CON37",
+    "Length": 420.5,
+    "Path": [
+      "SEG13",
+      "SEG08",
+      "SEG09",
+      "SEG10",
+      "SEG11",
+      "SEG57"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S161",
+    "TO": "IP_AllCATPart#S154",
+    "FROM_code": "CON35",
+    "TO_code": "CON38",
+    "Length": 652.5,
+    "Path": [
+      "SEG13",
+      "SEG08",
+      "SEG09",
+      "SEG10",
+      "SEG11",
+      "SEG51",
+      "SEG14",
+      "SEG17",
+      "SEG73"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S161",
+    "TO": "IP_AllCATPart#S14",
+    "FROM_code": "CON35",
+    "TO_code": "CON39",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S161",
+    "TO": "IP_AllCATPart#S9",
+    "FROM_code": "CON35",
+    "TO_code": "CON40",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S161",
+    "TO": "IP_AllCATPart#S168",
+    "FROM_code": "CON35",
+    "TO_code": "CON41",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S161",
+    "TO": "IP_AllCATPart#S183",
+    "FROM_code": "CON35",
+    "TO_code": "CON42",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S160",
+    "TO": "IP_AllCATPart#S164",
+    "FROM_code": "CON36",
+    "TO_code": "CON37",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S160",
+    "TO": "IP_AllCATPart#S154",
+    "FROM_code": "CON36",
+    "TO_code": "CON38",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S160",
+    "TO": "IP_AllCATPart#S14",
+    "FROM_code": "CON36",
+    "TO_code": "CON39",
+    "Length": 233.9,
+    "Path": [
+      "SEG48",
+      "SEG28",
+      "SEG26",
+      "SEG69"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S160",
+    "TO": "IP_AllCATPart#S9",
+    "FROM_code": "CON36",
+    "TO_code": "CON40",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S160",
+    "TO": "IP_AllCATPart#S168",
+    "FROM_code": "CON36",
+    "TO_code": "CON41",
+    "Length": 181.7,
+    "Path": [
+      "SEG48",
+      "SEG28",
+      "SEG29"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S160",
+    "TO": "IP_AllCATPart#S183",
+    "FROM_code": "CON36",
+    "TO_code": "CON42",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S164",
+    "TO": "IP_AllCATPart#S154",
+    "FROM_code": "CON37",
+    "TO_code": "CON38",
+    "Length": 372.0,
+    "Path": [
+      "SEG57",
+      "SEG51",
+      "SEG14",
+      "SEG17",
+      "SEG73"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S164",
+    "TO": "IP_AllCATPart#S14",
+    "FROM_code": "CON37",
+    "TO_code": "CON39",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S164",
+    "TO": "IP_AllCATPart#S9",
+    "FROM_code": "CON37",
+    "TO_code": "CON40",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S164",
+    "TO": "IP_AllCATPart#S168",
+    "FROM_code": "CON37",
+    "TO_code": "CON41",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S164",
+    "TO": "IP_AllCATPart#S183",
+    "FROM_code": "CON37",
+    "TO_code": "CON42",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S154",
+    "TO": "IP_AllCATPart#S14",
+    "FROM_code": "CON38",
+    "TO_code": "CON39",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S154",
+    "TO": "IP_AllCATPart#S9",
+    "FROM_code": "CON38",
+    "TO_code": "CON40",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S154",
+    "TO": "IP_AllCATPart#S168",
+    "FROM_code": "CON38",
+    "TO_code": "CON41",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S154",
+    "TO": "IP_AllCATPart#S183",
+    "FROM_code": "CON38",
+    "TO_code": "CON42",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S14",
+    "TO": "IP_AllCATPart#S9",
+    "FROM_code": "CON39",
+    "TO_code": "CON40",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S14",
+    "TO": "IP_AllCATPart#S168",
+    "FROM_code": "CON39",
+    "TO_code": "CON41",
+    "Length": 172.2,
+    "Path": [
+      "SEG69",
+      "SEG26",
+      "SEG29"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S14",
+    "TO": "IP_AllCATPart#S183",
+    "FROM_code": "CON39",
+    "TO_code": "CON42",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S9",
+    "TO": "IP_AllCATPart#S168",
+    "FROM_code": "CON40",
+    "TO_code": "CON41",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  },
+  {
+    "FROM": "IP_AllCATPart#S9",
+    "TO": "IP_AllCATPart#S183",
+    "FROM_code": "CON40",
+    "TO_code": "CON42",
+    "Length": 121.9,
+    "Path": [
+      "SEG77",
+      "SEG78",
+      "SEG79"
+    ],
+    "Status": "OK"
+  },
+  {
+    "FROM": "IP_AllCATPart#S168",
+    "TO": "IP_AllCATPart#S183",
+    "FROM_code": "CON41",
+    "TO_code": "CON42",
+    "Length": 0,
+    "Path": [],
+    "Status": "DISCONNECTED"
+  }
+]
