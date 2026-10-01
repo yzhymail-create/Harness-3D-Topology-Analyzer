@@ -720,7 +720,7 @@ def compute_relations(branch_data, conn_candidates, log):
                 ei = min(hi, key=lambda t: t[1])[0]
                 ej = min(hj, key=lambda t: t[1])[0]
                 rel["end_ends"].append((i, ei, j, ej))
-                log(f"接触: {pi['key']}端 <-> {pj['key']}端 ({d_min:.1f}mm)")
+                log(f"接触: {pi['occ']}端 <-> {pj['occ']}端 ({d_min:.1f}mm)")
                 pe_i = ptsi[0] if ei == 0 else ptsi[-1]
                 pe_j = ptsj[0] if ej == 0 else ptsj[-1]
                 J = ((pe_i[0]+pe_j[0])/2, (pe_i[1]+pe_j[1])/2, (pe_i[2]+pe_j[2])/2)
@@ -736,32 +736,32 @@ def compute_relations(branch_data, conn_candidates, log):
                         jtap_seen.add((k, i, j))
                         rel["taps"].append({"main": k, "s": s, "xyz": q, "tap": i,
                                             "tap_end": ei, "dev": dev})
-                        log(f"接头搭接(四路节点): {pi['key']}+{pj['key']}接头 -> "
-                            f"{branch_data[k]['key']} 站位{s:.1f}mm 偏差{dev:.1f}mm")
+                        log(f"接头搭接(四路节点): {pi['occ']}+{pj['occ']}接头 -> "
+                            f"{branch_data[k]['occ']} 站位{s:.1f}mm 偏差{dev:.1f}mm")
                         break
             elif hi:
                 ei, dev_i, s, q = min(hi, key=lambda t: t[1])
                 Lj = spine_len(ptsj)
                 if s <= STATION_END_TOL or s >= Lj - STATION_END_TOL:
                     rel["end_ends"].append((i, ei, j, 0 if s < Lj/2 else 1))
-                    log(f"接触(近端按端点连接): {pi['key']} <-> {pj['key']}端 ({d_min:.1f}mm)")
+                    log(f"接触(近端按端点连接): {pi['occ']} <-> {pj['occ']}端 ({d_min:.1f}mm)")
                 else:
                     rel["taps"].append({"main": j, "s": s, "xyz": q, "tap": i,
                                         "tap_end": ei, "dev": dev_i})
-                    log(f"搭接: {pi['key']} -> {pj['key']} 站位{s:.1f}mm 偏差{dev_i:.1f}mm")
+                    log(f"搭接: {pi['occ']} -> {pj['occ']} 站位{s:.1f}mm 偏差{dev_i:.1f}mm")
             elif hj:
                 ej, dev_j, s, q = min(hj, key=lambda t: t[1])
                 Li = spine_len(ptsi)
                 if s <= STATION_END_TOL or s >= Li - STATION_END_TOL:
                     rel["end_ends"].append((j, ej, i, 0 if s < Li/2 else 1))
-                    log(f"接触(近端按端点连接): {pj['key']} <-> {pi['key']}端 ({d_min:.1f}mm)")
+                    log(f"接触(近端按端点连接): {pj['occ']} <-> {pi['occ']}端 ({d_min:.1f}mm)")
                 else:
                     rel["taps"].append({"main": i, "s": s, "xyz": q, "tap": j,
                                         "tap_end": ej, "dev": dev_j})
-                    log(f"搭接: {pj['key']} -> {pi['key']} 站位{s:.1f}mm 偏差{dev_j:.1f}mm")
+                    log(f"搭接: {pj['occ']} -> {pi['occ']} 站位{s:.1f}mm 偏差{dev_j:.1f}mm")
             else:
                 rel["side_sides"].append({"a": pi["key"], "b": pj["key"], "dist": round(d_min, 2)})
-                log(f"侧-侧接触(忽略, 手工处理): {pi['key']} <-> {pj['key']} ({d_min:.1f}mm)")
+                log(f"侧-侧接触(忽略, 手工处理): {pi['occ']} <-> {pj['occ']} ({d_min:.1f}mm)")
 
     # ---- 管-非管(连接器/扎带): 用实体包围盒中心到中心线的距离 ----
     term_xyz = []  # (tag, 端部xyz, 包围盒对角线)
@@ -790,7 +790,7 @@ def compute_relations(branch_data, conn_candidates, log):
                                         "kind": "entity", "dist": max(0, dist),
                                         "xyz": tuple(exyz)})
                 term_xyz.append((c["tag"], exyz, 2.0*cr))
-                log(f"端部接触: {pi['key']}[{end}] <-> 实体 {c['tag']} ({dist:.1f}mm)")
+                log(f"端部接触: {pi['occ']}[{end}] <-> 实体 {c['tag']} ({dist:.1f}mm)")
     for i in range(n):
         pi = branch_data[i]
         ptsi = spine_pts[i]
@@ -813,7 +813,7 @@ def compute_relations(branch_data, conn_candidates, log):
             dup = next((t for t in term_xyz if t[0] == c["tag"]
                         and _d3(q, t[1]) <= t[2]), None)
             if dup is not None:
-                log(f"同体接触(跳过): {pi['key']} 站位{s:.1f}mm <-> 实体 {c['tag']} "
+                log(f"同体接触(跳过): {pi['occ']} 站位{s:.1f}mm <-> 实体 {c['tag']} "
                     f"(距已命名端部{_d3(q, dup[1]):.1f}mm, 同一刚体)")
                 continue
             # 找到最近的线束段端面圆心
@@ -825,11 +825,11 @@ def compute_relations(branch_data, conn_candidates, log):
             if dist_to_start <= dist_to_end:
                 # 用起点端面圆心
                 clamp_xyz = tuple(ptsi[0])
-                log(f"中部固定: {pi['key']} 站位{s:.1f}mm <-> 实体 {c['tag']} (距起点{dist_to_start:.1f}mm, 用起点端面圆心)")
+                log(f"中部固定: {pi['occ']} 站位{s:.1f}mm <-> 实体 {c['tag']} (距起点{dist_to_start:.1f}mm, 用起点端面圆心)")
             else:
                 # 用终点端面圆心
                 clamp_xyz = tuple(ptsi[-1])
-                log(f"中部固定: {pi['key']} 站位{s:.1f}mm <-> 实体 {c['tag']} (距终点{dist_to_end:.1f}mm, 用终点端面圆心)")
+                log(f"中部固定: {pi['occ']} 站位{s:.1f}mm <-> 实体 {c['tag']} (距终点{dist_to_end:.1f}mm, 用终点端面圆心)")
             
             rel["tie_stations"].append({"branch": i, "s": s, "xyz": clamp_xyz,
                                        "tag": c["tag"], "kind": "entity", "dev": dev})
@@ -1508,9 +1508,52 @@ def analyze(step_path, tol=3.0, out_dir=None, progress=None, force_reverse=False
     walk(root, [], gp_Trsf(), root_name)
     log(f"装配实例数: {len(leaves)}")
     
-    # 从STEP文件文本提取body名称
-    body_names = _parse_step_body_names(step_path)
-    log(f"STEP文件中找到 {len(body_names)} 个body名称")
+    # 从STEP文件文本提取body名称并建立映射
+    from name_mapper_fast import parse_step_bodies, extract_ocp_solid_info, match_vertices
+    step_bodies = parse_step_bodies(step_path)
+    log(f"STEP文件中找到 {len(step_bodies)} 个body名称")
+    
+    # 建立名称映射（用体积+包围盒中心作为key）
+    name_mapping = {}  # key: (vol, cx, cy, cz) -> name
+    
+    # 先按顶点数量分组STEP bodies
+    step_by_count = defaultdict(list)
+    for step_id, step_data in step_bodies.items():
+        step_by_count[len(step_data["vertices"])].append((step_id, step_data))
+    
+    # 收集所有OCP solid
+    all_ocp_solids = []
+    for lf in leaves:
+        shp = lf["shape"]
+        exs = TopExp_Explorer(shp, TopAbs_SOLID)
+        while exs.More():
+            all_ocp_solids.append((exs.Current(), lf["trsf"]))
+            exs.Next()
+    
+    # 对每个OCP solid，提取信息并匹配
+    for solid, trsf in all_ocp_solids:
+        info = extract_ocp_solid_info(solid)
+        if info is None:
+            continue
+        
+        vert_count = info["vert_count"]
+        if vert_count not in step_by_count:
+            continue
+        
+        # 快速筛选：中心点接近（用几何中心）
+        center_tol = 1.0  # mm
+        for step_id, step_data in step_by_count[vert_count]:
+            dist = np.linalg.norm(step_data["center"] - info["center"])
+            if dist <= center_tol:
+                # 精确匹配：顶点坐标
+                if match_vertices(step_data["vertices"], info["vertices"]):
+                    # 计算包围盒中心（应用变换），用于后续查询
+                    vol_val, bbox_center = solid_volume_bbox(solid, trsf)
+                    key = (round(vol_val, 2), round(bbox_center[0], 2), round(bbox_center[1], 2), round(bbox_center[2], 2))
+                    name_mapping[key] = step_data["name"]
+                    break
+    
+    log(f"成功建立名称映射: {len(name_mapping)} 个")
 
     # 按产品原型收集: 线框 / 实体
     protos = defaultdict(lambda: {"wire": [], "wire_len": 0.0, "solids": [], "occ": ""})
@@ -1547,17 +1590,11 @@ def analyze(step_path, tol=3.0, out_dir=None, progress=None, force_reverse=False
                 vol, bc = solid_volume_bbox(sub, lf["trsf"])
                 tube = is_tube_solid(sub)
                 
-                # 通过几何特征匹配STEP文件中的名称
-                real_name = None
-                if body_names:
-                    cx, cy, cz = bc[0], bc[1], bc[2]
-                    # 找体积和中心点最接近的body
-                    best_match = None
-                    best_score = float('inf')
-                    for eid, bname in body_names.items():
-                        # 这里需要STEP文件中的几何信息，但文本里没有
-                        # 暂时跳过，后续实现
-                        pass
+                # 通过体积+中心点匹配STEP文件中的名称
+                vol_val = vol  # solid_volume_bbox返回的vol
+                cx, cy, cz = bc[0], bc[1], bc[2]  # bc是包围盒中心
+                key = (round(vol_val, 2), round(cx, 2), round(cy, 2), round(cz, 2))
+                real_name = name_mapping.get(key)
                 
                 tag = real_name if real_name else (f"{base_tag}#S{si}" if multi else lf["occ"])
                 pd["solids"].append({"occ": lf["occ"], "tag": tag, "proto": lf["proto"],
