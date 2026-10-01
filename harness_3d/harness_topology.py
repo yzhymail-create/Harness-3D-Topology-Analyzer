@@ -1431,6 +1431,30 @@ def _cluster_tubes(kept, log, clamp_positions=None):
                                  "spine": ch2["pts"], "spine_len": ch2["len"]})
     return clusters
 
+def _parse_step_body_names(step_path):
+    """从STEP文件文本中提取MANIFOLD_SOLID_BREP的名称映射"""
+    import re
+    
+    def decode_step_name(s):
+        return re.sub(r'\\X2\\([0-9A-Fa-f]+)\\X0\\',
+                      lambda m: ''.join(chr(int(m.group(1)[i:i+4], 16))
+                                            for i in range(0, len(m.group(1)), 4)), s)
+    
+    body_names = {}  # {entity_id: name}
+    
+    with open(step_path, 'r', encoding='utf-8', errors='ignore') as f:
+        for line in f:
+            # 匹配 MANIFOLD_SOLID_BREP('Body.190',#934419)
+            m = re.match(r"#(\d+)=MANIFOLD_SOLID_BREP\('([^']+)',", line)
+            if m:
+                entity_id = int(m.group(1))
+                raw_name = m.group(2)
+                name = decode_step_name(raw_name)
+                body_names[entity_id] = name
+    
+    return body_names
+
+
 def analyze(step_path, tol=3.0, out_dir=None, progress=None, force_reverse=False):
     def log(msg):
         if progress: progress(msg)
@@ -1478,10 +1502,15 @@ def analyze(step_path, tol=3.0, out_dir=None, progress=None, force_reverse=False
             leaves.append({"occ": "/".join([p for p in path if is_real_name(p)]),
                            "proto": proto_ctx,
                            "shape": S.GetShape_s(ref),
-                           "trsf": parent_trsf})
+                           "trsf": parent_trsf,
+                           "label": ref})  # 保存label用于后续读取名称
 
     walk(root, [], gp_Trsf(), root_name)
     log(f"装配实例数: {len(leaves)}")
+    
+    # 从STEP文件文本提取body名称
+    body_names = _parse_step_body_names(step_path)
+    log(f"STEP文件中找到 {len(body_names)} 个body名称")
 
     # 按产品原型收集: 线框 / 实体
     protos = defaultdict(lambda: {"wire": [], "wire_len": 0.0, "solids": [], "occ": ""})
@@ -1517,7 +1546,20 @@ def analyze(step_path, tol=3.0, out_dir=None, progress=None, force_reverse=False
                 sub_nf = count_topo(sub, TopAbs_FACE)
                 vol, bc = solid_volume_bbox(sub, lf["trsf"])
                 tube = is_tube_solid(sub)
-                tag = f"{base_tag}#S{si}" if multi else lf["occ"]
+                
+                # 通过几何特征匹配STEP文件中的名称
+                real_name = None
+                if body_names:
+                    cx, cy, cz = bc[0], bc[1], bc[2]
+                    # 找体积和中心点最接近的body
+                    best_match = None
+                    best_score = float('inf')
+                    for eid, bname in body_names.items():
+                        # 这里需要STEP文件中的几何信息，但文本里没有
+                        # 暂时跳过，后续实现
+                        pass
+                
+                tag = real_name if real_name else (f"{base_tag}#S{si}" if multi else lf["occ"])
                 pd["solids"].append({"occ": lf["occ"], "tag": tag, "proto": lf["proto"],
                                      "faces": sub_nf, "vol": vol, "bbox_c": bc,
                                      "shape": sub, "trsf": lf["trsf"], "tube": tube})
