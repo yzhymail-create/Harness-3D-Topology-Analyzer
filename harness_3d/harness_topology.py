@@ -787,7 +787,8 @@ def compute_relations(branch_data, conn_candidates, log):
                 end = 0 if s < Li/2 else 1
                 exyz = ptsi[0] if end == 0 else ptsi[-1]
                 rel["terminals"].append({"branch": i, "end": end, "tag": c["tag"],
-                                        "kind": "entity", "dist": max(0, dist)})
+                                        "kind": "entity", "dist": max(0, dist),
+                                        "xyz": tuple(exyz)})
                 term_xyz.append((c["tag"], exyz, 2.0*cr))
                 log(f"端部接触: {pi['key']}[{end}] <-> 实体 {c['tag']} ({dist:.1f}mm)")
     for i in range(n):
@@ -815,9 +816,23 @@ def compute_relations(branch_data, conn_candidates, log):
                 log(f"同体接触(跳过): {pi['key']} 站位{s:.1f}mm <-> 实体 {c['tag']} "
                     f"(距已命名端部{_d3(q, dup[1]):.1f}mm, 同一刚体)")
                 continue
-            rel["tie_stations"].append({"branch": i, "s": s, "xyz": q,
+            # 找到最近的线束段端面圆心
+            # 计算投影点到两端端面的距离
+            dist_to_start = s  # 到起点的距离
+            dist_to_end = Li - s  # 到终点的距离
+            
+            # 用距离较近的端面圆心
+            if dist_to_start <= dist_to_end:
+                # 用起点端面圆心
+                clamp_xyz = tuple(ptsi[0])
+                log(f"中部固定: {pi['key']} 站位{s:.1f}mm <-> 实体 {c['tag']} (距起点{dist_to_start:.1f}mm, 用起点端面圆心)")
+            else:
+                # 用终点端面圆心
+                clamp_xyz = tuple(ptsi[-1])
+                log(f"中部固定: {pi['key']} 站位{s:.1f}mm <-> 实体 {c['tag']} (距终点{dist_to_end:.1f}mm, 用终点端面圆心)")
+            
+            rel["tie_stations"].append({"branch": i, "s": s, "xyz": clamp_xyz,
                                        "tag": c["tag"], "kind": "entity", "dev": dev})
-            log(f"中部固定: {pi['key']} 站位{s:.1f}mm <-> 实体 {c['tag']} ({dist:.1f}mm)")
     
     # ---- 通过实体的间接连接 ----
     # 如果两个分支都连接到同一个实体(连接器/卡扣), 就认为它们通过这个实体连接
@@ -1117,6 +1132,10 @@ def build_topology_from_relations(branch_data, relations, tol, conn_candidates, 
         ni = seg_end_node.get(key)
         if ni is not None:
             nodes[ni]["entities"].append((t["kind"], t["tag"]))
+            # 连接器的坐标用线束段的端面圆心
+            if t["kind"] == "connector" and "xyz" in t:
+                nodes[ni]["xyz"] = t["xyz"]
+                nodes[ni]["fixed"] = True
     counters = {"CON": 0, "TIE": 0, "CLP": 0, "BN": 0, "N": 0}
     for ni, nd in enumerate(nodes):
         seen, um = set(), []
@@ -1327,12 +1346,24 @@ def build_topology_from_relations(branch_data, relations, tol, conn_candidates, 
     return segments_out, nodes_out, entities, runs_out, branch_info
 
 
-def _cluster_tubes(kept, log):
+def _cluster_tubes(kept, log, clamp_positions=None):
     """管段聚类成"分支": 端点相连且相切的拼成一条链;
     搭接式接头拆分(对标 VBA"端点落在他曲线身上=分支点"):
     链内两管段端头相接, 若接头落在第三条管体侧壁接触范围内,
     则此处为双分支搭接点, 不得合并为一根, 拆成独立分支.
-    kept: [{spine, spine_len, solid:{vol,tag}, ...}]. 返回 clusters."""
+    接头处有卡扣的不合并(分段点).
+    kept: [{spine, spine_len, solid:{vol,tag}, ...}]. 返回 clusters.
+    clamp_positions: [(x,y,z), ...] 卡扣位置列表."""
+    if clamp_positions is None:
+        clamp_positions = []
+    
+    def _has_clamp_nearby(pt, tol=8.0):
+        """检查点附近是否有卡扣"""
+        for cp in clamp_positions:
+            if _d3(pt, cp) <= tol:
+                return True
+        return False
+    
     segs = [{"pts": it["spine"], "len": it["spine_len"], "it": it} for it in kept]
     pre_chains = list(chain_all(segs, tol=2.0, max_angle_deg=30.0))
 
@@ -1353,6 +1384,13 @@ def _cluster_tubes(kept, log):
                 J = _spine_joint(mems[ai]["it"]["spine"], mems[bi]["it"]["spine"])
                 if J is None:
                     continue
+                # 检查接头处是否有卡扣
+                if _has_clamp_nearby(J):
+                    log(f"卡扣分段点(不合并): {mems[ai]['it']['solid']['tag']} + "
+                        f"{mems[bi]['it']['solid']['tag']} 接头处有卡扣")
+                    forbid.add((id(mems[ai]), id(mems[bi])))
+                    continue
+                # 检查是否落在第三条管体上
                 for cj, ch2 in enumerate(pre_chains):
                     if cj == ci:
                         continue
@@ -1501,6 +1539,16 @@ def analyze(step_path, tol=3.0, out_dir=None, progress=None, force_reverse=False
                 log(f"警告: {s['tag']} 反推中心线失败, 跳过")
     # 2) 管状实体聚类成"分支": 同一产品内, 中线重叠的(半壳/分面)去重, 端点相连且
     #    相切的(同一扫掠体的分段)拼成一条; 分叉节点处有夹角的管子不合并
+    #    接头处有卡扣的不合并(分段点)
+
+    # 收集所有非管状实体的位置(卡扣候选), 用于聚类时判断分段点
+    clamp_positions = []
+    for proto, pd in protos.items():
+        for s in pd["solids"]:
+            if not s["tube"] and s["bbox_c"] is not None:
+                # bbox_c = [cx, cy, cz, dx, dy, dz]
+                clamp_positions.append(tuple(s["bbox_c"][:3]))
+    log(f"非管状实体(卡扣候选)数量: {len(clamp_positions)}")
 
     clusters = []
     for proto, pd in protos.items():
@@ -1513,7 +1561,7 @@ def analyze(step_path, tol=3.0, out_dir=None, progress=None, force_reverse=False
                    for k in kept):
                 continue
             kept.append(it)
-        for cl in _cluster_tubes(kept, log):
+        for cl in _cluster_tubes(kept, log, clamp_positions):
             clusters.append(cl)
     # 3) 线框按产品分组成链(保留全部链, 逐条判定)
     wire_chains = []
