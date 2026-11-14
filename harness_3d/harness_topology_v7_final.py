@@ -45,6 +45,7 @@ WIRE_MIN_LEN = 20.0   # 可用线框最小总长 mm
 ASPECT_MIN = 4.0      # 管状判定最小长径比
 # --- 接触式拓扑分析参数(2026-09-27 方案) ---
 CONTACT_TOL = 2.0        # 实体接触判定距离 mm
+END_GAP_TOL = 5.0        # 2026-11-14 用户定规: 连接器/设备与管端间隙判定距离 mm (端部专用; 中部接触仍用 CONTACT_TOL)
 END_TOL = 5.0            # 支撑点距管端 <= 此值视为端部接触 mm
 STATION_END_TOL = 5.0    # 搭接投影距主干端头 <= 此值按端点连接处理 mm
 STATION_MERGE_TOL = 10.0 # 搭接/固定站位合并: 弧长差与空间距离双条件 mm
@@ -53,6 +54,7 @@ TIE_SIZE_MAX = 30.0      # 非管实体最大包围盒尺寸 <= 此值判为扎�
 MESH_DEFL = 0.15            # 网格化线性偏差 mm
 PROX_TOL = CONTACT_TOL + 0.5  # 窄相候选裕量 mm(=2.5); 真实接触(<=2.0mm)的三角化
                               # 间隙 <= 2.0+2*0.15 = 2.3 < 2.5, 数学上不漏检
+END_PROX_TOL = END_GAP_TOL + 0.5  # 2026-11-14 端部窄相候选裕量 mm(=5.5); 真实接触(<=5.0mm)的三角化间隙 <= 5.0+2*0.15 = 5.3 < 5.5, 数学上不漏检
 USE_MESH_PROXIMITY = True     # 网格窄相快速拒绝总开关
 
 
@@ -793,6 +795,20 @@ def compute_relations(branch_data, conn_candidates, log):
     _t_phase = time.time()
 
     # ---- 2) 管-管搭接: 分支端点 -> 他分支中线投影 ----
+    # 2026-11-14 性能预筛: 中心线包围盒 (各向外扩管半径); 投影前先筛掉无接触可能的管对, 不改变结果
+    spine_boxes = []
+    for bi in range(n):
+        _pts = spines[bi]
+        _r = branch_radius[bi]
+        _xs = [p[0] for p in _pts]; _ys = [p[1] for p in _pts]; _zs = [p[2] for p in _pts]
+        spine_boxes.append((min(_xs)-_r, min(_ys)-_r, min(_zs)-_r,
+                            max(_xs)+_r, max(_ys)+_r, max(_zs)+_r))
+    def _box_gap(b1, b2):
+        """两轴对齐包围盒间隙 (重叠则为 0)."""
+        dx = max(b2[0]-b1[3], b1[0]-b2[3], 0.0)
+        dy = max(b2[1]-b1[4], b1[1]-b2[4], 0.0)
+        dz = max(b2[2]-b1[5], b1[2]-b2[5], 0.0)
+        return math.sqrt(dx*dx + dy*dy + dz*dz)
     tap_seen = set()
     for i in range(n):
         if not bw[i]:
@@ -802,6 +818,9 @@ def compute_relations(branch_data, conn_candidates, log):
             C = ends[i][ei]
             for j in range(n):
                 if j == i or not bw[j]:
+                    continue
+                # 2026-11-14 性能预筛: 包围盒间隙 > 搭接判定阈值则端点到中线距离必超阈值, 跳过投影
+                if _box_gap(spine_boxes[i], spine_boxes[j]) > branch_radius[j] + ri + CONTACT_TOL:
                     continue
                 s, q, dev = _poly_project(C, spines[j])
                 Lj = spine_lens[j]
@@ -863,7 +882,8 @@ def compute_relations(branch_data, conn_candidates, log):
         for a in bw[i]:
             if not broad(a, c):
                 continue
-            if a["box"].Distance(c["box"]) > CONTACT_TOL:
+            # 2026-11-14: 粗筛阈值随调用方 tol 走 (端部 5.5mm / 中部 2.5mm / 快速通道 1.7mm), 保证 2-5mm 端部间隙不被误筛
+            if a["box"].Distance(c["box"]) > tol:
                 continue
             if a.get("mok") and c.get("mok"):
                 try:
@@ -877,8 +897,9 @@ def compute_relations(branch_data, conn_candidates, log):
                 return None
         return False
 
-    def _numpy_dist(i, ci):
-        """纯 numpy 网格距离 (无 BRep 回退). 返回 (dist, q_spine_xyz) 或 None."""
+    def _numpy_dist(i, ci, tol=CONTACT_TOL):
+        """纯 numpy 网格距离 (无 BRep 回退). 返回 (dist, q_spine_xyz) 或 None.
+        tol: 接触判定距离 (端部调用传 END_GAP_TOL=5.0, 中部默认 CONTACT_TOL=2.0; 2026-11-14 用户定规)."""
         c = cw[ci]
         S = _branch_spine(i)
         radius = branch_radius[i]
@@ -887,12 +908,12 @@ def compute_relations(branch_data, conn_candidates, log):
         for a in bw[i]:
             if not broad(a, c):
                 continue
-            if a["box"].Distance(c["box"]) > CONTACT_TOL:
+            if a["box"].Distance(c["box"]) > tol:
                 continue
             if not (a.get("mok") and c.get("mok")):
                 continue
             try:
-                prox = BRepExtrema_ShapeProximity(a["w"], c["w"], PROX_TOL)
+                prox = BRepExtrema_ShapeProximity(a["w"], c["w"], tol + 0.5)
                 prox.Perform()
                 if not prox.IsDone():
                     continue
@@ -939,20 +960,23 @@ def compute_relations(branch_data, conn_candidates, log):
         res = None
         c = cw[ci]
         ptsi = spines[i]; Li = spine_lens[i]
+        # 2026-11-14 用户定规: 先定端部/中部区域, 再按区域取预筛阈值 (端部间隙 5mm / 中部仍 2mm)
+        s_bc, _, _ = _poly_project(c["c"], ptsi)
+        is_end = s_bc <= END_TOL or s_bc >= Li - END_TOL
+        pre_tol = END_GAP_TOL if is_end else CONTACT_TOL
         pre = False
         for a in bw[i]:
-            if broad(a, c) and a["box"].Distance(c["box"]) <= CONTACT_TOL:
+            if broad(a, c) and a["box"].Distance(c["box"]) <= pre_tol:
                 pre = True; break
         if pre:
-            s_bc, _, _ = _poly_project(c["c"], ptsi)
-            if s_bc <= END_TOL or s_bc >= Li - END_TOL:
-                v25 = _prox_veto(i, ci, PROX_TOL)
+            if is_end:
+                v25 = _prox_veto(i, ci, END_PROX_TOL)
                 if v25 is not False:
                     if _prox_veto(i, ci, 1.7) is True:
                         res = ("end", 0 if s_bc < Li/2 else 1, 0.0)
                     else:
-                        r = _numpy_dist(i, ci)
-                        if r and r[0] <= CONTACT_TOL:
+                        r = _numpy_dist(i, ci, END_GAP_TOL)
+                        if r and r[0] <= END_GAP_TOL:
                             res = ("end", 0 if s_bc < Li/2 else 1, r[0])
             else:
                 v25 = _prox_veto(i, ci, PROX_TOL)
