@@ -31,8 +31,8 @@ import time
 
 import numpy as np
 
-from common import (aabb_from_points, bbox_c_from_box, decode_step_name,
-                    dump_json)
+from common import (aabb_dist, aabb_from_points, bbox_c_from_box,
+                    decode_step_name, dump_json)
 from v7geom import v7
 from v7geom import (chain_all, count_topo, edge_length, is_tube_solid,
                     polyline_dist, reverse_spine, sample_edge,
@@ -41,6 +41,8 @@ from v7geom import (chain_all, count_topo, edge_length, is_tube_solid,
 
 from OCP.STEPControl import STEPControl_Reader
 from OCP.IFSelect import IFSelect_RetDone
+from OCP.BRepAdaptor import BRepAdaptor_Surface
+from OCP.GeomAbs import GeomAbs_Plane
 from OCP.TopExp import TopExp_Explorer
 from OCP.TopAbs import TopAbs_FACE, TopAbs_EDGE, TopAbs_SOLID
 from OCP.TopoDS import TopoDS
@@ -82,6 +84,33 @@ def parse_step_text(step_path, log):
     return id2name, root_name
 
 
+def _count_faces_planar(shape):
+    """一次遍历数面：总面数 + 平面数（只判面类型，不算面积）。
+    面类型判定与 v7 face_areas 一致：BRepAdaptor_Surface(f).GetType()
+    == GeomAbs_Plane。供管判定预筛用（见 extract 内说明）。"""
+    n = 0
+    nplanar = 0
+    ex = TopExp_Explorer(shape, TopAbs_FACE)
+    while ex.More():
+        n += 1
+        try:
+            if (BRepAdaptor_Surface(TopoDS.Face(ex.Current())).GetType()
+                    == GeomAbs_Plane):
+                nplanar += 1
+        except Exception:
+            pass
+        ex.Next()
+    return n, nplanar
+
+
+def _has_topo(shp, t):
+    """形状是否含某类子拓扑（找到第一个即停，不用数完）。
+    等价于 count_topo(shp, t) > 0，但对几千面的复杂实体快得多；
+    只用于“有没有”的判断，不用于需要确切数目的地方。"""
+    ex = TopExp_Explorer(shp, t)
+    return ex.More()
+
+
 def collect_wire_chains(step_path, root_name, log):
     """XCAF 遍历收集线框链（v7 analyze 第 3 步同款逻辑）。
     返回 (chains, xcaf_root_name)：chains 为 [{proto, pts, len, n_seg}]
@@ -110,11 +139,18 @@ def collect_wire_chains(step_path, root_name, log):
     for i in range(1, tops.Length() + 1):
         lab = tops.Value(i)
         if S.IsAssembly_s(lab):
-            cands.append((count_topo(S.GetShape_s(lab), TopAbs_FACE), lab))
+            cands.append(lab)
     if not cands:
         raise RuntimeError("STEP 中没有找到装配结构")
-    cands.sort(key=lambda t: -t[0])
-    root_lab = cands[0][1]
+    if len(cands) == 1:
+        # 只有一个顶层装配就是根，不用数它全部面数（原逻辑是按面数取最大，
+        # 单候选时等价，省一次全装配面遍历）
+        root_lab = cands[0]
+    else:
+        scored = [(count_topo(S.GetShape_s(lab), TopAbs_FACE), lab)
+                  for lab in cands]
+        scored.sort(key=lambda t: -t[0])
+        root_lab = scored[0][1]
 
     from collections import defaultdict
     wire_by_proto = defaultdict(lambda: {"curves": [], "wire_len": 0.0})
@@ -143,9 +179,9 @@ def collect_wire_chains(step_path, root_name, log):
                 walk(c, g, proto_ctx)
         else:
             shp = S.GetShape_s(ref)
-            nf = count_topo(shp, TopAbs_FACE)
-            ne = count_topo(shp, TopAbs_EDGE)
-            if nf == 0 and ne > 0:
+            # 线框叶产品：无面、有边。只判“有没有”，不用数完
+            # （count_topo 全数对几千面实体是浪费；_has_topo 找到第一个即停）
+            if not _has_topo(shp, TopAbs_FACE) and _has_topo(shp, TopAbs_EDGE):
                 pd = wire_by_proto[proto_ctx]
                 ex = TopExp_Explorer(shp, TopAbs_EDGE)
                 while ex.More():
@@ -242,7 +278,7 @@ def extract(step_path, out_dir, log, with_wires=True):
             continue
         try:
             vol, bc = solid_volume_bbox(shape, IDENTITY)
-            nfaces = count_topo(shape, TopAbs_FACE)
+            nfaces, nplanar = _count_faces_planar(shape)
             bbox = (float(bc[0] - bc[3] / 2), float(bc[1] - bc[4] / 2),
                     float(bc[2] - bc[5] / 2), float(bc[0] + bc[3] / 2),
                     float(bc[1] + bc[4] / 2), float(bc[2] + bc[5] / 2))
@@ -254,9 +290,19 @@ def extract(step_path, out_dir, log, with_wires=True):
         base = {"tag": tag, "step_id": step_id, "name": nm, "proto": root_name,
                 "vol": float(vol), "bbox": [float(x) for x in bbox],
                 "bbox_c": bbox_c, "faces": int(nfaces)}
-        try:
-            tube = is_tube_solid(shape)
-        except Exception:
+        # 管判定预筛（2026-11-14 优化，结果不变）：is_tube_solid 的判定是
+        # “恰好 2 个平面端面且有侧壁面且体积 > 0”，但它内部 face_areas 要对
+        # 每个面做面积分——几千面的连接器很贵（IP 实测 is_tube 合计 31.9s）。
+        # 此处先只按面类型数平面（不做面积分）：平面数 ≠2、或无侧壁面、
+        # 或体积 ≤0 时，is_tube_solid 必返回 None，直接判非管，不调原函数；
+        # 只有 2 平面 + 有侧壁 + 体积 >0 才调原函数（此时它必返回管字典，
+        # dia/length 与原来逐行一致；原函数内若抛异常仍按原来走 tube=None）。
+        if vol > 0 and nplanar == 2 and nfaces - nplanar > 0:
+            try:
+                tube = is_tube_solid(shape)
+            except Exception:
+                tube = None
+        else:
             tube = None
         if tube:
             try:
@@ -292,11 +338,35 @@ def extract(step_path, out_dir, log, with_wires=True):
     gc.collect()
 
     # ---- 管去重：中线重叠 ≥60% 只保留最长（v7 同款；扁平文件单 proto 即全局） ----
+    # 包围盒预筛（2026-11-14 优化，结果不变）：spines_overlap(tol=2.0) 判定
+    # 两条中线是否大面积重叠——短中线采样点到长中线距离 <2.0mm 的占比 ≥60%。
+    # 若两中线包围盒间隙 > 2.0mm，则每个采样点到长中线的距离都 > 2.0mm，
+    # 占比必为 0 < 0.6，spines_overlap 必为 False，可安全跳过。
+    # 实测地板：114960 对中 114271 对（99.4%）可跳过，只实算 689 对。
+    spine_boxes = {}
+    for it in tube_solids:
+        _p = np.array(it["spine"])
+        spine_boxes[it["tag"]] = (
+            float(_p[:, 0].min()), float(_p[:, 1].min()),
+            float(_p[:, 2].min()), float(_p[:, 0].max()),
+            float(_p[:, 1].max()), float(_p[:, 2].max()))
     kept = []
     deduped = []
+    n_overlap_calls = 0
+    n_dedup_skip = 0
     for it in sorted(tube_solids, key=lambda x: -x["spine_len"]):
         pts = np.array(it["spine"])
-        if any(spines_overlap(pts, np.array(k["spine"])) for k in kept):
+        bi = spine_boxes[it["tag"]]
+        dup = False
+        for k in kept:
+            if aabb_dist(bi, spine_boxes[k["tag"]]) > 2.0:
+                n_dedup_skip += 1
+                continue
+            n_overlap_calls += 1
+            if spines_overlap(pts, np.array(k["spine"])):
+                dup = True
+                break
+        if dup:
             deduped.append({"tag": it["tag"], "name": it["name"]})
             # 被去重的管实体按 v7 语义进连接器候选（v7 analyze 第 6 步）
             devices.append({k: v for k, v in it.items()
@@ -304,7 +374,8 @@ def extract(step_path, out_dir, log, with_wires=True):
                                      "bbox", "bbox_c", "faces")})
             continue
         kept.append(it)
-    log(f"[去重] 管 {len(tube_solids)} -> {len(kept)}（去重 {len(deduped)} 个）")
+    log(f"[去重] 管 {len(tube_solids)} -> {len(kept)}（去重 {len(deduped)} 个；"
+        f"重叠实算 {n_overlap_calls} 次，包围盒跳过 {n_dedup_skip} 次）")
     for d in deduped:
         log(f"[去重] 中线重叠去重（进连接器候选）：{d['tag']} {d['name']}")
 

@@ -167,15 +167,28 @@ def compute(entities, shapes, out_dir, log):
         f"（投影 {n_proj} 次，预筛跳过 {n_skip} 次）")
 
     # ---- 2b) 接头落在第三管（四路节点） ----
+    # 包围盒预筛（2026-11-14 优化，结果不变）：spine_boxes[k] 是 k 管中线
+    # 包围盒外扩管半径，中线必在盒内，故接头到中线距离 ≥ 接头点到盒的距离。
+    # 若该距离 > branch_radius[i]+branch_radius[k]+CONTACT_TOL，则投影偏差
+    # dev 一定超阈值，不可能是四路节点，可安全跳过 poly_project。
     t0 = time.time()
     jtap_seen = set()
+    n_2b_proj = 0
+    n_2b_skip = 0
     for (i, ei, j, ej) in list(rel["end_ends"]):
         pe_i, pe_j = ends[i][ei], ends[j][ej]
         joint = ((pe_i[0] + pe_j[0]) / 2, (pe_i[1] + pe_j[1]) / 2,
                  (pe_i[2] + pe_j[2]) / 2)
+        joint_box = (joint[0], joint[1], joint[2],
+                     joint[0], joint[1], joint[2])
         for k in range(n):
             if k == i or k == j or not has_shape[k]:
                 continue
+            if aabb_dist(joint_box, spine_boxes[k]) > (
+                    branch_radius[i] + branch_radius[k] + CONTACT_TOL):
+                n_2b_skip += 1
+                continue
+            n_2b_proj += 1
             s, q, dev = poly_project(joint, spines[k])
             lk = spine_lens[k]
             if (dev <= branch_radius[i] + branch_radius[k] + CONTACT_TOL
@@ -187,7 +200,8 @@ def compute(entities, shapes, out_dir, log):
                 log(f"接头搭接(四路节点): {branches[i]['key']}+{branches[j]['key']}接头 -> "
                     f"{branches[k]['key']} 站位{s:.1f}mm 偏差{dev:.1f}mm")
                 break
-    log(f"[四路] {time.time()-t0:.1f}s，{len(jtap_seen)} 处")
+    log(f"[四路] {time.time()-t0:.1f}s，{len(jtap_seen)} 处"
+        f"（投影 {n_2b_proj} 次，预筛跳过 {n_2b_skip} 次）")
 
     # ---- 3) 管-设备：v7 网格距离（逐设备瞬态网格化，用完即清） ----
     # 与 v7 新版（5mm 规则）的 _device_assoc / _prox_veto / _numpy_dist
