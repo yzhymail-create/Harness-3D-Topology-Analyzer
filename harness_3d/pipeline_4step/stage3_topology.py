@@ -74,6 +74,59 @@ def build(entities, relations, out_dir, log, tol=6.0):
         build_topology_from_relations(branch_data, rel, tol,
                                       conn_candidates, log)
 
+    # ---- 规则二新规（2026-11-15 用户定，替代 2026-11-14 的降级版）：
+    # 悬空分支端不再降级管子本身；悬空端默认为连接器节点。
+    # 做法：type hanging -> connector，编码 Nxx -> CONxx（从现有最大 CON
+    # 序号续编，不动已有连接器编码），name_3d 记为“默认连接器”，并打
+    # default_connector=true 标记（非实体连接器）。坐标仍为管端面圆心
+    # （v7 已算好，nd["xyz"] 不动）。同步更新 segments/runs/branch_info/
+    # entities 里对该节点编码的引用。其他节点类型判定一律不动。
+    import re
+    hanging_nodes = [nd for nd in nodes if nd["type"] == "hanging"]
+    if hanging_nodes:
+        max_con = 0
+        for nd in nodes:
+            m = re.fullmatch(r"CON(\d+)", nd["code"])
+            if m:
+                max_con = max(max_con, int(m.group(1)))
+            for sc in nd.get("secondary", []):
+                m = re.fullmatch(r"CON(\d+)", sc["code"])
+                if m:
+                    max_con = max(max_con, int(m.group(1)))
+        code_map = {}
+        for nd in sorted(hanging_nodes, key=lambda r: r["id"]):
+            max_con += 1
+            new_code = f"CON{max_con:02d}"
+            code_map[nd["code"]] = new_code
+            nd["code"] = new_code
+            nd["type"] = "connector"
+            nd["name_3d"] = "默认连接器"
+            nd["default_connector"] = True
+        for sg in segments:
+            if sg["na"] in code_map:
+                sg["na"] = code_map[sg["na"]]
+            if sg["nb"] in code_map:
+                sg["nb"] = code_map[sg["nb"]]
+        for r in runs:
+            if r["na"] in code_map:
+                r["na"] = code_map[r["na"]]
+            if r["nb"] in code_map:
+                r["nb"] = code_map[r["nb"]]
+        for bi in branch_info:
+            if bi["node0"] in code_map:
+                bi["node0"] = code_map[bi["node0"]]
+            if bi["node1"] in code_map:
+                bi["node1"] = code_map[bi["node1"]]
+        for e in entities_out:
+            if e["code"] in code_map:
+                e["code"] = code_map[e["code"]]
+                e["category"] = "连接器"
+                e["name_3d"] = "默认连接器"
+                e["note"] = ("默认连接器（悬空端推断，非实体连接器）; "
+                             + e["note"].replace("自动命名; ", ""))
+        log(f"[规则二] 悬空端默认连接器 {len(hanging_nodes)} 个："
+            f"{', '.join(code_map.values())}（管子不降级）")
+
     # ---- 端点重命名（2026-11-14 用户定规）：节点 name_3d 按接触实体取真名。
     # v7 原函数输出的 name_3d 是设备 tag（S 编号）；此处按 devices 表换成
     # CATIA 实例全名，S 编号保留在 entity 字段做追溯。纯分支点（BN）

@@ -42,6 +42,9 @@ import stage2_contacts
 import stage3_topology
 import stage4_outputs
 
+# 规则二新规（2026-11-15 用户定）：悬空端不再降级管子，悬空端在第 3 步
+# 默认为连接器节点（见 stage3_topology），故此处不再有降级迭代循环。
+
 REFERENCES = {
     "floor": {"管": 480, "节点": 471, "连接器": 105, "卡扣": 173,
               "分支点": 95, "接头": 67, "悬空": 31},
@@ -92,9 +95,15 @@ def main():
             f"设备 {len(entities['devices'])}）")
 
     if args.from_stage <= 2:
+        # 第 2+3 步各跑一遍（2026-11-15 新规：规则二不再降级迭代，
+        # 悬空端在第 3 步默认为连接器节点，见 stage3_topology）。
         with StageTimer("第 2 步 接触分析", log):
-            relations = stage2_contacts.compute(entities, shapes, args.out, log)
-        # 释放形状（第 3/4 步纯数据，不需要形状）
+            relations = stage2_contacts.compute(
+                entities, shapes, args.out, log)
+        with StageTimer("第 3 步 拓扑组装", log):
+            topology = stage3_topology.build(
+                entities, relations, args.out, log, tol=args.tol)
+        # 释放形状（第 4 步纯数据，不需要形状）
         del shapes
         gc.collect()
         log(f"[内存] 释放形状后：{peak_rss_mb():.0f} MB")
@@ -102,11 +111,11 @@ def main():
         relations = load_json(os.path.join(args.out, "relations.json"))
         log("[第 2 步] 跳过，读入 relations.json")
 
-    if args.from_stage <= 3:
+    if args.from_stage == 3:
         with StageTimer("第 3 步 拓扑组装", log):
             topology = stage3_topology.build(entities, relations, args.out,
                                              log, tol=args.tol)
-    else:
+    elif args.from_stage > 3:
         topology = load_json(os.path.join(args.out, "topology.json"))
         log("[第 3 步] 跳过，读入 topology.json")
 

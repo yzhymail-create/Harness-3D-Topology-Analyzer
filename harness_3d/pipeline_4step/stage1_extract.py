@@ -10,7 +10,11 @@
      已验证：TransferOne 传出的形状就是世界坐标（与 XCAF 对比，
      体积差 0.00、中心距 0.00mm）。
   3) 每个形状：is_tube_solid 判定（恰好 2 平面端面，v7 死规则）；
+     再过三条用户新规则（2026-11-14 22:50/22:55）：
+     规则三命名交叉验证（明确非管名优先于几何，直接降级）→
+     规则一端面近似圆 + 两端面等大（圆拟合残差 + 尺寸比 + 面积一致）→
      管子 reverse_spine 反推中心线；非管记体积/包围盒/面数。
+     规则二（末端绝对判定）在驱动里拓扑后做，见 run_pipeline.py。
   4) 管去重：中线重叠 ≥60% 只保留最长（v7 同款 spines_overlap；
      被去重的管实体按 v7 语义仍进连接器候选，见 stage3 说明）。
   5) 线框（可选，--no-wire 可跳过）：XCAF 遍历找无面只有边的叶产品，
@@ -41,12 +45,132 @@ from v7geom import (chain_all, count_topo, edge_length, is_tube_solid,
 
 from OCP.STEPControl import STEPControl_Reader
 from OCP.IFSelect import IFSelect_RetDone
-from OCP.BRepAdaptor import BRepAdaptor_Surface
+from OCP.BRepAdaptor import BRepAdaptor_Surface, BRepAdaptor_Curve
 from OCP.GeomAbs import GeomAbs_Plane
 from OCP.TopExp import TopExp_Explorer
 from OCP.TopAbs import TopAbs_FACE, TopAbs_EDGE, TopAbs_SOLID
 from OCP.TopoDS import TopoDS
 from OCP.gp import gp_Trsf
+from OCP.GCPnts import GCPnts_QuasiUniformDeflection
+from OCP.GProp import GProp_GProps
+from OCP.BRepGProp import BRepGProp
+
+# ---- 规则一阈值（2026-11-14 用户定规，阈值按 X1X/IP 实测数据定） ----
+# X1X/IP 实测：全部 128 个恰好 2 平面端面的实体（真管与误判连接器）
+# 端面圆拟合残差均为 0.0000~0.0001、尺寸比均为 1.000——规则一在现有
+# 数据上不改判任何实体，是面向未来数据的守门条件。阈值取宽松值：
+# 残差 <5%（实测最大值的 500 倍）、尺寸比 >0.90、面积一致 0.75~1.25
+# （面积一致用于排除直线边拟出的巨大圆：真圆盘面积=πr²）。
+RULE1_RES_MAX = 0.05
+RULE1_RATIO_MIN = 0.90
+RULE1_AREA_MIN = 0.75
+RULE1_AREA_MAX = 1.25
+
+CJK_RE = re.compile(r"[\u4e00-\u9fff]")
+
+
+def _tube_signal(name):
+    """管子命名信号（只用于标记/确认，不用于强行改判为管）。
+    多分支（地板 474/481 个多分支实体是管）/ Multi-branchable / HAR\\（X1X 10/10）。"""
+    if "多分支" in name:
+        return "多分支"
+    if "Multi-branchable" in name:
+        return "Multi-branchable"
+    if name.upper().startswith("HAR\\"):
+        return "HAR\\前缀"
+    return None
+
+
+def _non_tube_signal(name):
+    """明确非管命名信号（规则三：明确命名优先于几何，直接降级）。
+    管子信号优先：含多分支/Multi-branchable 的不判非管（地板 474 根管子
+    名含中文“多分支”，若先判中文名会误杀全部——2026-11-14 实测教训）。
+    其余：CONNECTOR\\/SUPPORT\\ 前缀（X1X）、C数字\\ / Tyton / CLIP（卡扣）、
+    纯中文名（IP 23/23、地板 91/91 个纯中文名实体全是非管）。"""
+    if _tube_signal(name):
+        return None
+    up = name.upper()
+    if up.startswith("CONNECTOR\\"):
+        return "CONNECTOR\\前缀"
+    if up.startswith("SUPPORT\\"):
+        return "SUPPORT\\前缀"
+    if re.match(r"^C\d+\\", name):
+        return "C数字\\前缀"
+    if "tyton" in name.lower():
+        return "Tyton"
+    if "clip" in name.lower():
+        return "CLIP"
+    if CJK_RE.search(name):
+        return "纯中文名"
+    return None
+
+
+def _face_boundary_points(face, deflection=0.05):
+    """平面端面全部边界边的离散点（拼接）。
+    注意：端面边界可能被拆成多条弧（如 C289 端面 0 是 4 条 BSpline
+    四分之一弧，每条只离散出 5 个点）——只取最长单条边会因点数 <8
+    误判拟合失败；拼接全部边后 C289 得 20 个点，拟合正常。
+    若拼接后仍 <8 个点（如极小端面），用更细的离散重试一次。"""
+    all_pts = []
+    ex = TopExp_Explorer(face, TopAbs_EDGE)
+    while ex.More():
+        e = TopoDS.Edge(ex.Current())
+        try:
+            ad = BRepAdaptor_Curve(e)
+            disc = GCPnts_QuasiUniformDeflection(ad, deflection)
+            for i in range(1, disc.NbPoints() + 1):
+                p = disc.Value(i)
+                all_pts.append((p.X(), p.Y(), p.Z()))
+        except Exception:
+            pass
+        ex.Next()
+    if len(all_pts) >= 8:
+        return np.array(all_pts)
+    if deflection > 0.011:
+        return _face_boundary_points(face, deflection=0.01)
+    return None
+
+
+def _fit_circle(pts):
+    """拟合圆，返回 (半径, 相对残差 std/mean)；拟合失败返回 (None, None)。"""
+    if pts is None or len(pts) < 8:
+        return None, None
+    c = v7.circle_center_3d(pts)
+    dist = np.linalg.norm(pts - c, axis=1)
+    r = float(np.mean(dist))
+    res = float(np.std(dist) / max(r, 1e-9))
+    return r, res
+
+
+def _face_area(face):
+    """平面面积（BRepGProp 面积分）。"""
+    p = GProp_GProps()
+    BRepGProp.SurfaceProperties_s(face, p)
+    return float(p.Mass())
+
+
+def _check_endfaces_circular(tube):
+    """规则一：两端面近似圆 + 两端面圆大小基本相等。
+    返回 (通过?, 原因字符串)。拟合失败按不通过处理（无法验证是圆就不认是管）。"""
+    caps = tube.get("cap_faces") or []
+    if len(caps) != 2:
+        return False, "端面不是 2 个"
+    rs = []
+    for f in caps:
+        r, res = _fit_circle(_face_boundary_points(f))
+        if r is None or res is None:
+            return False, "端面边界圆拟合失败"
+        if res > RULE1_RES_MAX:
+            return False, f"端面圆拟合残差 {res:.3f} > {RULE1_RES_MAX}"
+        area = _face_area(f)
+        ratio_area = area / (math.pi * r * r) if r > 0 else 0.0
+        if not (RULE1_AREA_MIN <= ratio_area <= RULE1_AREA_MAX):
+            return False, f"端面面积/πr²={ratio_area:.2f} 超出范围"
+        rs.append(r)
+    ratio = min(rs) / max(rs) if max(rs) > 0 else 0.0
+    if ratio < RULE1_RATIO_MIN:
+        return False, f"两端面尺寸比 {ratio:.3f} < {RULE1_RATIO_MIN}"
+    return True, ""
 
 BREP_TYPES = ("StepShape_ManifoldSolidBrep", "StepShape_BrepWithVoids")
 IDENTITY = gp_Trsf()
@@ -248,6 +372,9 @@ def extract(step_path, out_dir, log, with_wires=True):
     shapes = {}        # tag -> TopoDS_Shape（第 2 步用精确距离）
     failures = []      # {tag, name, reason}
     spine_failed = []
+    rule1_demoted = []  # 规则一降级：{tag, name, reason}
+    rule3_demoted = []  # 规则三降级：{tag, name, signal}
+    name_flagged = []   # 命名-几何不一致标记（几何非管但名字是管）：{tag, name, signal}
     name2step = {}
     for sid, nm in id2name.items():
         name2step.setdefault(nm, []).append(sid)
@@ -305,6 +432,23 @@ def extract(step_path, out_dir, log, with_wires=True):
         else:
             tube = None
         if tube:
+            # 规则三（命名交叉验证，2026-11-14 用户定）：明确非管名优先于几何。
+            sig = _non_tube_signal(nm)
+            if sig:
+                rule3_demoted.append({"tag": tag, "name": nm, "signal": sig})
+                devices.append(base)
+                continue
+            # 规则一（端面近似圆 + 两端面等大，2026-11-14 用户定）。
+            ok1, reason1 = _check_endfaces_circular(tube)
+            if not ok1:
+                rule1_demoted.append({"tag": tag, "name": nm, "reason": reason1})
+                devices.append(base)
+                continue
+        elif _tube_signal(nm):
+            # 几何判非管但名字明确是管：只标记、不强行改判（用户定）。
+            name_flagged.append({"tag": tag, "name": nm,
+                                 "signal": _tube_signal(nm)})
+        if tube:
             try:
                 r = reverse_spine(tube, IDENTITY)
             except Exception:
@@ -332,6 +476,15 @@ def extract(step_path, out_dir, log, with_wires=True):
         log(f"[提取] 失败：{f['tag']} {f['name']}：{f['reason']}")
     for f in spine_failed:
         log(f"[提取] 中线反推失败（按 v7 进连接器候选）：{f['tag']} {f['name']}")
+    for f in rule3_demoted:
+        log(f"[规则三] 命名降级（{f['signal']}）：{f['tag']} {f['name']}")
+    for f in rule1_demoted:
+        log(f"[规则一] 端面降级（{f['reason']}）：{f['tag']} {f['name']}")
+    for f in name_flagged:
+        log(f"[规则三] 标记：几何非管但名字是管（{f['signal']}），不强行改判："
+            f"{f['tag']} {f['name']}")
+    log(f"[规则] 规则三命名降级 {len(rule3_demoted)} 个，规则一端面降级 "
+        f"{len(rule1_demoted)} 个，命名-几何不一致标记 {len(name_flagged)} 个")
 
     # ---- 释放 STEP 模型（省内存；形状已独立） ----
     del reader, model
@@ -429,6 +582,7 @@ def extract(step_path, out_dir, log, with_wires=True):
             "proto": it["proto"], "length": length, "vol": vol, "dia": dia,
             "p0": pts[0], "p1": pts[-1], "pts": pts, "src": src, "n_seg": n_seg,
             "bbox": it["bbox"], "bbox_c": it["bbox_c"], "has_shape": True,
+            "faces": it.get("faces"),
         })
     # 纯线框分支（v7 第 5 步：无实体、只有长线框的产品 -> 分支；扁平文件不触发）。
     # v7 语义：每个无实体 proto 只取最长一条链成一个分支（chain_curves），
@@ -477,10 +631,16 @@ def extract(step_path, out_dir, log, with_wires=True):
             "branches": len(branches),
             "devices": len(devices),
             "wire_chains": len(wire_chains),
+            "rule1_demoted": len(rule1_demoted),
+            "rule3_demoted": len(rule3_demoted),
+            "name_flagged": len(name_flagged),
         },
         "failures": failures,
         "spine_failed": spine_failed,
         "deduped": deduped,
+        "rule1_demoted": rule1_demoted,
+        "rule3_demoted": rule3_demoted,
+        "name_flagged": name_flagged,
         "branches": branches,
         "devices": devices,
     }
