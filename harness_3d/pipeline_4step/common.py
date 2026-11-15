@@ -8,9 +8,15 @@ import json
 import math
 import os
 import re
-import resource
 import struct
 import time
+
+# Windows兼容性：resource模块仅在Unix上可用
+try:
+    import resource
+    HAS_RESOURCE = True
+except ImportError:
+    HAS_RESOURCE = False
 
 
 # ---------------------------------------------------------------- 包围盒
@@ -60,7 +66,16 @@ def bbox_c_from_box(box):
 # ---------------------------------------------------------------- 计时/内存
 def peak_rss_mb():
     """当前进程峰值常驻内存（MB）。Linux 上 ru_maxrss 单位是 KB。"""
-    return resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / 1024.0
+    if HAS_RESOURCE:
+        return resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / 1024.0
+    else:
+        # Windows：尝试使用psutil，否则返回0
+        try:
+            import psutil
+            process = psutil.Process(os.getpid())
+            return process.memory_info().rss / 1024.0 / 1024.0
+        except ImportError:
+            return 0.0
 
 
 class StageTimer:
