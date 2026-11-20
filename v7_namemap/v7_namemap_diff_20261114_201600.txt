@@ -1,0 +1,200 @@
+--- /dev/fd/63	2026-11-14 20:16:30.850861766 +0800
++++ harness_topology_v7_final.py	2026-11-14 20:08:44.635863607 +0800
+@@ -18,6 +18,8 @@
+ import numpy as np
+ 
+ from OCP.STEPCAFControl import STEPCAFControl_Reader
++from OCP.STEPControl import STEPControl_Reader  # 名称映射第二遍：逐 BREP 取真名
++from OCP.IFSelect import IFSelect_RetDone
+ from OCP.TDocStd import TDocStd_Document
+ from OCP.TCollection import TCollection_ExtendedString
+ from OCP.XCAFDoc import XCAFDoc_DocumentTool, XCAFDoc_ShapeTool, XCAFDoc_Location
+@@ -1544,6 +1546,116 @@
+     return clusters
+ 
+ 
++BREP_TYPES = ("StepShape_ManifoldSolidBrep", "StepShape_BrepWithVoids")
++
++
++def _ocp_str(h):
++    """TCollection 字符串句柄 -> str（OCCT 8.0.1 无 ToString，用 ToCString）。"""
++    try:
++        val = h.ToCString()
++        return val.decode("utf-8", "replace") if isinstance(val, bytes) else str(val)
++    except Exception:
++        return str(h)
++
++
++def _shape_fingerprint(shape):
++    """局部坐标几何指纹：(体积, 包围盒中心 xyz, 包围盒尺寸 xyz)，均 0.1 取整。
++    体积与包围盒尺寸是刚体变换不变量；中心取局部坐标——XCAF 叶形状与
++    TransferOne 形状同为 STEP 局部帧，可直接比对。"""
++    vol, c = solid_volume_bbox(shape, gp_Trsf())
++    return (round(float(vol), 1), round(float(c[0]), 1), round(float(c[1]), 1),
++            round(float(c[2]), 1), round(float(c[3]), 1), round(float(c[4]), 1),
++            round(float(c[5]), 1))
++
++
++def build_brep_name_map(step_path, log):
++    """名称映射（2026-11-14）：用 STEPControl_Reader 第二遍读文件，逐个
++    TransferOne 枚举 BREP 实体，建几何指纹 -> [(BREP 真名, 实体序号)] 映射。
++    不依赖任何顺序/下标——名字与形状来自同一个 STEP 实体，不可能错位。
++    返回 (name_map, stats)。失败时返回空映射，调用方保留原名。"""
++    reader = STEPControl_Reader()
++    if reader.ReadFile(step_path) != IFSelect_RetDone:
++        log("[名称映射] 警告：第二遍读文件失败，跳过名称解析")
++        return {}, {"breps": 0, "failed": 0}
++    model = reader.Model()
++    n_model = model.NbEntities()
++    name_map = defaultdict(list)
++    n_brep = n_fail = 0
++    for i in range(1, n_model + 1):
++        ent = model.Entity(i)
++        if ent.DynamicType().Name() not in BREP_TYPES:
++            continue
++        n_brep += 1
++        try:
++            nm = decode_name(_ocp_str(ent.Name()))
++        except Exception:
++            nm = "?"
++        nb_before = reader.NbShapes()
++        try:
++            ok = reader.TransferOne(i)
++        except Exception:
++            ok = False
++        shape = None
++        if ok and reader.NbShapes() == nb_before + 1:
++            try:
++                shape = reader.Shape(reader.NbShapes())
++            except Exception:
++                shape = None
++        # 注意：不用 OneShape() 兜底——多实体转移后 OneShape 返回复合体，
++        # 形状就张冠李戴了。取不到就记失败，不静默凑数。
++        if shape is None or shape.IsNull():
++            n_fail += 1
++            continue
++        try:
++            fp = _shape_fingerprint(shape)
++        except Exception:
++            n_fail += 1
++            continue
++        name_map[fp].append((nm, i))
++    n_dup = sum(1 for v in name_map.values() if len(v) > 1)
++    log(f"[名称映射] BREP {n_brep} 个，TransferOne 失败 {n_fail} 个，"
++        f"唯一指纹 {len(name_map)} 个，重复指纹 {n_dup} 组")
++    return name_map, {"breps": n_brep, "failed": n_fail}
++
++
++def _strip_instance_suffix(name):
++    """CATIA 实例名去后缀："BMS.1" -> "BMS"（.N 只是实例计数，不是件名）。
++    只用于多 solid 合并成一个实体时求公共件名；单个 solid 保留原名。"""
++    return re.sub(r"\.\d+$", "", name)
++
++
++def _resolve_tag_name(tag, tag_to_brep_name):
++    """tag -> BREP 真名。单个 tag 直接查表；组合 tag（"A#S7+A#S8"，多 solid
++    合并成一个实体）逐个解析：全配上且去实例后缀后同名则取公共件名
++    （如 BMS.1+BMS.2 -> BMS），全配上但不同名则用 " + " 连接，有一部分
++    没配上则返回 None（不猜，保留原 tag）。空 tag（纯分支点）返回 None。"""
++    if not tag:
++        return None
++    # 先整 tag 查（单个 solid 的 tag 本身可能含 "+"）
++    if tag in tag_to_brep_name:
++        return tag_to_brep_name[tag]
++    if "+" not in tag:
++        return None
++    # 组合 tag："base#S7+S8"——后半段是裸 S 编号，需补 base 前缀
++    parts = tag.split("+")
++    base = parts[0].rsplit("#", 1)[0] if "#" in parts[0] else None
++    full = []
++    for i, p in enumerate(parts):
++        if i == 0 or "#" in p:
++            full.append(p)
++        elif base is not None:
++            full.append(base + "#" + p)
++        else:
++            return None
++    names = [tag_to_brep_name.get(f) for f in full]
++    if any(n is None for n in names):
++        return None
++    stripped = [_strip_instance_suffix(n) for n in names]
++    if len(set(stripped)) == 1:
++        return stripped[0]
++    return " + ".join(names)
++
++
+ def analyze(step_path, tol=3.0, out_dir=None, progress=None, force_reverse=False):
+     def log(msg):
+         if progress: progress(msg)
+@@ -1653,6 +1765,31 @@
+         else:
+             others.append({"occ": lf["occ"], "proto": lf["proto"]})
+ 
++    # ---- 名称映射（2026-11-14）：XCAF solid 按几何指纹配 BREP 真名 ----
++    # 原来只用 XCAF occ/proto 当名字；扁平 STEP（如地板）的 occ 只有编号。
++    # 指纹配对经 spike 验证：IP-Harness 186/186 唯一配对。多义（重复件
++    # 同形同位）与未配对的不猜，保留原名。只建 tag->真名表，不动 tag，
++    # 分类/拓扑逻辑零影响；真名只在结果组装时替换显示名 name_3d。
++    brep_map, _nmstat = build_brep_name_map(step_path, log)
++    tag_to_brep_name = {}
++    n_amb = n_miss = 0
++    for _proto, _pd in protos.items():
++        for _s in _pd["solids"]:
++            try:
++                _fp = _shape_fingerprint(_s["shape"])
++            except Exception:
++                n_miss += 1
++                continue
++            _cands = brep_map.get(_fp)
++            if _cands is None:
++                n_miss += 1
++            elif len(_cands) == 1:
++                tag_to_brep_name[_s["tag"]] = _cands[0][0]
++            else:
++                n_amb += 1
++    log(f"[名称映射] 配对唯一 {len(tag_to_brep_name)} 个，"
++        f"多义 {n_amb} 个（保留原名），未配对 {n_miss} 个")
++
+     # 结构化分支判定(不依赖命名)
+     # 1) 全部管状实体逐个反推中线
+     tube_items = []
+@@ -1794,6 +1931,31 @@
+         branch_data, relations, tol, conn_candidates, log)
+     log(f"拓扑线段: {len(segments)}, 拓扑节点: {len(nodes)}, 走线: {len(runs)}")
+ 
++    # ---- 端点重命名（2026-11-14）：name_3d 按 BREP 真名替换 ----
++    # tag 保留在 entity 字段做追溯；纯分支点（BN）name_3d 为空，不动；
++    # 多义/未配对的实体保留原 tag 名。类型判断由原函数已给出，不在此改。
++    n_renamed = 0
++    for nd in nodes:
++        _rn = _resolve_tag_name(nd.get("name_3d"), tag_to_brep_name)
++        if _rn is not None:
++            nd["name_3d"] = _rn
++            n_renamed += 1
++        sec = nd.get("secondary")
++        if sec:
++            new_sec = []
++            for e in sec:
++                if isinstance(e, (list, tuple)) and len(e) == 2:
++                    _sr = _resolve_tag_name(e[1], tag_to_brep_name)
++                    new_sec.append([e[0], _sr if _sr is not None else e[1]])
++                else:
++                    new_sec.append(e)
++            nd["secondary"] = new_sec
++    for e in entities:
++        _rn = _resolve_tag_name(e.get("name_3d"), tag_to_brep_name)
++        if _rn is not None:
++            e["name_3d"] = _rn
++    log(f"[重命名] 节点/实体 name_3d 换 BREP 真名 {n_renamed} 个")
++
+     result = {
+         "file": os.path.basename(step_path), "node_tol": tol,
+         "branches": [], "segments": segments, "nodes": nodes,
+@@ -1815,6 +1977,7 @@
+             "segs": branch_info[bi]["segs"],
+             "node0": branch_info[bi]["node0"], "node1": branch_info[bi]["node1"]})
+     result["connectors"] = [{"occ": s["tag"], "proto": s["proto"],
++                             "brep_name": tag_to_brep_name.get(s["tag"], ""),
+                              "center": [round(float(x), 1) for x in s["bbox_c"][:3]],
+                              "bbox": [round(float(x), 1) for x in s["bbox_c"][3:]]}
+                             for s in conn_candidates]

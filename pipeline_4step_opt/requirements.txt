@@ -1,0 +1,8 @@
+# 四步简化管线依赖（2026-11-14 已逐项核实 PyPI 轮子）
+# Python 要求：3.12 64 位（CPython；OCP 8.0.1 要求 >=3.11,<3.15，
+#            numpy 2.5.3 要求 >=3.12；交集取 3.12）
+#            vtk 9.6.2 由 cadquery-ocp 自动带上（有 cp312 win_amd64 轮子）
+# 安装：pip install -r requirements.txt
+# 运行：python run_pipeline.py <STEP文件> --out <工作目录> [--no-wire] [--reference floor|iph]
+cadquery-ocp==8.0.1.0.0
+numpy==2.5.3
