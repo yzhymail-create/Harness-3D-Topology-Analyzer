@@ -51,6 +51,24 @@ def _label_name(s):
     return _COPY_PREFIX.sub('', s)
 
 
+def _disp_name(nodes_by_code, code):
+    """§二十八端点显示名（唯一定义：查看器弹窗、DXF、Excel 三处复用同一
+    函数，不各写一份）。连接器端点显示真名（name_3d，去 Copy 前缀）；
+    无真名（空、Body. 开头）或占位名（默认连接器）时仍用编号；卡扣/
+    分支点/接头一律编号；查不到的编号原样返回。
+    注：须与 make_dxf._node_fullname 对连接器名的结果一致（现行两套数据
+    里连接器名均无反斜杠、无 Copy 前缀，两者相等）；DXF 路由检查回读
+    核对显示名与节点块 NAME/TAG，口径漂移会被检查拦住。"""
+    n = nodes_by_code.get(code)
+    if n is None:
+        return code
+    if n.get('type') == 'connector':
+        nm = n.get('name_3d') or ''
+        if nm and not nm.startswith('Body.') and nm != '默认连接器':
+            return _label_name(nm)
+    return code
+
+
 def _label_flip_set(branches, nodes):
     """名签放左边的节点集合（2026-11-18：BN02 区 CLP01 长名签穿小环）。
 
@@ -133,6 +151,9 @@ def main():
     # 注：变量名须用 page_name/page_code——本文件另有分支弹窗用的 title 变量（第 108 行）
     page_name = sys.argv[3] if len(sys.argv) > 3 else '仪表线束'
     page_code = sys.argv[4] if len(sys.argv) > 4 else 'IP-Harness'
+    # --showcase：对外展示版（展示站 FR-25）：页头只留标题与使用提示，不显示
+    # 计数/总长/质检指标；弹窗单项工程数据保留真实值；标题固定为“线束 2D 展开图”
+    showcase = '--showcase' in sys.argv
     d = json.load(open(lj_path, encoding='utf-8'))
     stats = d['stats']
     branches, nodes = d['branches'], d['nodes']
@@ -182,6 +203,15 @@ def main():
     # ---- 静态 SVG 内容（Python 生成，便于离线核对元素数） ----
     parts = []
     nodes_by_code = {n['code']: n for n in nodes}
+    # §二十七防御：自环布局（旧版）直接报错不出图——自环须先过合并处理去掉
+    _loop_b = [b['key'] for b in branches
+               if b['node0'] == b['node1'] or 'loop' in b]
+    assert not _loop_b, (
+        f'布局含自环路径/loop 条目（须先过合并处理去掉）：{_loop_b[:5]}')
+    # §二十八：端点显示名（连接器真名，其余编号）——Python 侧算好放进
+    # DATA，JS 只读 disp，不另写判定（名称只在一处定义）
+    for n in nodes:
+        n['disp'] = _disp_name(nodes_by_code, n['code'])
     # 管子折线（v6p2：用户 22:51 定，全部管子统一深蓝 #2c5f8a，不用红，
     # 主干/分支颜色区分取消；线宽统一由 applyView 按屏幕像素定）
     for b in branches:
@@ -296,7 +326,7 @@ def main():
         'stats': stats, 'branches': branches, 'nodes': nodes,
         'bends': bends, 'warnings': warnings,
         'node_branches': node_branches,
-        'checklist': d.get('checklist'),
+        'checklist': None if showcase else d.get('checklist'),
         'crossings': d.get('crossings', []),
         'trunk': d.get('meta', {}).get('trunk'),
         'trunk_path': trunk_path,
@@ -332,11 +362,16 @@ def main():
                     and seg_seg_dist(a1, a2, b1, b2) < 5.0):
                 n_near += 1
 
+    # §二十九 DRC：交叉/压着画卡口——合并已全过，这里是最后一道防线
+    # （布局若绕过合并直接拿来出图，有交叉也不许画出来）
+    assert n_x == 0 and n_ov == 0, (
+        f'交叉 {n_x} 对、压着画 {n_ov} 对，不过不出图')
+
     # ---- 检查清单（v3 修正版 layout.json 才有；旧版 layout.json 无则不显示） ----
     ck = d.get('checklist')
     ck_header = ''   # 顶部统计区第二行（手机也可见）
     ck_verify = ''   # 右下验证信息区一行
-    if ck:
+    if ck and not showcase:
         hard = ck.get('hard', [])
         n_pass = sum(1 for c in hard if c.get('pass'))
         tc = stats.get('trunk_center', {})
@@ -366,7 +401,7 @@ def main():
 
     # ---- 主干路径行（v5：顶部显示路径端点/总长/分支数；旧版 layout.json 无则不显示） ----
     trunk_header = ''
-    if trunk_path:
+    if trunk_path and not showcase:
         ep = trunk_path['endpoints']
         trunk_header = (
             f'<div class="stats">主干路径 <b>{ep[0]} → {ep[1]}</b> · '
@@ -394,26 +429,46 @@ def main():
     excluded_note = (f'<br><span style="color:#868e96">已排除过孔零件 '
                      + '、'.join(e['key'] for e in excluded)
                      + '（不是路径，不画）</span>') if excluded else ''
+    # §二十七：掉落的自环段——页头明标，不藏数（与过孔零件分开列）
+    _dropped = d.get('meta', {}).get('dropped_loop_segments', [])
+    _dropped_whole = d.get('meta', {}).get('dropped_loop_branches', [])
+    dropped_note = (f'<br><span style="color:#868e96">自环段去掉 {len(_dropped)} 处'
+                    + (f'（整根去掉 {len(_dropped_whole)} 根）' if _dropped_whole else '')
+                    + '（§二十七，不画）</span>') if _dropped else ''
+    # 展示版：图例里的计数说明（平行管/过路点合并/符号数）也不显示
+    if showcase:
+        hidden_note = merged_note = loop_note = chord_note = ''
     # 搜索框示例用图里真实存在的编号（写死的 CLP01 被 §二十二删了就搜不到）
     _codes = sorted(n['code'] for n in nodes)
     _ex_con = next((c for c in _codes if c.startswith('CON')), 'CON01')
     _ex_clp = next((c for c in _codes if c.startswith('CLP')), 'CLP01')
     _ex_bn = next((c for c in _codes if c.startswith('BN')), 'BN02')
     search_example = f"搜编号，如 {_ex_con} / {_ex_clp} / {_ex_bn} / Body.123"
-    if n_mj:
+    if showcase:
+        stats_line = "拖动平移，滚轮缩放，点任意管子或节点查看详情"
+    elif n_mj:
         stats_line = (f"路径 <b>{stats['branches_placed']}</b>（{stats['branches_total']} 根管子，"
                       f"{n_mj} 处过路点合并） · 节点 <b>{stats['nodes_placed']}/{stats['nodes_total']}</b> · "
-                      f"线段 <b>{n_seg}</b> · 展开总长 <b>{total_len:.1f} mm</b> · 图纸 <b>{w_mm} × {h_mm} mm</b>{excluded_note}")
+                      f"线段 <b>{n_seg}</b> · 展开总长 <b>{total_len:.1f} mm</b> · 图纸 <b>{w_mm} × {h_mm} mm</b>{excluded_note}{dropped_note}")
     else:
         stats_line = (f"分支 <b>{stats['branches_placed']}/{stats['branches_total']}</b> · 节点 <b>{stats['nodes_placed']}/{stats['nodes_total']}</b> · "
-                      f"线段 <b>{n_seg}</b> · 展开总长 <b>{total_len:.1f} mm</b> · 图纸 <b>{w_mm} × {h_mm} mm</b>{excluded_note}")
+                      f"线段 <b>{n_seg}</b> · 展开总长 <b>{total_len:.1f} mm</b> · 图纸 <b>{w_mm} × {h_mm} mm</b>{excluded_note}{dropped_note}")
+
+    # 展示版标题固定，不带版本号与日期；验证信息区整个去掉；页头加 3D 视图链接
+    disp_title = '线束 2D 展开图' if showcase else f'{page_name} 2D展开图 {version}（{today}）'
+    disp_h1 = '线束 2D 展开图' if showcase else f'{page_name}（{page_code}）2D 展开图 · {version}'
+    verify_div = '' if showcase else (
+        f'<div id="verify">拐弯 {stats["bends"]} 次 · 残留干涉 {stats["residual_interference_pairs"]} 对<br>'
+        f'（X 交叉 {n_x} 对 · 间距&lt;5mm {n_near} 对 · 压着画 {n_ov} 对）<br>'
+        f'最大长度误差 {stats["max_len_err_mm"]} mm · 无真实几何环{ck_verify}</div>')
+    home_link = ('<a href="viewer.html" target="_blank" rel="noopener">3D 视图 →</a>' if showcase else '')
 
     html_doc = f'''<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>{page_name} 2D展开图 {version}（{today}）</title>
+<title>{disp_title}</title>
 <style>
 * {{ box-sizing: border-box; margin: 0; padding: 0; }}
 body {{ font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; background: #f1f3f5; color: #212529; height: 100vh; height: -webkit-fill-available; height: 100dvh; display: flex; flex-direction: column; overflow: hidden; }}
@@ -424,6 +479,7 @@ header h1 {{ font-size: 16px; font-weight: 600; }}
 .bar {{ display: flex; gap: 6px; margin-top: 6px; flex-wrap: wrap; }}
 .bar input {{ flex: 1 1 140px; padding: 6px 8px; font-size: 14px; border: none; border-radius: 4px; }}
 .bar button {{ padding: 6px 10px; font-size: 13px; border: none; border-radius: 4px; background: #2c5f8a; color: #fff; cursor: pointer; }}
+.bar a {{ padding: 6px 10px; font-size: 13px; border: none; border-radius: 4px; background: #2c5f8a; color: #fff; cursor: pointer; text-decoration: none; }}
 .bar button:active {{ background: #1f4566; }}
 .dd {{ position: relative; }}
 .dd-panel {{ position: absolute; top: calc(100% + 4px); left: 0; background: #fff; border: 1px solid #adb5bd; border-radius: 6px; box-shadow: 0 4px 16px rgba(0,0,0,.18); padding: 4px 0; display: none; z-index: 10; min-width: 140px; }}
@@ -447,7 +503,7 @@ header h1 {{ font-size: 16px; font-weight: 600; }}
 .legend i {{ display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 5px; vertical-align: middle; }}
 .legend .ln {{ display: inline-block; width: 16px; height: 0; border-top: 2px solid #2c5f8a; margin-right: 5px; vertical-align: middle; }}
 #popup {{ position: absolute; left: 8px; right: 8px; bottom: 8px; bottom: calc(8px + env(safe-area-inset-bottom, 0px)); background: #fff; border: 1px solid #adb5bd; border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,.18); padding: 10px 12px; font-size: 13px; line-height: 1.65; display: none; max-height: 45%; overflow-y: auto; z-index: 5; }}
-#popup h2 {{ font-size: 14px; margin-bottom: 2px; }}
+#popup h2 {{ font-size: 14px; margin-bottom: 2px; word-break: break-all; }}
 #popup .x {{ float: right; border: none; background: none; font-size: 18px; color: #868e96; cursor: pointer; line-height: 1; }}
 #popup table {{ border-collapse: collapse; }}
 #popup td {{ padding: 1px 8px 1px 0; vertical-align: top; }}
@@ -467,13 +523,13 @@ header h1 {{ font-size: 16px; font-weight: 600; }}
   .legend.open .legend-body {{ display: block; }}
   .legend.open #legendToggle {{ margin-bottom: 2px; }}
   /* 窄屏：详情弹窗抬起，避开底部导航 */
-  #popup {{ bottom: 72px; bottom: calc(72px + env(safe-area-inset-bottom, 0px)); max-height: 38%; }}
+  #popup {{ bottom: 72px; bottom: calc(72px + env(safe-area-inset-bottom, 0px)); max-height: 60%; }}
 }}
 </style>
 </head>
 <body>
 <header>
-<h1>{page_name}（{page_code}）2D 展开图 · {version}</h1>
+<h1>{disp_h1}</h1>
 <div class="stats">{stats_line}</div>
 {trunk_header}
 {ck_header}
@@ -482,6 +538,7 @@ header h1 {{ font-size: 16px; font-weight: 600; }}
 <button id="btnSearch">定位</button>
 <button id="btnFit">全图</button>
 <button id="btnClear">清除</button>
+{home_link}
 <div class="dd" id="labelDD">
 <button id="btnLabels" type="button">标签 4/4 ▾</button>
 <div class="dd-panel" id="labelPanel">
@@ -500,7 +557,7 @@ header h1 {{ font-size: 16px; font-weight: 600; }}
 </g>
 </svg>
 <div class="legend" id="legend"><button id="legendToggle" type="button">图例 ▸</button><div class="legend-body"><span class="ln"></span>管子（分支）<br><i style="background:#e03131"></i>连接器 <i style="background:#2f9e44"></i>卡扣 <i style="background:#f08c00"></i>分支点 {joint_item}<br><span style="color:#e03131;font-weight:700">✕</span> X 交叉点{loop_note}{chord_note}<br><span style="color:#868e96">放大后显示编号、名称与长度（mm）</span>{hidden_note}{merged_note}</div></div>
-<div id="verify">拐弯 {stats['bends']} 次 · 残留干涉 {stats['residual_interference_pairs']} 对<br>（X 交叉 {n_x} 对 · 间距&lt;5mm {n_near} 对 · 压着画 {n_ov} 对）<br>最大长度误差 {stats['max_len_err_mm']} mm · 无真实几何环{ck_verify}</div>
+{verify_div}
 <div id="popup"><button class="x" id="btnClose">×</button><div id="popBody"></div></div>
 <div id="toast"></div>
 </div>
@@ -674,20 +731,41 @@ function zoomAt(cx, cy, factor) {{
   view.k = k2;
   applyView();
 }}
-function centerOn(x, y, k) {{
+function centerOn(x, y, k, ax, ay) {{
   if (k) view.k = k;
   applyView();
   var r = svg.getBoundingClientRect();
   // 注意：getScreenCTM() 的逆变换要的是屏幕（client）坐标，必须加 r.left/r.top；
   // 旧版只用 r.width/2、r.height/2（元素相对坐标），目标会落在 header 下方被遮住
   // （2026-11-17 实测：BN02 应在 SVG 中心 y=521，实际落在 y=259）
-  var pt = svg.createSVGPoint(); pt.x = r.left + r.width / 2; pt.y = r.top + r.height / 2;
+  // 2026-11-19：搜索定位时目标要落在弹窗上方可见区的中央，ax/ay 指定屏幕锚点；
+  // 不传则仍用 SVG 中心（点按定位等沿用旧行为）
+  var pt = svg.createSVGPoint();
+  pt.x = (ax !== undefined) ? ax : (r.left + r.width / 2);
+  pt.y = (ay !== undefined) ? ay : (r.top + r.height / 2);
   var c = pt.matrixTransform(svg.getScreenCTM().inverse());
-  // c 为屏幕中心对应的 viewBox 点；要让图上点 (x,y) 落到屏幕中心：
+  // c 为锚点对应的 viewBox 点；要让图上点 (x,y) 落到锚点：
   // x*k + t = c，故 t = c - x*k（直接赋值，一步到位）
   view.x = c.x - x * view.k;
   view.y = c.y - y * view.k;
   applyView();
+}}
+// 搜索定位专用：弹窗先开，再把目标放到弹窗上方可见区的中央
+// （2026-11-19 用户反馈：定位只放到 2 倍，目标淹没在标签堆里找不到；弹窗高时还会盖住目标）
+function locateOn(x, y, k) {{
+  var r = svg.getBoundingClientRect();
+  var ax = r.left + r.width / 2, ay = r.top + r.height / 2;
+  if (popup.style.display === 'block') {{
+    var pr = popup.getBoundingClientRect();
+    if (pr.top > r.top + 40) ay = (r.top + pr.top) / 2;
+  }}
+  centerOn(x, y, k, ax, ay);
+}}
+function locateZoom(spanMm) {{
+  // spanMm：目标跨度（mm）；可见宽度取跨度 1.6 倍 + 100mm 余量；节点默认按 500mm 窗口
+  var vw = svg.viewBox.baseVal.width;
+  var want = spanMm ? (spanMm * 1.6 + 100) : 500;
+  return Math.max(2, Math.min(40, vw / want));
 }}
 function fitAll() {{ view = {{ x: 0, y: 0, k: 1 }}; applyView(); }}
 
@@ -766,6 +844,10 @@ function clearSel() {{
   applyView();  // 选中状态变了，线宽/描边跟着变
 }}
 function esc(s) {{ return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }}
+// §二十八端点显示名：连接器显示真名（disp），其余显示编号；disp 由 Python
+// 侧算好放进 DATA，JS 只读 disp，不另写判定（查不到的编号原样返回）
+function dispNode(code) {{ var n = nodesByCode[code]; return (n && n.disp) ? n.disp : code; }}
+function dispRoute(rn) {{ if (!rn) return '-'; return rn.split('_').map(function(c) {{ var m = c.match(/^(.*)#(\\d+)$/); var base = m ? m[1] : c; var suf = m ? '#' + m[2] : ''; return dispNode(base) + suf; }}).join('_'); }}
 function showNode(code) {{
   var n = nodesByCode[code];
   if (!n) return;
@@ -775,11 +857,15 @@ function showNode(code) {{
   // 选中节点时相连的线不许变色：节点选中与线选中完全分开，只亮节点本身
   // （2026-11-17 用户要求：选中什么就亮什么；旧版会把相连管子也标橙）
   var conns = DATA.node_branches[code] || [];  // 只用于弹窗里列出连接管子，不再高亮
-  var rows = '<tr><td class="k">类型</td><td>' + esc(TYPE_CN[n.type] || n.type) + '</td></tr>'
+  // 标题：连接器有真名时显示真名（n.disp，§二十八口径），无真名时仍用编号
+  // （2026-11-20 用户定：要“实际名字 · 连接器”这种展示；标题改真名后编号另起一行，不丢）
+  var titleName = n.disp || code;
+  var rows = (titleName !== code ? '<tr><td class="k">编号</td><td class="mono">' + esc(code) + '</td></tr>' : '')
+    + '<tr><td class="k">类型</td><td>' + esc(TYPE_CN[n.type] || n.type) + '</td></tr>'
     + '<tr><td class="k">3D 全名</td><td class="mono">' + esc(n.name_3d || '（无实体名）') + '</td></tr>'
     + '<tr><td class="k">2D 坐标</td><td>(' + n.x.toFixed(1) + ', ' + n.y.toFixed(1) + ') mm</td></tr>'
     + '<tr><td class="k">连接管子</td><td class="mono">' + esc(conns.join(', ') || '—') + '</td></tr>';
-  popBody.innerHTML = '<h2>' + esc(code) + ' · ' + esc(TYPE_CN[n.type] || n.type) + '</h2><table>' + rows + '</table>';
+  popBody.innerHTML = '<h2>' + esc(titleName) + ' · ' + esc(TYPE_CN[n.type] || n.type) + '</h2><table>' + rows + '</table>';
   popup.style.display = 'block';
   applyView();  // 选中描边加粗
 }}
@@ -795,7 +881,7 @@ function showBranch(key) {{
   // 选中管子时端点节点不许高亮：只亮管子本身（同上，选中什么亮什么）
   var bs = DATA.bends.filter(function(x) {{ return x.branch === key; }});
   var bendTxt = bs.length ? bs.map(function(x) {{ return x.seg + ' @' + x.at + ' ' + (typeof x.delta === 'number' ? (x.delta > 0 ? '+' : '') + x.delta + '°' : x.delta) + '（' + x.note + '）'; }}).join('<br>') : '无';
-  var segs = b.pieces.map(function(p) {{ return p.seg + ' ' + p.na + '→' + p.nb; }}).join('<br>');
+  var segs = b.pieces.map(function(p) {{ return p.seg + ' ' + dispNode(p.na) + '→' + dispNode(p.nb); }}).join('<br>');
   // 平行管（v6p1：平行对只画一根，被隐藏那根的数据列在这里，不丢数据）
   var parRows = '';
   (b.parallel_hidden || []).forEach(function(h) {{
@@ -843,7 +929,8 @@ function showBranch(key) {{
   var rows = trunkRow + diaRows + partialRow
     + '<tr><td class="k">3D 弧长</td><td>' + b.len_3d + ' mm</td></tr>'
     + '<tr><td class="k">2D 长度</td><td>' + b.len_2d + ' mm</td></tr>'
-    + '<tr><td class="k">端点</td><td class="mono">' + esc(b.node0) + ' → ' + esc(b.node1) + '</td></tr>'
+    + '<tr><td class="k">端点</td><td class="mono">' + esc(dispNode(b.node0)) + ' → ' + esc(dispNode(b.node1)) + '</td></tr>'
+    + '<tr><td class="k">路由名</td><td class="mono">' + esc(dispRoute(b.route_name)) + '</td></tr>'
     + '<tr><td class="k">线段</td><td class="mono">' + segs + '</td></tr>' + parRows + loopRows
     + '<tr><td class="k">拐弯</td><td>' + bendTxt + '</td></tr>';
   popBody.innerHTML = '<h2>管子 ' + esc(b.key) + '</h2><table>' + rows + '</table>';
@@ -936,8 +1023,8 @@ function doSearch() {{
   if (!q) return;
   if (nodesByCode[q]) {{
     var n = nodesByCode[q];
-    centerOn(n.x, -n.y, Math.max(view.k, 2));
     showNode(q);
+    locateOn(n.x, -n.y, locateZoom(0));
     return;
   }}
   var key = q;
@@ -945,11 +1032,11 @@ function doSearch() {{
   if (/^BODY\\.?\\d+$/.test(q)) key = 'Body.' + q.replace(/^BODY\\.?/, '');
   if (branchesByKey[key]) {{
     var b = branchesByKey[key];
-    var mx = 0, my = 0;
-    b.points.forEach(function(p) {{ mx += p[0]; my += p[1]; }});
+    var mx = 0, my = 0, x0 = 1e9, y0 = 1e9, x1 = -1e9, y1 = -1e9;
+    b.points.forEach(function(p) {{ mx += p[0]; my += p[1]; if (p[0] < x0) x0 = p[0]; if (p[0] > x1) x1 = p[0]; if (p[1] < y0) y0 = p[1]; if (p[1] > y1) y1 = p[1]; }});
     mx /= b.points.length; my /= b.points.length;
-    centerOn(mx, -my, Math.max(view.k, 2));
     showBranch(key);
+    locateOn(mx, -my, locateZoom(Math.max(x1 - x0, y1 - y0)));
     return;
   }}
   toast('没找到 ' + q);

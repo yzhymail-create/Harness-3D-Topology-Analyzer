@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-2D 展开 v6p2：过路点合并 + 自环符号（2026-11-17 用户亲定规则，通用版）。
+2D 展开 v6p2：过路点合并 + 自环段去掉 + DRC（2026-11-17 用户亲定规则，通用版）。
 
 合并规则（2026-11-17 22:52 用户亲定，取代“只并 N”的旧理解）：
   判断标准不是 N 还是 BN，而是这个点连着几个不同的地方。只连两个地方
@@ -11,6 +11,27 @@
   IP 实测：17 个 N 全是两通；BN 里只有 BN01（4 段，两边 CLP03/CLP06）
   和 BN04（3 段，两边 CLP01/N04）是两通；一共并掉 19 个点。
   地板实测：66 个 N 全是两通 + 7 个 BN 两通，一共并掉 73 个点。
+
+2026-11-19 用户令（取代上条合并规则）：过路点（joint/fork 两通）是
+路由途经点，2D 图里必须保留作命名点，不再合并掉——路由按名字串段
+（A→B、B→C）需要 B 这个点，没有实体也要有名有点的节点。不要为了图面
+干净继续把路由途经点合并掉。
+  - 过路点集照旧由 topology.json 程序算出（waypoint_nodes，供报告与
+    隐藏平行配对用），但不再进 merged_set：merged_nodes 恒为空。
+  - 走线改同根接续：同根管子的相邻段仍接成一条路径（一管一路径，与
+    v6p1 一致），不同管子在过路点处不再接成一条。
+  - 效果（地板）：节点 409→490（+81 个途经点：73 joint + 8 fork），
+    路径 409→475（一管一路径）；LENGTH 端点解析率 83.5%→100%。
+  - 8 个两通 fork 一并保留（与 joint 同为路由途经点，只留 joint 会
+    剩 16 个 LENGTH 端点解析不了）；若用户只想留 joint，改
+    KEEP_WAYPOINTS 下的 waypoint_nodes 过滤条件即可。
+
+2026-11-19 22:15 用户纠正（废止上条保留点做法，§十六合并恢复执行）：
+用户看新版仪表图投诉越做越差——Body.78/Body.92 中间 N15 无分支却留了
+断点，还不如以前。定：3D 和 2D 不一样，3D 按 3D 的处理（N15 在
+topology.json/pieces 里照旧存在，路由按 §二十四 端点命名串段照旧）；
+转 2D 时做图面整洁优化，无分支的过路点在 2D 图面整合掉。KEEP_WAYPOINTS
+默认改回 False；True 仅供回归对比，正常不用。
 
 段级合并（不是分支级）：以线段（segment）为单位走线，过路点处的段按
 配对原则接续——同根管子先配，剩下的一对配一起。
@@ -23,23 +44,37 @@
     的 SEG02 另成 CLP01→CLP23 一线（172.4mm，partial 标记）。Body.113
     是 IP 唯一被拆开的分支（其两段落在不同路径里）。
 
-自环符号（2026-11-17 22:49 用户令）：自环段改画统一小环符号（屏幕恒定
-半径 8px，圆心距节点 30px，每个环占一个无管空角，取最大的 N 个空角的
-角平分线）；三角从折线里去掉，弹窗保留自环管子完整数据。
-  代价须明示：小环统一大小即放弃这些处的 1:1（真值仍在弹窗/标签里），
-  是用户亲令的取舍。stats max_len_err 与 H2 核查排除自环路径。
-  IP：3 处（BN02 两处 + BN03 一处）；地板：44 处（23 个节点）。
+自环段 2D 不出图（2026-11-19 22:27 用户令，§二十七，废止 2026-11-17
+小圆环符号做法）：自环段（na==nb）按段去掉，不画小圈、不画虚线引线、
+不画线、不进 pieces、不计长度；整根管子只有一个自环段时整根去掉，
+还有正常段时只去掉自环段、剩下段照旧画线，长度按剩下段的和。
+topology.json 不动（自环段在 3D 数据里照旧存在）；掉落清单进布局
+meta.dropped_loop_segments，整根去掉的分支另进 meta.dropped_loop_branches。
+  IP：3 段（SEG21 Body.96 整根去；SEG12 Body.117 去一段剩 71.9mm；
+  SEG32 Body.150 去一段剩 59.9mm）；地板：1 段（SEG434 多分支29.1-64X
+  整根去，§十八 stub 短线头做法随之废止）。
 
 不动的东西：topology.json（数据源真相）；v6p1 平行隐藏（折叠段继续
-隐藏，数据在弹窗里）；几何点位不动（只重组折线、去掉自环三角）。
+隐藏，数据在弹窗里）；几何点位不动（只重组折线、去掉自环段）。
 
 硬核查（任一失败即退出码非 0，不写输出；全部由数据算出，不写死数值）：
-  - 合并集由 topology.json 程序算出（无实体节点中恰连 2 个地方）；
+  - 过路点集由 topology.json 程序算出（无实体节点中恰连 2 个地方）；
   - 每个过路点恰好触 2 条画出非自环段；
-  - 每条路径恰好 2 个非过路端点（纯自环退化路径两端同为一节点除外）；
+  - 每条路径恰好 2 个端点（过路点保留后，路径端点可以是过路点）；
   - 拼接点间隙 < 1e-6 mm；合并 len_2d 与各段和差 ≤0.11mm；
-  - 全部管子全数可查（被拆开的分支逐个记入报告，不写死哪个）；
-  - 非合并路径几何与 v6p1 逐点一致；非自环路径 1:1 误差 ≤0.1mm。
+  - 全部管子全数可查（被拆开的分支逐个记入报告，不写死哪个；整根
+    去掉的自环分支扣掉，另行列出）；
+  - 非合并路径几何与 v6p1 逐点一致；全部路径 1:1 误差 ≤0.1mm（卡口，
+    原只上报——§二十九 DRC，2026-11-19）；
+  - §二十七闭环：掉落自环段数＝拓扑自环段数；去掉后任一路径不得
+    node0==node1，布局里不得有 loop 条目。
+  - §二十九 DRC（2026-11-19 用户令“我们自己的 DRC”：以前发现过的
+    错误都要写成代码检查，不过不出图）：
+    · 过路点闭环：从输出路径重算，无实体节点恰连 2 处即残留，必须 0；
+    · 连通性保持：段级连通分量数输入＝输出；输出无孤立节点；
+    · 全图硬检查（复用优化器 Checker，同一口径）：交叉 0、压着画 0；
+      穿节点不得新增（输出 ≤ 输入；残留逐条列入报告，等用户定夺，
+      清掉后卡口收紧为 0）；节点挨近只报告，不卡（残留是用户已接受的）。
 
 用法：python3 merge_joints_v6p2.py <v6p1 layout.json> <topology.json> <outdir>
 输出：<outdir>/layout.json、<outdir>/merge_report_v6p2.md
@@ -50,11 +85,18 @@ import os
 import sys
 from collections import defaultdict
 
+# DRC 全图硬检查复用优化器的 Checker（同一口径，不另写判定）。
+from optimize_layout import Checker
+
 JOINT_GAP_TOL_MM = 1e-6   # 拼接点间隙容差（实测均为 0.0）
 LEN_SUM_TOL_MM = 0.11     # 合并 len_2d 与各段和的容差（含 0.1 舍入）
-LOOP_LABEL_DIST_PX = 52   # Body.96 长度标签沿环方向外放距离（屏幕 px；环距 30px，标签须在环外）
-# 52px 实测最优：k=2 时与 CLP14 代号重叠 12x11 一处，k=3/4 仅 2px 轻擦；
-# 64px 实测更差：k=3/4 虽干净，但 k=2 新增 Body.49 长度标签 3x10 + CLP14 真名 12x8
+PIERCE_MM = 15.0          # 穿节点阈值（与优化器默认值一致，2026-11-18 用户定）
+# 2026-11-19 22:15 用户纠正：§十六合并恢复执行，保留点做法废止。
+# False 时恢复 2026-11-17 合并行为（默认，正常用）；True 时过路点
+# 保留作路由命名点（仅供回归对比，正常不用）。
+KEEP_WAYPOINTS = False
+# LOOP_LABEL_DIST_PX 已删（2026-11-19 §二十七：小圆环符号废止，纯自环
+# 路径不再存在，长度标签外放逻辑随之删除）
 
 TOPO_DEFAULT = ('/home/hatch/workspace/harness_3d/pipeline_4step_rules/'
                 'test_iph_fresh/topology.json')
@@ -63,6 +105,76 @@ TOPO_DEFAULT = ('/home/hatch/workspace/harness_3d/pipeline_4step_rules/'
 def plen(pts):
     return sum(math.hypot(b[0] - a[0], b[1] - a[1])
                for a, b in zip(pts, pts[1:]))
+
+
+class _CheckLayout:
+    """只给 Checker.full_check 用的最小布局：画出节点 + 路径折线。
+
+    不复用优化器的 Layout 类——它要 spines（合并后布局不保证有），且
+    其 branch_nodes 会把 pieces 里指着已合并过路点的 na/nb 也算进去，
+    Checker 初始化时按这些编号查节点坐标会 KeyError。这里只认画出节点
+    （pieces 的 na/nb 与节点表取交集）：已合并的点不是画出节点，不存在
+    “管子穿它”的问题。口径与优化器一致（实测：keepwp 地板布局重算得
+    交叉 0、压着画 0、穿节点 2 处，与优化器报告逐项一致）。
+    """
+
+    def __init__(self, data):
+        self.nodes = {n['code']: (float(n['x']), float(n['y']))
+                      for n in data['nodes']}
+        self.branches = {
+            b['key']: {'points': [(float(p[0]), float(p[1]))
+                                  for p in b['points']],
+                       'node0': b['node0'], 'node1': b['node1']}
+            for b in data['branches']}
+        self.branch_nodes = {}
+        for b in data['branches']:
+            touched = set()
+            for pc in b.get('pieces', []):
+                for c in (pc.get('na'), pc.get('nb')):
+                    if c is not None and c in self.nodes:
+                        touched.add(c)
+            if not touched:  # 无 pieces 的分支（不应发生）：退回拓扑端点
+                for c in (b.get('node0'), b.get('node1')):
+                    if c is not None and c in self.nodes:
+                        touched.add(c)
+            self.branch_nodes[b['key']] = touched
+        self.node_branches = {}
+        for bk, ts in self.branch_nodes.items():
+            for c in ts:
+                self.node_branches.setdefault(c, set()).add(bk)
+
+    def segments(self, branch_keys=None):
+        """全部（或指定）分支的折线段：(branch_key, seg_idx, p0, p1)。"""
+        segs = []
+        keys = branch_keys if branch_keys is not None else self.branches
+        for bk in keys:
+            pts = self.branches[bk]['points']
+            for i in range(len(pts) - 1):
+                if math.hypot(pts[i + 1][0] - pts[i][0],
+                              pts[i + 1][1] - pts[i][1]) < 1e-9:
+                    continue
+                segs.append((bk, i, pts[i], pts[i + 1]))
+        return segs
+
+
+def _n_piece_components(piece_pairs):
+    """段级连通分量数（按段端点 na/nb 并查集；自环段不连通任何两点）。"""
+    parent = {}
+
+    def find(x):
+        parent.setdefault(x, x)
+        while parent[x] != x:
+            parent[x] = parent[parent[x]]
+            x = parent[x]
+        return x
+
+    for a, b in piece_pairs:
+        if a is None or b is None:
+            continue
+        ra, rb = find(a), find(b)
+        if ra != rb:
+            parent[ra] = rb
+    return len({find(x) for x in parent})
 
 
 def main():
@@ -85,7 +197,11 @@ def main():
     seg_len = {s['seg']: s['length'] for s in topo['segments']}
     seg_ends = {s['seg']: (s['na'], s['nb']) for s in topo['segments']}
 
-    # ---- 1. 由 topology.json 算合并集：无实体节点（N/BN）中恰连 2 个地方 ----
+    # ---- 1. 由 topology.json 算过路点集：无实体节点（N/BN）中恰连 2 个地方 ----
+    # §十六（2026-11-17 定，2026-11-19 22:15 用户令恢复执行）：过路点在
+    # 2D 图面合并掉；2026-11-19 当晚的保留点做法已废止（KEEP_WAYPOINTS
+    # 仅供回归对比）。waypoint_nodes 照旧算出（供报告、隐藏平行配对与
+    # 直径差异检查用）；KEEP_WAYPOINTS=False 时进 merged_set 合并。
     nbrs = defaultdict(set)
     for s in topo['segments']:
         if s['na'] == s['nb']:
@@ -93,36 +209,41 @@ def main():
         nbrs[s['na']].add(s['nb'])
         nbrs[s['nb']].add(s['na'])
     topo_type = {n['code']: n['type'] for n in topo['nodes']}
-    merged_nodes = sorted(
+    waypoint_nodes = sorted(
         c for c, ns in nbrs.items()
         if len(ns) == 2 and topo_type.get(c) in ('joint', 'fork'))
     if excluded:
-        # 只属于已排除分支的节点：布局里没有它的段，不进合并集
+        # 只属于已排除分支的节点：布局里没有它的段，不进过路点集
         seg_branch = {s['seg']: s.get('branch') for s in topo['segments']}
         node_segs = {n['code']: n.get('segments', [])
                      for n in topo['nodes']}
         kept = []
-        for m in merged_nodes:
+        for m in waypoint_nodes:
             segs = node_segs.get(m, [])
             if segs and all(seg_branch.get(s) in excluded for s in segs):
                 continue
             kept.append(m)
-        dropped_m = sorted(set(merged_nodes) - set(kept))
+        dropped_m = sorted(set(waypoint_nodes) - set(kept))
         if dropped_m:
-            print(f'合并集剔除 {len(dropped_m)} 个节点（只属于已排除分支）：'
+            print(f'过路点集剔除 {len(dropped_m)} 个节点（只属于已排除分支）：'
                   f'{dropped_m}')
-        merged_nodes = kept
+        waypoint_nodes = kept
+    waypoint_set = set(waypoint_nodes)
+    merged_nodes = [] if KEEP_WAYPOINTS else waypoint_nodes
     merged_set = set(merged_nodes)
-    n_joint = sum(1 for c in merged_nodes if topo_type.get(c) == 'joint')
-    n_fork = len(merged_nodes) - n_joint
-    print(f'merge set: {len(merged_nodes)} nodes '
-          f'({n_joint} joint + {n_fork} fork), verified from topology.json')
+    n_joint = sum(1 for c in waypoint_nodes
+                  if topo_type.get(c) == 'joint')
+    n_fork = len(waypoint_nodes) - n_joint
+    print(f'waypoints: {len(waypoint_nodes)} nodes '
+          f'({n_joint} joint + {n_fork} fork), verified from topology.json; '
+          f'{"kept as naming points (2026-11-19)" if KEEP_WAYPOINTS else "merged"}')
 
     # ---- 2. 收集画出段（自环段除外，走线时不参与） ----
-    # 环弦符号段（v6p1 symbol_segs：段长<端点距，画小三角符号于一端）
-    # 同自环段一样不走线，改画小环符号；is_symbol 标记供后续区分。
+    # §二十七：自环段（na==nb，含 §十八 stub 标记的段）2D 不出图，进掉落集
+    # loop_pieces，不进走线。环弦符号段（v6p1 symbol_segs，§六已退役，现行
+    # 数据 0 处）若出现直接报错——它连两个不同节点，不是自环，静默丢掉会
+    # 丢真实连接，须用户另定；is_symbol 标记供此断言区分。
     symbol_segs = {r['seg']: r for r in d.get('symbol_segs', [])}
-    # §十八：退化短管段（stub 标记）走正常段通道，不进 loop 通道
     stub_segs = {s['seg'] for s in topo['segments'] if s.get('stub')}
     pieces = []  # {seg, na, nb, pts, branch, dia}
     loop_pieces = []
@@ -132,22 +253,24 @@ def main():
                    'pts': [tuple(p) for p in pc['pts']],
                    'branch': b['key'], 'dia': b['dia'],
                    'is_symbol': pc['seg'] in symbol_segs}
-            if (pc['na'] == pc['nb'] and pc['seg'] not in stub_segs) \
-                    or pc['seg'] in symbol_segs:
+            if pc['na'] == pc['nb'] or pc['seg'] in symbol_segs:
                 loop_pieces.append(rec)
             else:
                 pieces.append(rec)
     # 自环段数核查：应等于 topology 里自环段中属于画出分支的条数
-    # （§十五整根隐藏的分支不画线，其自环段也不在布局里）；
-    # 环弦符号段另计（不是自环，但同样走 loop 通道）。
+    # （§十五整根隐藏的分支不画线，其自环段也不在布局里；§二十七起
+    # stub 标记的自环段同样计入掉落集，不再走正常段通道）。
     hidden_whole = {h['hidden_branch'] for h in d.get('hidden_parallel', [])
                     if h.get('hidden_kind') == 'whole_branch'}
     topo_loop_n = sum(
         1 for s in topo['segments']
-        if s['na'] == s['nb'] and not s.get('stub')
+        if s['na'] == s['nb']
         and s.get('branch') not in hidden_whole
         and s.get('branch') not in excluded)
     n_symbol = sum(1 for lp in loop_pieces if lp['is_symbol'])
+    assert n_symbol == 0, (
+        f'环弦符号段 {n_symbol} 处再现（§六已退役）：须用户另定画法，'
+        '不能按 §二十七静默丢掉')
     assert len(loop_pieces) == topo_loop_n + n_symbol, (
         f'自环+环弦符号段 {len(loop_pieces)} ≠ topology 自环段 '
         f'{topo_loop_n} + 环弦符号 {n_symbol}')
@@ -157,7 +280,7 @@ def main():
     for pc in pieces:
         node_pieces[pc['na']].append(pc)
         node_pieces[pc['nb']].append(pc)
-    for m in merged_nodes:
+    for m in waypoint_nodes:
         assert len(node_pieces[m]) == 2, (
             f'{m}: 触画出段 {len(node_pieces[m])} 条 ≠ 2')
 
@@ -166,20 +289,38 @@ def main():
     chains = []    # 每条链：[(piece, reversed)]，按路径方向排列
 
     def extend(chain, forward):
-        """从链的一端沿过路点延伸。forward=True 从链尾（nb 侧）延伸。"""
+        """从链的一端延伸。forward=True 从链尾（nb 侧）延伸。
+        两种接续：①过路点处跨分支合并（旧行为，KEEP_WAYPOINTS 时
+        merged_set 为空不走）；②同根接续（2026-11-19）：同根管子的
+        相邻段接成一条路径（一管一路径，与 v6p1 一致），不同管子在
+        过路点处不再接续。"""
         end_piece, end_rev = chain[-1] if forward else chain[0]
         if forward:
             cur = end_piece['nb'] if not end_rev else end_piece['na']
         else:
             cur = end_piece['na'] if not end_rev else end_piece['nb']
         visited = {cur}
-        while cur in merged_set:
+        while True:
             here = chain[-1][0] if forward else chain[0][0]
-            cands = [q for q in node_pieces[cur]
-                     if q['seg'] not in assigned and q['seg'] != here['seg']]
-            assert len(cands) == 1, (
-                f'在 {cur} 处配对段 {len(cands)} 条 ≠ 1')
-            q = cands[0]
+            if cur in merged_set:
+                cands = [q for q in node_pieces[cur]
+                         if q['seg'] not in assigned
+                         and q['seg'] != here['seg']]
+                assert len(cands) == 1, (
+                    f'在 {cur} 处配对段 {len(cands)} 条 ≠ 1')
+                q = cands[0]
+            elif KEEP_WAYPOINTS:
+                # 同根接续：只接同分支的未分配段；无或多条时停下
+                # （多条同分支段交于一点是歧义，不猜）
+                cands = [q for q in node_pieces[cur]
+                         if q['seg'] not in assigned
+                         and q['seg'] != here['seg']
+                         and q['branch'] == here['branch']]
+                if len(cands) != 1:
+                    break
+                q = cands[0]
+            else:
+                break
             if forward:
                 rev = (q['nb'] == cur)  # 需从 cur 出发
                 chain.append((q, rev))
@@ -202,32 +343,31 @@ def main():
         chains.append(chain)
     assert len(assigned) == len(pieces), '有画出段未进路径'
 
-    # 自环段挂到同分支的路径上；Body.96 无他段，单独成退化路径
-    path_of_branch = defaultdict(list)
-    for i, ch in enumerate(chains):
-        for pc, _ in ch:
-            path_of_branch[pc['branch']].append(i)
-    loop_attach = {}  # path index -> [loop pieces]
-    pure_chain_of_branch = {}  # branch -> 退化链下标（纯自环分支多环共用一条退化路径）
-    for lp in loop_pieces:
-        cands = sorted(set(path_of_branch[lp['branch']]))
-        if cands:
-            assert len(cands) == 1, f"{lp['branch']} 自环挂到 {len(cands)} 条路径"
-            loop_attach.setdefault(cands[0], []).append(lp)
-        elif lp['branch'] in pure_chain_of_branch:
-            # 同分支已有退化路径（多自环分支，如地板 15 根双自环分支）：
-            # 环挂到同一条退化路径，不另开路径（原每环开一条，分支被
-            # 误拆成多处）
-            pi = pure_chain_of_branch[lp['branch']]
-            chains[pi].append((lp, False))
-            loop_attach[pi].append(lp)
-        else:
-            # 纯自环分支（Body.96）：退化路径，点位后续由自环阶段处理
-            chains.append([(lp, False)])
-            pure_chain_of_branch[lp['branch']] = len(chains) - 1
-            loop_attach[len(chains) - 1] = [lp]
+    # §二十七：自环段不挂到路径上、不再建退化链，直接掉落，只记清单。
+    # 整根去掉的分支 = 其布局内全部段都在掉落集里（Body.96、29.1-64X）；
+    # 还有正常段的分支（Body.117、Body.150）只去掉自环段，剩下段照旧成线。
+    dropped_loop = []  # {branch, seg, node, length_mm, dia_mm, whole_branch}
+    _layout_segs_by_branch = defaultdict(set)
+    for b in branches:
+        for pc in b['pieces']:
+            _layout_segs_by_branch[b['key']].add(pc['seg'])
+    _dropped_segs = {lp['seg'] for lp in loop_pieces}
+    for lp in sorted(loop_pieces, key=lambda p: (p['branch'], p['seg'])):
+        whole = _layout_segs_by_branch[lp['branch']] <= _dropped_segs
+        dropped_loop.append({
+            'branch': lp['branch'], 'seg': lp['seg'], 'node': lp['na'],
+            'length_mm': seg_len[lp['seg']], 'dia_mm': lp['dia'],
+            'whole_branch': whole,
+            'reason': ('自环段，两端同为 %s，2D 不出图'
+                       '（§二十七，2026-11-19 用户定）' % lp['na'])})
+    dropped_whole_branches = sorted({r['branch'] for r in dropped_loop
+                                     if r['whole_branch']})
+    for r in dropped_loop:
+        print(f"  drop loop seg {r['branch']} {r['seg']} "
+              f"{r['length_mm']}mm @ {r['node']}"
+              f"{'（整根去掉）' if r['whole_branch'] else ''}")
 
-    # ---- 4. 自环符号：方向（最大空角）、去三角、重算 len_2d ----
+    # ---- 4. 折线工具（§二十七：小圆环符号已废止，环方向与 loop_info 已删） ----
     def chain_points(chain):
         pts = []
         for pc, rev in chain:
@@ -249,87 +389,6 @@ def main():
         end = p1['na'] if r1 else p1['nb']
         return start, end
 
-    # 各节点被占方向（取所有链在该节点的端点出射角；BN02/BN03 无链穿过）
-    occupied = defaultdict(list)
-    for ch in chains:
-        pts = chain_points(ch)
-        n0, n1 = chain_endpoints(ch)
-        if len(pts) >= 2 and pts[0] != pts[-1]:
-            occupied[n0].append(math.degrees(math.atan2(
-                pts[1][1] - pts[0][1], pts[1][0] - pts[0][0])) % 360)
-            occupied[n1].append(math.degrees(math.atan2(
-                pts[-2][1] - pts[-1][1], pts[-2][0] - pts[-1][0])) % 360)
-    # Body.96 的退化链 pts[0]==pts[-1]（三角闭合），不贡献方向——正确，
-    # 因为它本身就是要被符号化的环，不占方向。
-    # 兜底方向：链端点未覆盖该节点时（如自环节点只在链中部、或纯自环
-    # 分支节点无链经过），改用该节点全部画出段的端点出射角
-    occupied_fb = defaultdict(list)
-    for b in branches:
-        for pc in b['pieces']:
-            if pc['na'] == pc['nb'] and pc['seg'] not in stub_segs:
-                continue  # 自环段不占方向（§十八：短线头是直线，占方向）
-            pts = pc['pts']
-            if len(pts) >= 2:
-                occupied_fb[pc['na']].append(math.degrees(math.atan2(
-                    pts[1][1] - pts[0][1], pts[1][0] - pts[0][0])) % 360)
-                occupied_fb[pc['nb']].append(math.degrees(math.atan2(
-                    pts[-2][1] - pts[-1][1], pts[-2][0] - pts[-1][0])) % 360)
-
-    def ring_dirs(node, count):
-        """每个环占一个空角：取最大的 count 个空角，各放环于角平分线。
-        （旧规则“两环同挤最大空角”在 BN02 撞上主干短管的长度标签：
-        Body.71/Body.74 的标签距节点约 18px，与 20px 的环同向重合；
-        分占两角后 BN02 为 90°/225°，实测与邻近标签无重叠。）"""
-        occ = sorted(occupied[node])
-        if not occ:
-            occ = sorted(occupied_fb[node])
-        if not occ:
-            # 该节点无任何画出段方向（纯孤立自环）：均匀散开
-            return sorted(round(90.0 + i * (360.0 / count), 1)
-                          for i in range(count))
-        occ_ext = occ + [a + 360 for a in occ]
-        gaps = []  # (角宽, 中点角)：一圈内恰 n 个空角（n=被占方向数），不重复
-        for i in range(len(occ)):
-            a, b = occ_ext[i], occ_ext[i + 1]
-            gaps.append((b - a, (a + b) / 2 % 360))
-        gaps.sort(key=lambda g: -g[0])  # 角宽从大到小（等宽时保持角序）
-        if count <= len(gaps):
-            return [round(g[1], 1) for g in gaps[:count]]
-        # 环数多于空角数时，把最大空角再三等分（本数据未触发，防御性分支）
-        dirs = [round(g[1], 1) for g in gaps]
-        big_w, big_mid = gaps[0]
-        while len(dirs) < count:
-            dirs.append(round((big_mid - big_w / 6) % 360, 1))
-            if len(dirs) < count:
-                dirs.append(round((big_mid + big_w / 6) % 360, 1))
-            break
-        return sorted(dirs[:count])
-
-    loop_nodes = defaultdict(list)  # node -> [loop pieces]
-    for lp in loop_pieces:
-        loop_nodes[lp['na']].append(lp)
-    loop_info = {}  # path index -> [{branch, seg, length_mm, dia_mm, dir_deg, node}]
-    for node, lps in loop_nodes.items():
-        dirs = ring_dirs(node, len(lps))
-        for lp, dg in zip(sorted(lps, key=lambda p: p['seg']), dirs):
-            for pi, attached in loop_attach.items():
-                if lp in attached:
-                    info = {'branch': lp['branch'], 'seg': lp['seg'],
-                            'length_mm': seg_len[lp['seg']],
-                            'dia_mm': lp['dia'], 'dir_deg': dg,
-                            'node': node}
-                    if lp['is_symbol']:
-                        # 环弦符号：另一端节点记 far，查看器据此写
-                        # “连接 A—B”；kind 供 title/弹窗区分自环。
-                        info['kind'] = 'chord'
-                        info['far'] = lp['nb'] if lp['na'] == node \
-                            else lp['na']
-                    loop_info.setdefault(pi, []).append(info)
-    for pi, infos in loop_info.items():
-        print(f"  loop @ {infos[0]['node']}: " + ', '.join(
-            f"{i['branch']} {i['seg']} {i['length_mm']}mm -> {i['dir_deg']} deg"
-            for i in infos))
-
     # ---- 5. 隐藏平行段配对：经同一过路点串联的隐藏段接成一条隐藏路径 ----
     hidden_recs = d.get('hidden_parallel', [])
     hid_by_seg = {h['hidden_seg']: h for h in hidden_recs}
@@ -345,12 +404,14 @@ def main():
         hid_used.add(s)
         # 双向延伸：经同一过路点串联的隐藏段接成一条隐藏路径
         # （先向后追加、再向前补，保持与原单向延伸相同的链序）
+        # 过路点保留后仍经 waypoint_set 配对（几何连续性未变，IP
+        # Body.159 的隐藏平行对仍合为一行）
         while True:
             grown = False
             for end_i in (-1, 0):
                 a, b = hid_ends[chain[end_i]]
                 for t in (a, b):
-                    if t not in merged_set:
+                    if t not in waypoint_set:
                         continue
                     for h2 in hidden_recs:
                         s2 = h2['hidden_seg']
@@ -381,10 +442,10 @@ def main():
         ends = []
         for s in ch:
             for t in hid_ends[s]:
-                if t not in merged_set:
+                if t not in waypoint_set:
                     ends.append(t)
         via = sorted({t for s in ch for t in hid_ends[s]
-                      if t in merged_set})
+                      if t in waypoint_set})
         if len(kept) != 1 or len(dias) != 1 or len(ends) != 2:
             # 结构不符（kept 分支不唯一/直径不一/端点不是 2 个）：
             # 不配对，各段保持原记录（数据不丢，只是不合成一行）
@@ -444,13 +505,7 @@ def main():
         else:
             pts = [node_xy[n0], node_xy[n0]]
         opieces = oriented_pieces(ch)
-        # 自环段挂进 pieces（弹窗数据用；Body.96 的已在链里，去重）
-        for lp in loop_attach.get(i, []):
-            if lp['seg'] not in {o['seg'] for o in opieces}:
-                opieces.append({'seg': lp['seg'], 'na': lp['na'],
-                                'nb': lp['nb'],
-                                'pts': [list(p) for p in lp['pts']],
-                                'branch': lp['branch'], 'dia': lp['dia']})
+        # §二十七：自环段已进掉落集，不挂进 pieces、不计长度、不画线
         # 组成管子：连续同分支段归组
         consts = []
         for opc in opieces:
@@ -474,12 +529,8 @@ def main():
             consts = [{'key': lp['branch'], 'dia': lp['dia'],
                        'len_3d': round(seg_len[lp['seg']], 1),
                        'len_2d': 0.0, 'segs': [lp['seg']]}]
-        # 自环段长度计入其分支组的 len_3d（Body.117/150 的 len_3d 含自环段）
-        for lp in loop_attach.get(i, []):
-            for c in consts:
-                if c['key'] == lp['branch'] and lp['seg'] not in c['segs']:
-                    c['len_3d'] = round(c['len_3d'] + seg_len[lp['seg']], 1)
-                    c['segs'].append(lp['seg'])
+        # §二十七：掉落的自环段长度不计入路径 len_3d（Body.117 只剩
+        # SEG13 的 71.9mm，Body.150 只剩 SEG19 的 59.9mm）
         for c in consts:
             c['partial'] = len(branch_paths[c['key']]) > 1
         len_3d = round(sum(c['len_3d'] for c in consts), 1)
@@ -545,15 +596,7 @@ def main():
               for h in by_key[c['key']].get('hidden_segs', [])]
         if hs:
             entry['hidden_segs'] = hs
-        # 自环符号
-        if i in loop_info:
-            entry['loop'] = loop_info[i]
-            if len(non_loop) == 0:
-                # 纯自环分支：长度标签沿环方向外放 40px
-                entry['label_offset'] = {
-                    'dir_deg': loop_info[i][0]['dir_deg'],
-                    'dist_px': LOOP_LABEL_DIST_PX}
-                entry['loop_only'] = True
+        # §二十七：自环符号已废止，路径上不再有 loop/loop_only 条目
         # 排序键：首个组成分支在 v6p1 中的位置
         entry['_order'] = v6p1_order[consts[0]['key']]
         new_branches.append(entry)
@@ -580,7 +623,9 @@ def main():
     for b in new_branches:
         del b['_order']
 
-    # ---- 7. 节点：去掉过路点 ----
+    # ---- 7. 节点：只去掉合并掉的点 ----
+    # §十六合并模式（默认）：merged_set 为过路点集，全部并掉；
+    # KEEP_WAYPOINTS 时 merged_set 为空，全部节点保留。
     new_nodes = [n for n in nodes if n['code'] not in merged_set]
     assert len(new_nodes) == len(nodes) - len(merged_nodes)
 
@@ -601,15 +646,19 @@ def main():
     n_topo_branches = len(topo['branches'])
     n_excluded = len(excluded & {b.get('key') or b.get('occ')
                                  for b in topo['branches']})
-    assert len(appear) == n_topo_branches - n_excluded, (
+    # §二十七：整根去掉的自环分支（Body.96、29.1-64X）不在图上出现，
+    # 全数里扣掉，另在掉落清单里列出，不混进总数
+    assert len(appear) == (n_topo_branches - n_excluded
+                           - len(dropped_whole_branches)), (
         f'管子全数核查：{len(appear)} ≠ topology 分支数 '
-        f'{n_topo_branches} − 已排除 {n_excluded}')
+        f'{n_topo_branches} − 已排除 {n_excluded} − 自环整根去掉 '
+        f'{len(dropped_whole_branches)}')
     multi = {k: v for k, v in appear.items() if v > 1}
     if multi:
         print(f'  split branches ({len(multi)}): {multi}')
-    # 非合并、无自环、未拆开路径的几何与 v6p1 逐点一致（合并只重组折线）
+    # 非合并、未拆开路径的几何与 v6p1 逐点一致（合并只重组折线）
     for b in new_branches:
-        if 'merged_from' in b or 'loop' in b or 'partial' in b:
+        if 'merged_from' in b or 'partial' in b:
             continue
         old = by_key[b['key']]
         assert b['points'] == old['points'], f"{b['key']} 几何变了"
@@ -620,60 +669,127 @@ def main():
         old_pts = {tuple(p) for p in by_key[b['key']]['points']}
         assert all(tuple(p) in old_pts for p in b['points']), (
             f"{b['key']} 片段点位不在原分支上")
-    # 自环：loop 条目总数 = 自环段数；纯自环路径 len_2d=0、点位退化
-    loop_paths = [b for b in new_branches if 'loop' in b]
-    n_loop_entries = sum(len(b['loop']) for b in loop_paths)
-    assert n_loop_entries == len(loop_pieces), (
-        f'自环条目 {n_loop_entries} ≠ 自环段 {len(loop_pieces)}')
-    for b in loop_paths:
-        if b.get('loop_only'):
-            assert b['len_2d'] == 0.0 and b['points'][0] == b['points'][1], (
-                f"{b['key']} 纯自环路径 len_2d/点位异常")
-    # 合并不改变 2D 长度：每条非自环路径的 len_2d 须等于其组成段在 v6p1 里
-    # 的 2D 长度之和（合并只重组折线，不动点位）。1:1（2D vs 3D）是
-    # v6p1 级核查——v6p1 已失败的误差合并无法修复，只能原样保留、
-    # 如实上报，不在此断言（环弦符号段除外：v6p1 已将其画为符号，
-    # 其分支含 loop 条目，不进此核查；2026-11-18 地板 SEG05 即此例）。
+    # §二十七闭环（每次生成的固定步骤，不是一次性手工删）：
+    # 掉落数＝拓扑自环段数；去后任一路径不得 node0==node1；布局里
+    # 不得有 loop 条目。任一失败即 raise，不写盘。
+    assert len(dropped_loop) == topo_loop_n, (
+        f'自环掉落 {len(dropped_loop)} ≠ topology 自环段 {topo_loop_n}')
+    _loop_paths = [b['key'] for b in new_branches
+                   if b['node0'] == b['node1']]
+    assert not _loop_paths, f'自环路径残留：{_loop_paths}'
+    assert not any('loop' in b for b in new_branches), 'loop 条目残留'
+    # 合并不改变 2D 长度：每条路径的 len_2d 须等于其组成段在 v6p1 里
+    # 的 2D 长度之和（合并只重组折线，不动点位；掉落的自环段已不在
+    # pieces 里，不进此和）。1:1（2D vs 3D）见下方 DRC 卡口。
     for b in new_branches:
-        if 'loop' in b:
-            continue
         exp = 0.0
         for opc in b['pieces']:
             if opc['na'] == opc['nb'] and opc['seg'] not in stub_segs:
-                continue  # §十八：短线头是直线，计入 2D 长度
+                continue  # 防御：自环段不应进 pieces（§2 已掉落）
             exp += plen([tuple(p) for p in opc['pts']])
         assert abs(b['len_2d'] - round(exp, 1)) <= 0.1, (
             f"{b['key']} 合并改变了 2D 长度：{b['len_2d']} vs v6p1 {round(exp, 1)}")
-    # 1:1 误差只上报不断言（v6p1 已失败的照实带过来）
-    loop_keys = {b['key'] for b in loop_paths}
+    # 1:1 卡口（§二十九 DRC，原只上报不断言，现改为卡口）：每条路径
+    # 2D 与 3D 长度误差 ≤0.1mm，否则不出图。合并只重组折线、不动点位，
+    # 误差只能来自 v6p1——v6p1 有误差时合并也不许悄悄带过去，报错指回上游。
     max_err = 0.0
     len_errs = []
     for b in new_branches:
-        if b['key'] in loop_keys:
-            continue
         e = round(abs(b['len_2d'] - b['len_3d']), 1)
         max_err = max(max_err, e)
         if e > 0.05:
             len_errs.append([b['key'], b['len_3d'], b['len_2d'], e])
-    if max_err > 0.1:
-        print(f'  NOTE: 非自环最大 1:1 误差 {max_err}mm（来自 v6p1，合并未改动几何）')
+    assert max_err <= 0.1, (
+        f'1:1 误差 {max_err}mm 超 0.1mm（来自 v6p1，合并未改动几何）：'
+        f'{len_errs}，不出图')
+
+    # ---- 8b. §二十九 DRC：过路点闭环（从输出路径重算，不复用输入判定） ----
+    # 合并模式下，输出路径的端点里不得残留过路点：无实体节点（joint/fork）
+    # 在输出里恰连 2 处 = 合并漏掉了（N15 两次投诉的教训），必须为 0。
+    # KEEP_WAYPOINTS 模式故意保留过路点，跳过。
+    if not KEEP_WAYPOINTS:
+        _nbrs = defaultdict(set)
+        for b in new_branches:
+            _nbrs[b['node0']].add(b['node1'])
+            _nbrs[b['node1']].add(b['node0'])
+        _wp_resid = sorted(c for c, ns in _nbrs.items()
+                           if len(ns) == 2
+                           and topo_type.get(c) in ('joint', 'fork'))
+        assert not _wp_resid, f'过路点残留（§十六合并漏掉）：{_wp_resid}'
+    else:
+        _wp_resid = []
+
+    # ---- 8c. §二十九 DRC：连通性保持 + 无孤立节点 ----
+    # 段级连通分量数（按段端点 na/nb 并查集——按路径端点算会漏掉折线中途
+    # 的接头，实测输入 6 个分量是假象）：输入非自环段与输出段须一致，
+    # 合并不得拆散/接错图；自环段两端是同一个节点，掉落不改变连通性。
+    _comp_in = _n_piece_components([(pc['na'], pc['nb']) for pc in pieces])
+    _comp_out = _n_piece_components(
+        [(pc['na'], pc['nb']) for b in new_branches
+         for pc in b['pieces']])
+    assert _comp_in == _comp_out, (
+        f'段级连通分量 {_comp_in} → {_comp_out}：合并改变了连通性')
+    _used_nodes = ({b['node0'] for b in new_branches}
+                   | {b['node1'] for b in new_branches})
+    _orphans = sorted(n['code'] for n in new_nodes
+                      if n['code'] not in _used_nodes)
+    assert not _orphans, f'孤立节点（无路径经过）：{_orphans}'
+
+    # ---- 8d. §二十九 DRC：全图硬检查（交叉/压着画/穿节点） ----
+    # 复用优化器的 Checker（同一口径），输入与输出各查一遍，从几何重算，
+    # 不复用输入布局里记的数。卡口：交叉 0、压着画 0；穿节点不得新增
+    # （输出 ≤ 输入——合并只重组折线、不动点位，新增即合并引入的错误）。
+    # 残留的穿节点逐条列入报告，等用户定夺清还是认；清掉后卡口收紧为 0。
+    # 节点挨近（node_close）是软指标，只报告不卡（残留是用户已接受的）。
+    drc_in = Checker(_CheckLayout(d), PIERCE_MM).full_check()
+    drc_out = Checker(_CheckLayout({'branches': new_branches,
+                                    'nodes': new_nodes}),
+                      PIERCE_MM).full_check()
+    assert not drc_out['crossings'], (
+        f"交叉 {len(drc_out['crossings'])} 对："
+        f"{sorted(set(map(tuple, map(sorted, drc_out['crossings']))))}，不出图")
+    assert not drc_out['overlaps'], (
+        f"压着画 {len(drc_out['overlaps'])} 对："
+        f"{sorted(set(map(tuple, map(sorted, drc_out['overlaps']))))}，不出图")
+    assert len(drc_out['piercings']) <= len(drc_in['piercings']), (
+        f"穿节点新增：输入 {len(drc_in['piercings'])} 处，输出 "
+        f"{len(drc_out['piercings'])} 处：{drc_out['piercings']}，不出图")
     print(f'paths: {len(branches)} -> {len(new_branches)}; '
           f'nodes: {len(nodes)} -> {len(new_nodes)}')
-    print(f'non-loop max 1:1 err: {max_err}mm; len_errs: {len_errs}')
+    print(f'max 1:1 err: {max_err}mm; len_errs: {len_errs}')
+    print(f"DRC: X {len(drc_in['crossings'])}->{len(drc_out['crossings'])}, "
+          f"overlap {len(drc_in['overlaps'])}->{len(drc_out['overlaps'])}, "
+          f"pierce {len(drc_in['piercings'])}->{len(drc_out['piercings'])}, "
+          f"node_close {len(drc_out['node_close'])}")
 
-    # 自环方向描述（报告用，取程序算出的值；checklist 只记总数）
-    loop_desc_parts = []
-    loop_flat = [info for pi in sorted(loop_info) for info in loop_info[pi]]
-    for info in sorted(loop_flat, key=lambda x: (x['node'], x['branch'])):
-        chord_txt = (f"（环弦，连 {info['far']}）"
-                     if info.get('kind') == 'chord' else '')
-        loop_desc_parts.append(
-            f"{info['node']}：{info['branch']} {info['seg']} "
-            f"环向 {info['dir_deg']}°{chord_txt}")
-    loop_desc = '；'.join(loop_desc_parts)
+    # 自环掉落描述（报告用）：整根去掉的与只去掉一段的分开列；只去掉
+    # 一段的写清剩下长度（输出路径里该分支剩下段的 len_3d 之和）
+    def _remaining_len(branch_key):
+        total = 0.0
+        for b in new_branches:
+            if 'merged_from' in b:
+                for m in b['merged_from']:
+                    if m['key'] == branch_key:
+                        total += m['len_3d']
+            elif b['key'] == branch_key:
+                total += b['len_3d']
+        return round(total, 1)
+
+    _drop_whole = [r for r in dropped_loop if r['whole_branch']]
+    _drop_part = [r for r in dropped_loop if not r['whole_branch']]
+    drop_desc_parts = []
+    for r in sorted(_drop_whole, key=lambda x: x['branch']):
+        drop_desc_parts.append(
+            f"{r['branch']} 整根去掉（{r['seg']} {r['length_mm']}mm "
+            f"Φ{r['dia_mm']}，两端同为 {r['node']}）")
+    for r in sorted(_drop_part, key=lambda x: x['branch']):
+        drop_desc_parts.append(
+            f"{r['branch']} 去掉 {r['seg']}（{r['length_mm']}mm，两端同为 "
+            f"{r['node']}），剩下 {_remaining_len(r['branch'])}mm 照旧画线")
+    drop_desc = '；'.join(drop_desc_parts)
     # 直径不同的接头：过路点两边管子直径（取整后）不同，弹窗里两根都保留
     dia_diff_joints = []
-    for m in merged_nodes:
+    for m in waypoint_nodes:
         pcs = node_pieces[m]
         if len(pcs) == 2 and round(pcs[0]['dia']) != round(pcs[1]['dia']):
             dia_diff_joints.append(
@@ -695,18 +811,81 @@ def main():
     out['nodes'] = new_nodes
     out['meta'] = dict(d['meta'])
     out['meta']['version'] = 'v6p2'
-    out['meta']['based_on'] = ('v6p1 layout.json（几何点位不动；过路点合并只重组'
-                               '折线；自环三角改画小环符号）')
+    # §二十七掉落清单（与 excluded_branches 同格式、不同清单，绝不混进
+    # 过孔零件清单——自环段不是过孔零件，查看器页头不得误标）
+    out['meta']['dropped_loop_segments'] = dropped_loop
+    out['meta']['dropped_loop_branches'] = [
+        {'key': k,
+         'reason': next(r['reason'] for r in dropped_loop
+                        if r['branch'] == k)}
+        for k in dropped_whole_branches]
+    # 文案随模式变：合并模式写合并，保留模式（仅回归对比）写保留
+    if KEEP_WAYPOINTS:
+        based_on_txt = ('v6p1 layout.json（几何点位不动；过路点保留作'
+                        '路由命名点，不再合并；自环段按 §二十七去掉）')
+        wp_txt = (f'过路点 {len(waypoint_nodes)} 个保留作路由命名点'
+                  f'（{n_joint} joint + {n_fork} fork，按“连几个不同地方”'
+                  f'判定，2026-11-19 用户令，不再合并）')
+        log_head = 'v6p2（2026-11-19 用户令：过路点保留作路由命名点，不再合并）：'
+        log_wp = (f'{len(waypoint_nodes)} 个过路点全保留（{n_joint} joint + '
+                  f'{n_fork} fork）')
+        report_title = '# v6p2 过路点保留 + 自环段去掉报告'
+        report_rule = ('规则（用户 2026-11-19 亲定，取代 2026-11-17 合并规则）：过路点是'
+                       '路由途经点，2D 图里必须保留作命名点，不再合并掉——路由按名字串段'
+                       '（A→B、B→C）需要 B 这个点，没有实体也要有名有点的节点。判断标准'
+                       '照旧：无实体节点（N/BN）中只连两个地方的就是过路点。走线改同根接续：'
+                       '同根管子的相邻段接成一条路径（一管一路径），不同管子在过路点处不再'
+                       '接成一条。')
+        report_wp = (f"过路点 {len(waypoint_nodes)} 个全保留（{n_joint} joint + "
+                     f"{n_fork} fork）；")
+    else:
+        based_on_txt = ('v6p1 layout.json（几何点位不动；§十六过路点合并；'
+                        '自环段按 §二十七去掉；§二十九 DRC 全过才出图）')
+        wp_txt = (f'过路点 {len(waypoint_nodes)} 个合并掉（{n_joint} joint + '
+                  f'{n_fork} fork，按“连几个不同地方”判定，§十六；'
+                  f'2026-11-19 22:15 用户令恢复 §十六，保留点做法废止；'
+                  f'过路点在 3D 数据/pieces 里照旧存在，只在 2D 图面合并）')
+        log_head = 'v6p2（§十六过路点合并，2026-11-19 22:15 用户令恢复执行）：'
+        log_wp = (f'{len(waypoint_nodes)} 个过路点合并掉（{n_joint} joint + '
+                  f'{n_fork} fork）')
+        report_title = '# v6p2 过路点合并 + 自环段去掉报告'
+        report_rule = ('规则（§十六，用户 2026-11-17 22:44–22:52 亲定，2026-11-19 22:15 '
+                       '用户令恢复执行；2026-11-19 当晚保留点做法已废止）：只连两处的'
+                       '是过路点，并掉；连三处以上的是真分支点，保留（不按 N/BN 类型判定）。'
+                       '数据与图面区分：过路点在 3D 数据（topology.json）与 pieces 的 na/nb '
+                       '里照旧存在，路由按 §二十四 端点命名串段照旧；只在 2D 图面整合掉，'
+                       '图面整洁。')
+        report_wp = (f"过路点 {len(waypoint_nodes)} 个合并掉（{n_joint} joint + "
+                     f"{n_fork} fork）；")
+    out['meta']['based_on'] = based_on_txt
     st = dict(d['stats'])
     st['branches_placed'] = len(new_branches)
     st['nodes_placed'] = len(new_nodes)
     st['merged_nodes'] = len(merged_nodes)
     st['merged_nodes_list'] = merged_nodes
+    st['waypoints_kept'] = len(waypoint_nodes) if KEEP_WAYPOINTS else 0
+    st['waypoints_kept_list'] = waypoint_nodes if KEEP_WAYPOINTS else []
     st['merged_paths'] = n_merged_paths
-    st['loop_symbols'] = len(loop_pieces) - n_symbol
-    st['chord_symbols'] = n_symbol
+    st['loop_symbols'] = 0  # §二十七：小圆环符号已废止，恒为 0
+    st['chord_symbols'] = 0  # §六环弦符号已退役，恒为 0
+    st['dropped_loop_segments'] = len(dropped_loop)
+    st['dropped_loop_branches'] = len(dropped_whole_branches)
     st['max_len_err_mm'] = max_err
     st['len_errs'] = len_errs
+    # §二十九 DRC 结果（输入→输出，元组转列表以便 JSON 序列化）
+    st['drc'] = {
+        'crossings_in': len(drc_in['crossings']),
+        'crossings_out': len(drc_out['crossings']),
+        'overlaps_in': len(drc_in['overlaps']),
+        'overlaps_out': len(drc_out['overlaps']),
+        'piercings_in': len(drc_in['piercings']),
+        'piercings_out': len(drc_out['piercings']),
+        'piercings': [list(p) for p in drc_out['piercings']],
+        'node_close': [list(p) for p in drc_out['node_close']],
+        'components_in': _comp_in,
+        'components_out': _comp_out,
+        'waypoint_residual': _wp_resid,
+    }
     # bbox 按新点位重算（自环三角去掉后理论上不变，实测确认）
     xs = [p[0] for b in new_branches for p in b['points']]
     ys = [p[1] for b in new_branches for p in b['points']]
@@ -718,31 +897,27 @@ def main():
     ck = json.loads(json.dumps(d['checklist']))
     for item in ck.get('hard', []):
         if item.get('id') == 'H2':
-            item['value'] += (f'；v6p2：自环 {len(loop_pieces) - n_symbol} 处改画小环'
-                              '符号，符号不按比例、不计入 1:1 误差'
-                              '（用户亲令取舍，真值在弹窗里）')
-            if n_symbol:
-                item['value'] += (f'；环弦符号 {n_symbol} 处（段长<端点距，'
-                                  '画小环符号于一端，真值在弹窗；§六环优先'
-                                  '待实现）')
-    loop_nodes_self = {lp['na'] for lp in loop_pieces
-                       if not lp['is_symbol']}
-    s11_value = (f'过路点 {len(merged_nodes)} 个全并（{n_joint} joint + '
-                 f'{n_fork} fork，按“连几个不同地方”判定）；路径 '
+            item['value'] += (f'；v6p2：自环段 {len(dropped_loop)} 处按 '
+                              '§二十七去掉、不画线、不计入 1:1 误差'
+                              '（用户亲令：这种情况不可能存在）')
+    n_drop_nodes = len({r['node'] for r in dropped_loop})
+    s11_value = (wp_txt + '；路径 '
                  f'{len(branches)}→{len(new_branches)}，节点 '
                  f'{len(nodes)}→{len(new_nodes)}；合并路径 {merge_paths_txt}；'
-                 f'自环 {len(loop_pieces) - n_symbol} 处改画小环符号'
-                 f'（{len(loop_nodes_self)} 个节点，半径 8px，距节点 30px）')
-    if n_symbol:
-        s11_value += f'；环弦符号 {n_symbol} 处（§六环优先待实现）'
+                 f'自环段 {len(dropped_loop)} 处去掉（§二十七，'
+                 f'{n_drop_nodes} 个节点，整根去掉 '
+                 f'{len(dropped_whole_branches)} 根）；'
+                 f"DRC 全过：交叉 0、压着画 0、穿节点 "
+                 f"{len(drc_in['piercings'])}→{len(drc_out['piercings'])}"
+                 f"（{'无残留' if not drc_out['piercings'] else '残留见报告'}）")
     if multi:
         s11_value += ('；被拆开的分支 '
                       + '、'.join(f'{k}（{v} 处）' for k, v in sorted(multi.items())))
     if pair_records:
         s11_value += f'；隐藏平行对合成 {len(pair_records)} 条'
     ck.setdefault('soft', []).append({
-        'id': 'S11', 'rule': '§十六 过路点合并 + 自环符号',
-        'name': '过路点合并与自环符号',
+        'id': 'S11', 'rule': '§十六 过路点合并 + §二十七 自环段去掉 + §二十九 DRC',
+        'name': '过路点合并、自环段去掉与自我检查',
         'value': s11_value,
         'note': ('段级合并：同根管子先配，剩下的一对配一起；'
                  f'{n_topo_branches} 根管子全数可查'
@@ -751,12 +926,13 @@ def main():
                     if n_excluded else ''))})
     out['checklist'] = ck
     out['merge_log'] = (
-        f"v6p2（2026-11-17 22:52 用户规则：只连两处即过路点）：{len(merged_nodes)} 个"
-        f"过路点全合并，路径 {len(branches)}→{len(new_branches)}，"
+        log_head + log_wp
+        + f"，路径 {len(branches)}→{len(new_branches)}，"
         f"节点 {len(nodes)}→{len(new_nodes)}；合并路径 "
         f"{merge_paths_txt}；"
-        f"自环 {len(loop_pieces) - n_symbol} 处改画小环符号"
-        + (f'；环弦符号 {n_symbol} 处' if n_symbol else '')
+        f"自环段 {len(dropped_loop)} 处去掉（§二十七）"
+        + (f'；整根去掉 {len(dropped_whole_branches)} 根'
+           if dropped_whole_branches else '')
         + (f'；已排除过孔零件 {sorted(excluded)}（§二十二，不画）'
            if excluded else '')
         + "；几何点位不动，v6p1 平行隐藏不动。")
@@ -766,13 +942,10 @@ def main():
     with open(out_path, 'w', encoding='utf-8') as f:
         json.dump(out, f, ensure_ascii=False, indent=1)
     # 人读报告
-    lines = ['# v6p2 过路点合并 + 自环符号报告', '',
-             '规则（用户 2026-11-17 22:52 亲定）：判断标准不是 N 还是 BN，而是这个点'
-             '连着几个不同的地方。只连两个地方的就是过路点，合并；连三个地方以上'
-             '的，是真分支点，保留。配对原则：同根管子先配，剩下的一对配一起。',
-             '', f"过路点 {len(merged_nodes)} 个全合并（{n_joint} joint + "
-             f"{n_fork} fork）；"
-             f"路径 {len(branches)}→{len(new_branches)}；"
+    lines = [report_title, '',
+             report_rule,
+             '', report_wp
+             + f"路径 {len(branches)}→{len(new_branches)}；"
              f"节点 {len(nodes)}→{len(new_nodes)}；"
              f"合并路径 {merge_paths_txt}。",
              '几何点位不动；v6p1 平行隐藏不动；'
@@ -780,13 +953,34 @@ def main():
              + (f"（被拆开的分支 {len(multi)} 个："
                 + '、'.join(f'{k}（{v} 处）' for k, v in sorted(multi.items()))
                 + '，其余各一处）。' if multi else '（无分支被拆开）。'), '',
-             '## 自环符号（22:49 用户令）', '',
-             f'- {loop_desc}。',
-             f'- 小环统一大小（半径 8px，距节点 30px），即放弃这 '
-             f'{len(loop_pieces)} 处的 1:1（自环 '
-             f'{len(loop_pieces) - n_symbol} 处'
-             + (f'＋环弦符号 {n_symbol} 处' if n_symbol else '')
-             + '），真值仍在弹窗/标签里（用户亲令取舍）。', '',
+             '## 自环段去掉（§二十七，2026-11-19 22:27 用户令）', '',
+             f'- {drop_desc}。',
+             f'- 共去掉自环段 {len(dropped_loop)} 处（整根去掉 '
+             f'{len(dropped_whole_branches)} 根）；拓扑文件不动，自环段在 '
+             '3D 数据里照旧存在；小圆环符号＋虚线引线已废止，不再使用。', '',
+             '## 自我检查（DRC，每次生成固定步骤，2026-11-19 用户令）', '',
+             f'- 自环：查出 {topo_loop_n} 处，去掉 {len(dropped_loop)} 处，'
+             '残留自环路径 0 条、loop 条目 0 个。',
+             f'- 过路点闭环：从输出路径重算，残留过路点 '
+             f'{len(_wp_resid)} 个。',
+             f'- 管子全数：{len(appear)} 根在图上（topology '
+             f'{n_topo_branches} 根 − 已排除 {n_excluded} 根 − 自环整根去掉 '
+             f'{len(dropped_whole_branches)} 根）。',
+             '- 几何：非合并路径与 v6p1 逐点一致；合并只重组折线。',
+             f'- 1:1 长度：最大误差 {max_err}mm（卡口 ≤0.1mm）。',
+             f'- 连通性：段级连通分量 {_comp_in}→{_comp_out}；孤立节点 0 个。',
+             f"- 交叉：输入 {len(drc_in['crossings'])} 对 → 输出 "
+             f"{len(drc_out['crossings'])} 对（卡口 0）。",
+             f"- 压着画：输入 {len(drc_in['overlaps'])} 对 → 输出 "
+             f"{len(drc_out['overlaps'])} 对（卡口 0）。",
+             f"- 穿节点：输入 {len(drc_in['piercings'])} 处 → 输出 "
+             f"{len(drc_out['piercings'])} 处（卡口：不得新增）"
+             + (f"；残留：{'; '.join(f'{b}→{c}' for b, c in drc_out['piercings'])}"
+                "，等用户定夺清还是认"
+                if drc_out['piercings'] else "；无残留") + '。',
+             f"- 节点挨近（软指标，只报告不卡）：{len(drc_out['node_close'])} 对"
+             + (f"：{'; '.join(f'{a}–{b} {round(dd, 1)}mm' for a, b, dd in drc_out['node_close'])}"
+                if drc_out['node_close'] else "") + '。', '',
              '| 合并路径 | 端点 | 吸收过路点 | 组成（直径/长度/段） | 合并长度 |',
              '|---|---|---|---|---|']
     for r in merge_records:
@@ -810,16 +1004,15 @@ def main():
                               f"{pr['merged_via']}，留 {pr['kept_branch']}）"
                               for pr in pair_records.values())
                   + '。']
-    if max_err > 0.1:
-        lines += ['', '1:1 误差（来自 v6p1，合并只重组折线、不改几何，故原样保留）：'
-                  + '、'.join(f'{k}（3D {a}mm → 2D {c}mm，误差 {e}mm）'
-                              for k, a, c, e in len_errs if abs(e) > 0.1)
-                  + '。']
     with open(os.path.join(outdir, 'merge_report_v6p2.md'), 'w',
               encoding='utf-8') as f:
         f.write('\n'.join(lines) + '\n')
 
-    print(f'joints merged: {len(merged_nodes)}')
+    if KEEP_WAYPOINTS:
+        print(f'waypoints kept: {len(waypoint_nodes)}; joints merged: 0')
+    else:
+        print(f'waypoints merged: {len(merged_nodes)}; joints merged: '
+              f'{len(merged_nodes)}')
     print(f'paths: {len(branches)} -> {len(new_branches)} '
           f"(merged paths: {sum(1 for b in new_branches if 'merged_from' in b)})")
     print(f'nodes: {len(nodes)} -> {len(new_nodes)}')
